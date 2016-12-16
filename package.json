@@ -1,0 +1,19 @@
+{
+  "name": "reportl",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/closurecats/reportl.git"
+  },
+  "author": "Closure Cats",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/closurecats/reportl/issues"
+  },
+  "homepage": "https://github.com/closurecats/reportl#readme"
+}
