@@ -1,7 +1,9 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config(); // eslint-disable-line global-require
-}
+require('dotenv').config({
+  silent: true,
+});
+
 const app = require('express')();
+const db = require('./database/db');
 
 const port = process.env.PORT || 8000;
 
