@@ -4,8 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run db:up && nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:up": "knex-migrate --cwd ./server/database/ up",
+    "db:down": "knex-migrate --cwd ./server/database/ down",
+    "db:empty": "knex-migrate --cwd ./server/database/ down --to 0",
+    "db:reset": "npm run db:empty && npm run db:up",
+    "db:rollback": "knex-migrate --cwd ./server/database/ rollback",
+    "db:redo": "knex-migrate --cwd ./server/database/ redo",
+    "db:seed": "knex --cwd ./server/database/ seed:run",
+    "db:reseed": "npm run db:reset && npm run db:seed",
+    "db:migrate:make": "knex --cwd ./server/database/ migrate:make",
+    "db:seed:make": "knex --cwd ./server/database/ seed:make"
   },
   "repository": {
     "type": "git",
@@ -30,6 +40,7 @@
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "knex": "^0.12.6",
+    "knex-migrate": "^1.2.0",
     "mysql": "^2.12.0"
   }
 }
