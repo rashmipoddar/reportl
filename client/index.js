@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
-class App extends Component {
+import App from './components/app.js';
 
-  render() {
-   return (
-     <h1>Sups</h1>
-   );
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  // <Provider>
+    <App />
+  // </Provider>
+  ,
+  document.getElementById('app'));
