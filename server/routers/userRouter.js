@@ -6,4 +6,7 @@ router.all('*', (req, res, next) => {
   next();
 });
 
+router.get('/:id', userController.getUserById);
+router.post('/', userController.newUser);
+
 module.exports = router;
