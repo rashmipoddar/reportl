@@ -1,29 +1,34 @@
-var path = require('path');
-var srcPath = path.join(__dirname, 'client');
-var buildPath = path.join(__dirname, 'src');
+const path = require('path');
+
+const srcPath = path.join(__dirname, '/client');
+const buildPath = path.join(__dirname, '/dist');
 
 module.exports = {
   context: srcPath,
-  entry: path.join(srcPath, 'index.js'),
+  entry: './index.js',
   output: {
     path: buildPath,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     loaders: [{
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ['react', 'es2015', 'stage-1']
-      }
-    }]
+        presets: ['react', 'es2015', 'stage-1'],
+      },
+    }],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
-  }
+    contentBase: buildPath,
+    inline: true,
+    proxy: {
+      '**': 'http://localhost:8000',
+    },
+  },
 };

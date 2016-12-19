@@ -2,13 +2,16 @@ require('dotenv').config({
   silent: true,
 });
 
-const app = require('express')();
+const path = require('path');
+const express = require('express');
 const apiRouter = require('./routers/apiRouter');
 const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 8000;
+const app = express();
 
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/api', apiRouter);
 
 app.all('*', (req, res) => {
