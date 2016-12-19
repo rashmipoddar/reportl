@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { Field, reduxForm } from 'redux-form';
+import { createUser } from '../actions/index'; // needs to be written
 
-export default class User extends Component {
-  constructor(props) {
-  super(props);
-
-  this.state = {
-    class_name: '',
-    start_date: '',
-    end_date: '',
-  },
-
+class UserForm extends Component {
   render() {
+    // const { handleSubmit } = this.props;
     return (
-      <form>
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="text" placeholder="Email Address">
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="firstName">First Name</label>
+          <Field name="firstName" component="input" type="text" />
+        </div>
+        <div>
+          <label htmlFor="lastName">Last Name</label>
+          <Field name="lastName" component="input" type="text" />
+        </div>
+        <div>
+          <label htmlFor="email">Email</label>
+          <Field name="email" component="input" type="email" />
+        </div>
+        <button type="submit">Submit</button>
       </form>
     );
   }
 }
 
+UserForm = reduxForm({
+  form: 'addUser',
+  onSubmit: createUser,
+})(UserForm);
+
+export default UserForm;
