@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start1": "webpack-dev-server --content-base src",
-    "commit": "git-cz",
-    "start": "npm run db:up && nodemon server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint --silent",
+    "start": "npm run db:up && npm run build && node server/server.js",
+    "start:dev": "npm run db:up && open http://localhost:8080/webpack-dev-server/ & concurrently -p '[{name}]' -c 'bgGreen.bold,bgBlue.bold' -n 'Webpack,Nodemon' 'npm run webpack:dev' 'npm run nodemon'",
+    "build": "webpack && cp ./client/index.html ./dist/",
+    "nodemon": "mkdir -p dist && cp ./client/index.html ./dist/ && nodemon server/server.js",
+    "webpack:dev": "webpack-dev-server",
     "db:up": "knex-migrate --cwd ./server/database/ up",
     "db:down": "knex-migrate --cwd ./server/database/ down",
     "db:drop": "knex-migrate --cwd ./server/database/ down --to 0",
@@ -16,7 +18,9 @@
     "db:redo": "knex-migrate --cwd ./server/database/ redo",
     "db:seed": "knex --cwd ./server/database/ seed:run",
     "db:migrate:make": "knex --cwd ./server/database/ migrate:make",
-    "db:seed:make": "knex --cwd ./server/database/ seed:make"
+    "db:seed:make": "knex --cwd ./server/database/ seed:make",
+    "commit": "git-cz",
+    "lint": "eslint client server"
   },
   "repository": {
     "type": "git",
