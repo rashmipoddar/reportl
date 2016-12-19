@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint --silent",
+    "test": "npm run build:test && npm run lint --silent",
     "start": "npm run db:up && npm run build && node server/server.js",
     "start:dev": "npm run db:up && open http://localhost:8080/webpack-dev-server/ & concurrently -p '[{name}]' -c 'bgGreen.bold,bgBlue.bold' -n 'Webpack,Nodemon' 'npm run webpack:dev' 'npm run nodemon'",
     "build": "webpack && cp ./client/index.html ./dist/",
+    "build:test": "webpack --bail && cp ./client/index.html ./dist/",
     "nodemon": "mkdir -p dist && cp ./client/index.html ./dist/ && nodemon server/server.js",
     "webpack:dev": "webpack-dev-server",
     "db:up": "knex-migrate --cwd ./server/database/ up",
