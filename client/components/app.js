@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import ClassRoom from './classroom';
+import ClassRoomBuilder from './classroombuilder';
 
 export default class App extends Component {
 
@@ -8,7 +8,7 @@ export default class App extends Component {
    return (
      <div>
      <h1>Hello World</h1>
-     <ClassRoom />
+     <ClassRoomBuilder />
      </div>
    );
   }
