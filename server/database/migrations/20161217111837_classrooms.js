@@ -17,8 +17,8 @@ exports.up = knex => knex.schema.createTable('classrooms', (table) => {
   table.string('pages'); // not sure if we'll get around to allowing people to configure additional pages in our app
   table.string('homepage'); // selects which page is the landing page for students
   table.string('location');
-  table.timestamp('start_date');
-  table.timestamp('end_date');
+  table.timestamp('start_date').defaultTo(knex.fn.now());
+  table.timestamp('end_date').defaultTo(knex.fn.now());
   table.string('events'); // for parties the class might throw,
                           // or days when a speaker might come in etc.
 
@@ -35,9 +35,6 @@ exports.up = knex => knex.schema.createTable('classrooms', (table) => {
   table.integer('start_time_minute');
   table.integer('end_time_hour');
   table.integer('end_time_minute');
-
-
-
 });
 
 exports.down = knex => knex.schema.dropTable('classrooms');
