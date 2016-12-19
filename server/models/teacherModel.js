@@ -10,7 +10,6 @@ const Teacher = db.Model.extend({
   department() {
     return this.hasOne(Department);
   },
-  hasTimestamps: true,
 });
 
 module.exports = Teacher;

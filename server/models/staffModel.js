@@ -6,7 +6,6 @@ const Staff = db.Model.extend({
   user() {
     return this.hasOne(User);
   },
-  hasTimestamps: true,
 });
 
 module.exports = Staff;

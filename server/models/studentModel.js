@@ -10,7 +10,6 @@ const Student = db.Model.extend({
   parents() {
     return this.belongsToMany(Parent);
   },
-  hasTimestamps: true,
 });
 
 module.exports = Student;
