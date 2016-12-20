@@ -1,5 +1,5 @@
 const knexConfig = require('./knexfile');
-const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
+const knex = require('knex')(knexConfig);
 const db = require('bookshelf')(knex);
 
 db.plugin('visibility');
