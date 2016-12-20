@@ -8,11 +8,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <h2>Login</h2>
         <LoginField />
-        <h1>Create a New User:</h1>
+        <h2>Create User</h2>
         <UserForm />
+        <h2>Create Class</h2>
         <ClassMaker />
-        <LoginField />
       </div>
     );
   }

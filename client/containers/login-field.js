@@ -1,78 +1,29 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { loginSubmit } from '../actions/index';
+import { Field, reduxForm } from 'redux-form';
+import { loginSubmit } from '../actions/index'; // needs to be written
 
 class LoginField extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: '',
-      password: '',
-    };
-
-    this.onInputChangeUsername = this.onInputChangeUsername.bind(this);
-    this.onInputChangePassword = this.onInputChangePassword.bind(this);
-    this.onFormSubmit = this.onFormSubmit.bind(this);
-  }
-
-  onInputChangeUsername(event) {
-    this.setState({ username: event.target.value });
-  }
-  onInputChangePassword(event) {
-    this.setState({ password: event.target.value });
-  }
-
-  onFormSubmit(event) {
-    event.preventDefault();
-    this.props.loginSubmit(JSON.stringify(this.state));
-    this.setState({ username: '', password: '' });
-  }
-
-  renderList() {
-    return this.props.login.map(logins =>
-      <li key={logins}>{logins}</li>,
-    );
-  }
-
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <div>
-        <ul>
-          {this.renderList()}
-        </ul>
-        <form onSubmit={this.onFormSubmit}>
-          <input
-            placeholder="add a username"
-            value={this.state.username}
-            onChange={this.onInputChangeUsername}
-          />
-          <input
-            placeholder="add a password"
-            value={this.state.password}
-            onChange={this.onInputChangePassword}
-          />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username</label>
+          <Field name="Class Name" component="input" type="text" />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <Field name="Start Date" component="input" type="password" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     );
   }
 }
 
-LoginField.propTypes = {
-  login: React.PropTypes.string,
-  loginSubmit: React.PropTypes.function,
-};
+LoginField = reduxForm({
+  form: 'login',
+  onSubmit: loginSubmit,
+})(LoginField);
 
-function mapStateToProps(state) {
-  return {
-    login: state.login,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ loginSubmit }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginField);
+export default LoginField;
