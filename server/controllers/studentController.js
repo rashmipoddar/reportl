@@ -3,8 +3,11 @@ const Student = require('../models/studentModel');
 const studentController = {
   getStudentById({ params: { id } }, res) {
     Student.forge({ id })
-      .fetch()
+      .fetch({
+        withRelated: ['user'],
+      })
       .then((student) => {
+        console.log(student.related('user').toJSON());
         res.json(student);
       })
       .catch((err) => {
