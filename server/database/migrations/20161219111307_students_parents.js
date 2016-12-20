@@ -1,4 +1,3 @@
-
 exports.up = knex => knex.schema.createTable('students_parents', (table) => {
   table.integer('student_id').unsigned();
   table.foreign('student_id').references('students.id');
