@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userRouter = require('./userRouter');
+const studentRouter = require('./studentRouter.js');
 
 router.all('*', (req, res, next) => {
   console.log('apiRouter');
@@ -10,5 +11,10 @@ router.use('/users', (req, res, next) => {
   console.log('apiRouter -> userRouter');
   next();
 }, userRouter);
+
+router.use('/students', (req, res, next) => {
+  console.log('apiRouter -> studentRouter');
+  next();
+}, studentRouter);
 
 module.exports = router;
