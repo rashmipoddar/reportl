@@ -1,12 +1,8 @@
-import axios from 'axios';
-
-export const CREATE_USER = 'CREATE_USER';
-
-export function createUser(user) {
-  const request = axios.post('/user', user);
+export function loginSubmit(login) {
 
   return {
-    type: CREATE_USER,
-    payload: request,
+    type: 'LOGIN_SUBMITTED',
+    payload: login
   };
+
 }

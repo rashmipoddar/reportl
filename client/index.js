@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'redux';
-import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-import App from './components/app.js';
+import App from './components/app';
+import reducers from './reducers';
 
 ReactDOM.render(
-  // <Provider>
+  <Provider store={createStore(reducers)}>
     <App />
-  // </Provider>
-  ,
-  document.getElementById('app'));
+  </Provider>
+  , document.getElementById('container'));
