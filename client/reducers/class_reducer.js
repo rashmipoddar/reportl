@@ -1,6 +1,6 @@
 export default function (state = [], action) {
   switch (action.type) {
-    case 'LOGIN_SUBMITTED':
+    case 'CLASS_CREATED':
       return [action.payload, ...state];
     default:
       return state;
