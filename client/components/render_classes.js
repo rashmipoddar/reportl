@@ -17,9 +17,12 @@ class RenderClasses extends Component {
 
   render() {
     return (
-      <ol>
-        {this.renderClasses()}
-      </ol>
+      <div>
+        <h2>All Classes</h2>
+        <ol>
+          {this.renderClasses()}
+        </ol>
+      </div>
     );
   }
 }

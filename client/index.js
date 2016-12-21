@@ -14,6 +14,8 @@ import ClassMaker from './containers/class-maker';
 import UserForm from './containers/addUser';
 import RenderClasses from './components/render_classes';
 import RenderUsers from './components/render_users';
+import UpdateProfile from './containers/update_profile';
+import RenderProfile from './components/render_profile';
 
 const logger = createLogger();
 
@@ -27,6 +29,8 @@ ReactDOM.render(
         <Route path="/user" component={UserForm} />
         <Route path="/classes" component={RenderClasses} />
         <Route path="/users" component={RenderUsers} />
+        <Route path="/updateprofile" component={UpdateProfile} />
+        <Route path="/profile" component={RenderProfile} />
       </Route>
     </Router>
   </Provider>

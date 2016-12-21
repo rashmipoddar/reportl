@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { makeNewClass } from '../actions/index'; // needs to be written
+import { makeNewClass } from '../actions/index';
 
 const ClassMaker = ({ handleSubmit }) => (
   <div>

@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const ROOT_API_URL = 'localhost:8000';
-
 export function loginSubmit(login) {
   const request = axios.post('/login', login);
   return {
@@ -27,7 +25,7 @@ export function makeNewClass(classes) {
 }
 
 export function getAllClasses() {
-  const request = axios.get('/api/users/3');
+  const request = axios.get('/api/users/');
   return {
     type: 'GET_CLASSES',
     payload: request,
@@ -38,6 +36,22 @@ export function getAllUsers() {
   const request = axios.get('/api/users/1'); // endpoint not built yet. modify when complete.
   return {
     type: 'GET_USERS',
+    payload: request,
+  };
+}
+
+export function createProfileInformation(profile) {
+  const request = axios.put(`/api/users/${profile.id}`, profile);
+  return {
+    type: 'UPDATE_PROFILE',
+    payload: request,
+  };
+}
+
+export function getProfileInformation() {
+  const request = axios.get('/api/users/5');
+  return {
+    type: 'GET_PROFILE',
     payload: request,
   };
 }
