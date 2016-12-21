@@ -3,8 +3,11 @@ const Teacher = require('../models/teacherModel');
 const teacherController = {
   getTeacherById({ params: { id } }, res) {
     Teacher.forge({ id })
-      .fetch()
+      .fetch({
+        withRelated: ['user'],
+      })
       .then((teacher) => {
+        console.log(JSON.stringify(teacher));
         res.json(teacher);
       })
       .catch((err) => {

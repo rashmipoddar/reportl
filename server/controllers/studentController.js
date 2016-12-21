@@ -1,14 +1,12 @@
 const Student = require('../models/studentModel');
 
 const studentController = {
-  getStudentById({ params: { id } }, res) {
-    Student.forge({ id })
+  getStudentById({ params: { user_id } }, res) {
+    Student.forge({ user_id })
       .fetch({
         withRelated: ['user'],
       })
       .then((student) => {
-        //console.log(student.related('user').toJSON());
-        //console.log(student.toJSON());
         console.log(JSON.stringify(student));
         res.json(student);
       })

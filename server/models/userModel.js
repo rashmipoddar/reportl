@@ -1,5 +1,6 @@
 const db = require('../database/db');
 const Student = require('./studentModel');
+const Teacher = require('./teacherModel');
 
 const User = db.Model.extend({
   tableName: 'users',
@@ -7,6 +8,9 @@ const User = db.Model.extend({
   hasTimestamps: true,
   student() {
     return this.belongsTo(Student);
+  },
+  teacher() {
+    return this.belongsTo(Teacher);
   },
   virtuals: {
     fullName: {

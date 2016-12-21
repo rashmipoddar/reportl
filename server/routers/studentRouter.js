@@ -12,7 +12,7 @@ const studentController = require('../controllers/studentController');
 //   res.send();
 // });
 
-router.get('/:id', studentController.getStudentById);
+router.get('/:user_id', studentController.getStudentById);
 router.post('/', studentController.newStudent);
 
 module.exports = router;
