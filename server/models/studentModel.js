@@ -1,11 +1,11 @@
 const db = require('../database/db');
-const User = require('./userModel.js');
+
 const Parent = require('./parentModel.js');
 
 const Student = db.Model.extend({
   tableName: 'students',
   user() {
-    return this.hasOne(User);
+    return this.hasOne(require('./userModel.js'), 'id');
   },
   parents() {
     return this.belongsToMany(Parent);

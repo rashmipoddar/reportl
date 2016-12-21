@@ -7,7 +7,9 @@ const studentController = {
         withRelated: ['user'],
       })
       .then((student) => {
-        console.log(student.related('user').toJSON());
+        //console.log(student.related('user').toJSON());
+        //console.log(student.toJSON());
+        console.log(JSON.stringify(student));
         res.json(student);
       })
       .catch((err) => {
