@@ -13,6 +13,7 @@ import LoginField from './containers/login-field';
 import ClassMaker from './containers/class-maker';
 import UserForm from './containers/addUser';
 import RenderClasses from './components/render_classes';
+import RenderUsers from './components/render_users';
 
 const logger = createLogger();
 
@@ -25,6 +26,7 @@ ReactDOM.render(
         <Route path="/class" component={ClassMaker} />
         <Route path="/user" component={UserForm} />
         <Route path="/classes" component={RenderClasses} />
+        <Route path="/users" component={RenderUsers} />
       </Route>
     </Router>
   </Provider>

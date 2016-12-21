@@ -8,13 +8,13 @@ class RenderUsers extends Component {
   }
 
   renderUsers() {
-    this.props.allUsers.map((eachUser) => {
+    return this.props.allUsers.map(eachUser => (
       <li key={eachUser.name}>
         <div>Name: {eachUser.fullName}</div>
         <div>Email: {eachUser.email}</div>
       </li>
-    });
-  };
+    ));
+  }
 
   render() {
     return (
@@ -31,7 +31,7 @@ RenderUsers.propTypes = {
 };
 
 function mapStateToProps(state) {
-  return { allUsers: state.allUsers.usersAll };
+  return { allUsers: state.allUsers };
 }
 
 export default connect(mapStateToProps, { getAllUsers })(RenderUsers);

@@ -10,7 +10,8 @@ export default class App extends Component {
           <button><Link to='/'>Login</Link>&nbsp;</button>
           <button><Link to='/class'>Class Builder</Link></button>
           <button><Link to='/user'>Create User</Link></button>
-          <button><Link to='/classes'>Get Classes</Link></button>
+          <button><Link to='/classes'>View All Classes</Link></button>
+          <button><Link to='/users'>View All Users</Link></button>
         </div>
         <div>
           {this.props.children}
