@@ -23,6 +23,7 @@ ReactDOM.render(
         <IndexRoute component={LoginField} />
         <Route path="/class" component={ClassMaker} />
         <Route path="/user" component={UserForm} />
+        <Route path="/classes" component={UserForm} />
       </Route>
     </Router>
   </Provider>
