@@ -35,7 +35,7 @@ export function getAllClasses() {
 }
 
 export function getAllUsers() {
-  const request = axios.get(`${ROOT_API_URL}/api/user`); // endpoint not built yet. modify when complete.
+  const request = axios.get('/api/users/1'); // endpoint not built yet. modify when complete.
   return {
     type: 'GET_USERS',
     payload: request,
