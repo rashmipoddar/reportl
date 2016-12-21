@@ -14,3 +14,5 @@ export default (
     <Route path="/user" component={UserForm} />
   </Route>
 );
+
+// this file is currently not in use - routes have been integrated into ./index.js -Mattie 12/20
