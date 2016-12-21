@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import LoginField from '../containers/login-field';
-import UserForm from '../containers/addUser';
-import ClassMaker from '../containers/class-maker';
+import { Link } from 'react-router';
 
 export default class App extends Component {
 
   render() {
     return (
       <div>
-        {this.props.children}
+        <div>
+          <Link to='/'>|....Login....|</Link>&nbsp;
+          <Link to='/class'>|....Class Builder....|</Link>
+          <Link to='/user'>|....Create User....|</Link>
+        </div>
+        <div>
+          {this.props.children}
+        </div>
       </div>
     );
   }

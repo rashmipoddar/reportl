@@ -9,7 +9,7 @@ export function loginSubmit(login) {
 }
 
 export function createUser(user) {
-  const request = axios.post('/createuser', user);
+  const request = axios.post('/api/users', user);
   return {
     type: 'CREATE_USER',
     payload: request,
