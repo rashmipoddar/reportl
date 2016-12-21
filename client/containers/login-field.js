@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { loginSubmit } from '../actions/index'; // needs to be written
+import { loginSubmit } from '../actions/index';
 
 const LoginField = ({ handleSubmit }) => (
   <div>
