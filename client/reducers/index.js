@@ -4,6 +4,7 @@ import LoginField from './login_reducer';
 import UserForm from './addUser_reducer';
 import ClassMaker from './class_reducer';
 import GetClasses from './get_classes_reducer';
+import GetUsers from './get_users_reducer';
 
 const rootReducer = combineReducers({
   login: LoginField,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   addUser: UserForm,
   classes: ClassMaker,
   allClasses: GetClasses,
+  allUsers: GetUsers,
 });
 
 export default rootReducer;
