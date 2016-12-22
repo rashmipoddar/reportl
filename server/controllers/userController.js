@@ -57,6 +57,30 @@ const userController = {
         });
       });
   },
+
+  deleteUserById({ params: { id }, baseUrl, originalUrl }, res) {
+    User.forge({ id })
+      .destroy()
+      .then(() => res.status(200).json({
+        status: 'success',
+      }))
+      .catch((err) => {
+        console.log(`userController.deleteUserById - Error: ${err}`);
+        res.status(404).json({
+          error: {
+            message: 'Cannot delete user',
+          },
+          request: {
+            endpoint: baseUrl,
+            url: originalUrl,
+            parameters: {
+              id,
+            },
+          },
+        });
+      });
+  },
+
 };
 
 module.exports = userController;

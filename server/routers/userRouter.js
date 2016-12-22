@@ -10,6 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 router.get('/', userController.getAll);
 router.get('/:id', userController.getUserById);
+router.delete('/:id', userController.deleteUserById);
 router.post('/', userController.newUser);
 
 module.exports = router;
