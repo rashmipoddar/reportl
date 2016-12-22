@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
-import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import reducers from './reducers';
@@ -10,12 +10,12 @@ import reducers from './reducers';
 
 import App from './components/app';
 import LoginField from './containers/login-field';
-import ClassMaker from './containers/class-maker';
+import ClassMaker from './containers/class_builder_forms/class-maker';
 import UserForm from './containers/addUser';
 import RenderClasses from './components/render_classes';
 import RenderUsers from './components/render_users';
 import UpdateProfile from './containers/update_profile';
-import RenderProfile from './components/render_profile';
+import RenderClassBuilder from './components/render_class_builder';
 
 const logger = createLogger();
 
@@ -30,7 +30,7 @@ ReactDOM.render(
         <Route path="/classes" component={RenderClasses} />
         <Route path="/users" component={RenderUsers} />
         <Route path="/updateprofile" component={UpdateProfile} />
-        <Route path="/profile" component={RenderProfile} />
+        <Route path="/profile" component={RenderClassBuilder} />
       </Route>
     </Router>
   </Provider>

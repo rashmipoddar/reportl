@@ -25,7 +25,7 @@ export function makeNewClass(classes) {
 }
 
 export function getAllClasses() {
-  const request = axios.get('/api/users/');
+  const request = axios.get('/api/users/1');
   return {
     type: 'GET_CLASSES',
     payload: request,
@@ -49,9 +49,16 @@ export function createProfileInformation(profile) {
 }
 
 export function getProfileInformation() {
-  const request = axios.get('/api/users/5');
+  const request = axios.get('/api/users/1');
   return {
     type: 'GET_PROFILE',
     payload: request,
+  };
+}
+
+export function selectForm(form) {
+  return {
+    type: 'SELECT_FORM',
+    payload: form,
   };
 }
