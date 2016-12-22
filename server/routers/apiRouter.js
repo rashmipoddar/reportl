@@ -3,13 +3,13 @@ const userRouter = require('./userRouter');
 const userTypeRouter = require('./userTypeRouter');
 const studentRouter = require('./studentRouter');
 const teacherRouter = require('./teacherRouter');
+const classRouter = require('./classRouter');
+const courseRouter = require('./courseRouter');
 
-if (process.env.NODE_ENV !== 'production') {
-  router.all('*', (req, res, next) => {
-    console.log('apiRouter');
-    next();
-  });
-}
+router.all('*', (req, res, next) => {
+  console.log('apiRouter');
+  next();
+});
 
 router.use('/users', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -38,5 +38,15 @@ router.use('/teachers', (req, res, next) => {
     next();
   }
 }, teacherRouter);
+
+router.use('/classes', (req, res, next) => {
+  console.log('apiRouter -> classRouter');
+  next();
+}, classRouter);
+
+router.use('/courses', (req, res, next) => {
+  console.log('apiRouter -> courseRouter');
+  next();
+}, courseRouter);
 
 module.exports = router;
