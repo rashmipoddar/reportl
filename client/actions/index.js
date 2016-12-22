@@ -25,7 +25,7 @@ export function makeNewClass(classes) {
 }
 
 export function getAllClasses() {
-  const request = axios.get('/api/classes/');
+  const request = axios.get('/api/classes/1');
   return {
     type: 'GET_CLASSES',
     payload: request,
@@ -60,5 +60,12 @@ export function selectForm(form) {
   return {
     type: 'SELECT_FORM',
     payload: form,
+  };
+}
+
+export function addClassId(id) {
+  return {
+    type: 'ADD_CLASS_ID',
+    payload: id,
   };
 }

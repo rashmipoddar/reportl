@@ -12,7 +12,7 @@ import AssignmentsForm from './assignments';
 import EventsForm from './events';
 import ExamsForm from './exams';
 
-const AppComponents = [['Basic Class', <ClassMaker />], ['Schedule Form', <ScheduleForm />],['Add Students', <StudentForm />], ['Module Form', <ModuleForm />], ['Asset Form', <AssetForm />], ['Exams Form', <ExamsForm />], ['Assignments Form', <AssignmentsForm />], ['Announcements Form', <AnnouncementsForm />], ['Events Form', <EventsForm />]];
+const AppComponents = [['Basic Class', <ClassMaker />], ['Schedule Form', <ScheduleForm />], ['Add Students', <StudentForm />], ['Module Form', <ModuleForm />], ['Asset Form', <AssetForm />], ['Exams Form', <ExamsForm />], ['Assignments Form', <AssignmentsForm />], ['Announcements Form', <AnnouncementsForm />], ['Events Form', <EventsForm />]];
 
 class FormList extends Component {
 
@@ -40,10 +40,6 @@ class FormList extends Component {
     );
   }
 }
-
-FormList.propTypes = {
-  selectForm: React.PropTypes.function,
-};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectForm }, dispatch);
