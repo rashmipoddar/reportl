@@ -3,11 +3,11 @@ const User = require('../models/userModel');
 const userController = {
   getAll(req, res) {
     User.fetchAll()
-    .then(users => res.json(users))
-    .catch((err) => {
-      console.log(`userController.getAll - Error: ${err}`);
-      res.sendStatus(500);
-    });
+      .then(users => res.json(users))
+      .catch((err) => {
+        console.log(`userController.getAll - Error: ${err}`);
+        res.sendStatus(500);
+      });
   },
 
   getUserById({ params: { id }, baseUrl, originalUrl }, res) {
@@ -52,6 +52,56 @@ const userController = {
           request: {
             endpoint: baseUrl,
             url: originalUrl,
+            content: userData,
+          },
+        });
+      });
+  },
+
+  deleteUserById({ params: { id }, baseUrl, originalUrl }, res) {
+    User.forge({ id })
+      .destroy()
+      .then(() => res.status(200).json({
+        status: 'success',
+      }))
+      .catch((err) => {
+        console.log(`userController.deleteUserById - Error: ${err}`);
+        res.status(404).json({
+          error: {
+            message: 'Cannot delete user',
+          },
+          request: {
+            endpoint: baseUrl,
+            url: originalUrl,
+            parameters: {
+              id,
+            },
+          },
+        });
+      });
+  },
+
+  updateUserById({ params: { id }, body: userData, baseUrl, originalUrl }, res) {
+    User.forge({ id })
+      .fetch()
+      .then((user) => {
+        Object.keys(userData).forEach((key) => {
+          user.set(key, userData[key]);
+        });
+        res.json(user);
+      })
+      .catch((err) => {
+        console.log(`userController.deleteUserById - Error: ${err}`);
+        res.status(404).json({
+          error: {
+            message: 'Cannot delete user',
+          },
+          request: {
+            endpoint: baseUrl,
+            url: originalUrl,
+            parameters: {
+              id,
+            },
             content: userData,
           },
         });
