@@ -1,12 +1,13 @@
 const db = require('../database/db');
-const Teacher = require('./teacherModel.js');
+require('./userTypeModel');
+require('./userModel');
 
 const Department = db.Model.extend({
   tableName: 'departments',
   hasTimestamps: true,
-  teachers() {
-    return this.hasMany(Teacher);
+  users() {
+    return this.belongsToMany('User', 'users_departments');
   },
 });
 
-module.exports = Department;
+module.exports = db.model('Department', Department);
