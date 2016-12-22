@@ -8,6 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
+router.get('/', userController.getAll);
 router.get('/:id', userController.getUserById);
 router.post('/', userController.newUser);
 
