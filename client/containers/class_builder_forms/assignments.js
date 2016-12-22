@@ -7,6 +7,10 @@ const AssignmentsForm = ({ handleSubmit }) => (
     <h2>Assignments Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
+        <label htmlFor="Class Id">Input ClassId</label>
+        <Field name="id" component="input" type="text" />
+      </div>
+      <div>
         <label htmlFor="assignment_name">Assignment Name</label>
         <Field name="Assignment Name" component="input" type="text" />
       </div>

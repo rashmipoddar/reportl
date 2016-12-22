@@ -7,6 +7,10 @@ const EventsForm = ({ handleSubmit }) => (
     <h2>Events Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
+        <label htmlFor="Class Id">Input ClassId</label>
+        <Field name="id" component="input" type="text" />
+      </div>
+      <div>
         <label htmlFor="event_name">Event Name</label>
         <Field name="Event Name" component="input" type="text" />
       </div>

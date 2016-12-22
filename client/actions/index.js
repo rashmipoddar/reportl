@@ -33,7 +33,7 @@ export function getAllClasses() {
 }
 
 export function getAllUsers() {
-  const request = axios.get('/api/users/1'); // endpoint not built yet. modify when complete.
+  const request = axios.get('/api/users/'); // endpoint not built yet. modify when complete.
   return {
     type: 'GET_USERS',
     payload: request,
@@ -67,5 +67,13 @@ export function addClassId(id) {
   return {
     type: 'ADD_CLASS_ID',
     payload: id,
+  };
+}
+
+export function updateClass(form) {
+  const request = axios.put(`/api/classes/${form.id}`, form);
+  return {
+    type: 'UPDATE_CLASS_INFO',
+    payload: request,
   };
 }

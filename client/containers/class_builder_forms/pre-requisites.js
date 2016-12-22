@@ -7,6 +7,10 @@ const PreRequisitesForm = ({ handleSubmit }) => (
     <h2>PreRequisites Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
+        <label htmlFor="Class Id">Input ClassId</label>
+        <Field name="id" component="input" type="text" />
+      </div>
+      <div>
         <label htmlFor="pre_requisites">PreRequisites</label>
         <Field name="PreRequisites" component="input" type="text" />
       </div>

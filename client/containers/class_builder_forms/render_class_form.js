@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllClasses } from '../actions/index';
+import { getAllClasses } from '../../actions/index';
 
-class RenderClasses extends Component {
+class RenderClassForm extends Component {
 
   componentWillMount() {
     this.props.getAllClasses();
@@ -10,7 +10,7 @@ class RenderClasses extends Component {
 
   renderClasses() {
     return this.props.allClasses.map(eachClass => (
-      <li key={eachClass.name}>
+      <li key={eachClass.class_name}>
         <div>Class Name: {eachClass.name} ; Class Description: {eachClass.course_id}</div>
       </li>
     ));
@@ -28,7 +28,7 @@ class RenderClasses extends Component {
   }
 }
 
-RenderClasses.propTypes = {
+RenderClassForm.propTypes = {
   getAllClasses: React.PropTypes.function,
   allClasses: React.PropTypes.arr,
 };
@@ -37,4 +37,4 @@ function mapStateToProps(state) {
   return { allClasses: state.allClasses };
 }
 
-export default connect(mapStateToProps, { getAllClasses })(RenderClasses);
+export default connect(mapStateToProps, { getAllClasses })(RenderClassForm);

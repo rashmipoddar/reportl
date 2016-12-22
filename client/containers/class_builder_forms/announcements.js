@@ -1,14 +1,20 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { makeNewClass } from '../../actions/index';
+import { connect } from 'react-redux';
+import { updateClass } from '../../actions/index';
+import { classId } from '../../components/render_class_builder';
 
 const AnnouncementsForm = ({ handleSubmit }) => (
   <div>
     <h2>Announcements Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="class_name">Class Name</label>
-        <Field name="Class Name" component="input" type="text" />
+        <label htmlFor="Class Id">Input ClassId</label>
+        <Field name="id" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="Class Name">Class Name</label>
+        <Field name="class_name" component="input" type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>
@@ -19,9 +25,16 @@ AnnouncementsForm.propTypes = {
   handleSubmit: React.PropTypes.function,
 };
 
+function mapStateToProps(state) {
+  return {
+    classId: state.classId,
+  };
+}
+
+
 const AnnouncementsMakerForm = reduxForm({
   form: 'addClassAsset',
-  onSubmit: makeNewClass,
+  onSubmit: updateClass,
 })(AnnouncementsForm);
 
-export default AnnouncementsMakerForm;
+export default connect(mapStateToProps)(AnnouncementsMakerForm);
