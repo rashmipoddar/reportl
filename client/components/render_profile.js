@@ -10,12 +10,15 @@ class RenderProfile extends Component {
   render() {
     return (
       <div>
-        {this.props.profile.image}
-        {this.props.profile.email}
-        {this.props.profile.description}
-        {this.props.profile.address}
-        {this.props.profile.phone}
-        {this.props.profile.dob}
+        <h2>Profile</h2>
+        <div>
+          {this.props.profile.image}
+          {this.props.profile.email}
+          {this.props.profile.description}
+          {this.props.profile.address}
+          {this.props.profile.phone}
+          {this.props.profile.dob}
+        </div>
       </div>
     );
   }

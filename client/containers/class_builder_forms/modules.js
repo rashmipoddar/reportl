@@ -7,8 +7,16 @@ const ModuleForm = ({ handleSubmit }) => (
     <h2>Module Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="class_name">Class Name</label>
-        <Field name="Class Name" component="input" type="text" />
+        <label htmlFor="module">Module Name</label>
+        <Field name="Module Name" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="module_description">Module Description</label>
+        <Field name="Module Description" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="tags">Tags</label>
+        <Field name="Tags" component="input" type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>

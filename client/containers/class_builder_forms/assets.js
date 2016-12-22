@@ -7,8 +7,12 @@ const AssetForm = ({ handleSubmit }) => (
     <h2>Asset Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="class_name">Class Name</label>
-        <Field name="Class Name" component="input" type="text" />
+        <label htmlFor="asset">Asset</label>
+        <Field name="Asset Name" component="input" type="file" />
+      </div>
+      <div>
+        <label htmlFor="tags">Tags</label>
+        <Field name="Tags" component="input" type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>
