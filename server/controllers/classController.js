@@ -1,8 +1,8 @@
 const Class = require('../models/classModel');
 
 const classController = {
-  getClassById({ params: { course_id } }, res) {
-    Class.forge({ course_id })
+  getClassById({ params: { id } }, res) {
+    Class.forge({ id })
       .fetch({
         withRelated: ['course'],
       })
@@ -12,6 +12,18 @@ const classController = {
       })
       .catch((err) => {
         console.log(`classController.getClassById - Error: ${err}`);
+        res.sendStatus(500);
+      });
+  },
+
+  getAllClass(req, res) {
+    Class.fetchAll()
+      .then((clas) => {
+        console.log(JSON.stringify(clas));
+        res.json(clas);
+      })
+      .catch((err) => {
+        console.log(`classController.getAllClass - Error: ${err}`);
         res.sendStatus(500);
       });
   },
