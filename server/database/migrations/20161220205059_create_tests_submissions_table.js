@@ -1,4 +1,4 @@
-exports.up = knex => knex.schema.createTable('test_submissions', (table) => {
+exports.up = knex => knex.schema.createTable('tests_submissions', (table) => {
   table.increments('id').primary();
   table.integer('test_id').unsigned();
   table.integer('student_id').unsigned();
@@ -9,4 +9,4 @@ exports.up = knex => knex.schema.createTable('test_submissions', (table) => {
   table.foreign('grade_id').references('grades.id');
 });
 
-exports.down = knex => knex.schema.dropTable('test_submissions');
+exports.down = knex => knex.schema.dropTable('tests_submissions');

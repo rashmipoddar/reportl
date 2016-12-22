@@ -14,7 +14,7 @@ exports.up = knex => knex.schema.table('students_parents', (table) => {
   table.dropForeign('student_id');
   table.foreign('student_id').references('users.id');
 }))
-.then(() => knex.schema.table('test_submissions', (table) => {
+.then(() => knex.schema.table('tests_submissions', (table) => {
   table.dropForeign('student_id');
   table.foreign('student_id').references('users.id');
 }))
@@ -46,7 +46,7 @@ exports.down = knex => knex.schema.createTable('students', (table) => {
   table.dropForeign('student_id');
   table.foreign('student_id').references('students.id');
 }))
-.then(() => knex.schema.table('test_submissions', (table) => {
+.then(() => knex.schema.table('tests_submissions', (table) => {
   table.dropForeign('student_id');
   table.foreign('student_id').references('students.id');
 }))
