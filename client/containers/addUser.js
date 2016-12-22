@@ -18,6 +18,12 @@ const UserForm = ({ handleSubmit }) => (
         <label htmlFor="email">Email</label>
         <Field name="email" component="input" type="email" />
       </div>
+      <div>
+        <label htmlFor="type_id"> Student</label>
+        <Field name="type_id" component="input" type="radio" value="1" />
+        <label htmlFor="type_id"> Teacher</label>
+        <Field name="type_id" component="input" type="radio" value="2" />
+      </div>
       <button type="submit">Submit</button>
     </form>
   </div>
