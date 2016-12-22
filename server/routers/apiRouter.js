@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const userRouter = require('./userRouter');
 const userTypeRouter = require('./userTypeRouter');
-const studentRouter = require('./studentRouter');
-const teacherRouter = require('./teacherRouter');
+const departmentRouter = require('./departmentRouter');
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
@@ -25,18 +24,11 @@ router.use('/usertypes', (req, res, next) => {
   next();
 }, userTypeRouter);
 
-router.use('/students', (req, res, next) => {
+router.use('/departments', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
-    console.log('apiRouter -> studentRouter');
+    console.log('apiRouter -> departmentRouter');
   }
   next();
-}, studentRouter);
-
-router.use('/teachers', (req, res, next) => {
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('apiRouter -> teacherRouter');
-  }
-  next();
-}, teacherRouter);
+}, departmentRouter);
 
 module.exports = router;
