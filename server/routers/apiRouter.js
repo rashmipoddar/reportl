@@ -14,29 +14,29 @@ if (process.env.NODE_ENV !== 'production') {
 router.use('/users', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
     console.log('apiRouter -> userRouter');
-    next();
   }
+  next();
 }, userRouter);
 
 router.use('/usertypes', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
     console.log('apiRouter -> userTypeRouter');
-    next();
   }
+  next();
 }, userTypeRouter);
 
 router.use('/students', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
     console.log('apiRouter -> studentRouter');
-    next();
   }
+  next();
 }, studentRouter);
 
 router.use('/teachers', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
     console.log('apiRouter -> teacherRouter');
-    next();
   }
+  next();
 }, teacherRouter);
 
 module.exports = router;
