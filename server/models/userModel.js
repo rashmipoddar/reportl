@@ -17,6 +17,9 @@ const User = db.Model.extend({
       },
     },
   },
+  type() {
+    return this.belongsTo('UserType', 'type_id');
+  },
 });
 
 module.exports = db.model('User', User);
