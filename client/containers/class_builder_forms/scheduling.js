@@ -7,6 +7,10 @@ const ScheduleForm = ({ handleSubmit }) => (
     <h2>Schedule Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
+        <label htmlFor="Class Id">Input ClassId</label>
+        <Field name="id" component="input" type="text" />
+      </div>
+      <div>
         <label htmlFor="start_date">Start Date</label>
         <Field name="Start Date" component="input" type="date" />
       </div>

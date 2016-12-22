@@ -9,6 +9,7 @@ import AnnouncementsForm from './announcements';
 import AssignmentsForm from './assignments';
 import EventsForm from './events';
 import ExamsForm from './exams';
+import RenderClassForm from './render_class_form';
 
 class FormDetail extends Component {
 

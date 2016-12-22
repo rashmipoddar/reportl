@@ -7,6 +7,10 @@ const ClassMaker = ({ handleSubmit }) => (
     <h2>Create Class</h2>
     <form onSubmit={handleSubmit}>
       <div>
+        <label htmlFor="Class Id">Input ClassId</label>
+        <Field name="id" component="input" type="text" />
+      </div>
+      <div>
         <label htmlFor="class_name">Class Name</label>
         <Field name="Class Name" component="input" type="text" />
       </div>

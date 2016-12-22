@@ -11,8 +11,9 @@ import AnnouncementsForm from './announcements';
 import AssignmentsForm from './assignments';
 import EventsForm from './events';
 import ExamsForm from './exams';
+import RenderClassForm from './render_class_form';
 
-const AppComponents = [['Basic Class', <ClassMaker />], ['Schedule Form', <ScheduleForm />], ['Add Students', <StudentForm />], ['Module Form', <ModuleForm />], ['Asset Form', <AssetForm />], ['Exams Form', <ExamsForm />], ['Assignments Form', <AssignmentsForm />], ['Announcements Form', <AnnouncementsForm />], ['Events Form', <EventsForm />]];
+const AppComponents = [['Basic Class', <ClassMaker />], ['Schedule Form', <ScheduleForm />], ['Add Students', <StudentForm />], ['Module Form', <ModuleForm />], ['Asset Form', <AssetForm />], ['Exams Form', <ExamsForm />], ['Assignments Form', <AssignmentsForm />], ['Announcements Form', <AnnouncementsForm />], ['Events Form', <EventsForm />], ['See Class Details', <RenderClassForm />]];
 
 class FormList extends Component {
 

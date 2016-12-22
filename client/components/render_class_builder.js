@@ -37,6 +37,7 @@ class RenderClassBuilder extends Component {
   render() {
     return (
       <div>
+        <FormList />
         <h3>Add Class Id</h3>
         <div>{this.renderClassId()}</div>
         <div style={this.state.visibility}>
@@ -49,7 +50,6 @@ class RenderClassBuilder extends Component {
             <button onClick={this.onIdSubmit}>Add Id</button>
           </form >
         </div>
-        <FormList />
         <FormDetail />
       </div>
     );

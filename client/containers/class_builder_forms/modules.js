@@ -7,6 +7,10 @@ const ModuleForm = ({ handleSubmit }) => (
     <h2>Module Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
+        <label htmlFor="Class Id">Input ClassId</label>
+        <Field name="id" component="input" type="text" />
+      </div>
+      <div>
         <label htmlFor="module">Module Name</label>
         <Field name="Module Name" component="input" type="text" />
       </div>
