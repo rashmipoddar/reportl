@@ -81,6 +81,32 @@ const userController = {
       });
   },
 
+  updateUserById({ params: { id }, body: userData, baseUrl, originalUrl }, res) {
+    User.forge({ id })
+      .fetch()
+      .then((user) => {
+        Object.keys(userData).forEach((key) => {
+          user.set(key, userData[key]);
+        });
+        res.json(user);
+      })
+      .catch((err) => {
+        console.log(`userController.deleteUserById - Error: ${err}`);
+        res.status(404).json({
+          error: {
+            message: 'Cannot delete user',
+          },
+          request: {
+            endpoint: baseUrl,
+            url: originalUrl,
+            parameters: {
+              id,
+            },
+            content: userData,
+          },
+        });
+      });
+  },
 };
 
 module.exports = userController;
