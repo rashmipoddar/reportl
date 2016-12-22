@@ -3,11 +3,11 @@ const User = require('../models/userModel');
 const userController = {
   getAll(req, res) {
     User.fetchAll()
-    .then(users => res.json(users))
-    .catch((err) => {
-      console.log(`userController.getAll - Error: ${err}`);
-      res.sendStatus(500);
-    });
+      .then(users => res.json(users))
+      .catch((err) => {
+        console.log(`userController.getAll - Error: ${err}`);
+        res.sendStatus(500);
+      });
   },
 
   getUserById({ params: { id }, baseUrl, originalUrl }, res) {
