@@ -1,4 +1,5 @@
 const db = require('../database/db');
+require('./userTypeModel');
 
 const User = db.Model.extend({
   tableName: 'users',
@@ -18,4 +19,4 @@ const User = db.Model.extend({
   },
 });
 
-module.exports = User;
+module.exports = db.model('User', User);
