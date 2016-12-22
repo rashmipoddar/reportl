@@ -12,10 +12,12 @@ import App from './components/app';
 import LoginField from './containers/login-field';
 import ClassMaker from './containers/class_builder_forms/class-maker';
 import UserForm from './containers/addUser';
-import RenderClasses from './components/render_classes';
+import RenderClassBuilder from './components/render_class_builder';
 import RenderUsers from './components/render_users';
 import UpdateProfile from './containers/update_profile';
-import RenderClassBuilder from './components/render_class_builder';
+import RenderProfile from './components/render_profile';
+import RenderClasses from './components/render_classes';
+
 
 const logger = createLogger();
 
@@ -25,12 +27,12 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={LoginField} />
-        <Route path="/class" component={ClassMaker} />
+        <Route path="/class" component={RenderClassBuilder} />
         <Route path="/user" component={UserForm} />
         <Route path="/classes" component={RenderClasses} />
         <Route path="/users" component={RenderUsers} />
         <Route path="/updateprofile" component={UpdateProfile} />
-        <Route path="/profile" component={RenderClassBuilder} />
+        <Route path="/profile" component={RenderProfile} />
       </Route>
     </Router>
   </Provider>

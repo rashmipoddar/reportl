@@ -7,8 +7,20 @@ const AssignmentsForm = ({ handleSubmit }) => (
     <h2>Assignments Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="class_name">Class Name</label>
-        <Field name="Class Name" component="input" type="text" />
+        <label htmlFor="assignment_name">Assignment Name</label>
+        <Field name="Assignment Name" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="assignment_type">Assignment Type</label>
+        <Field name="Assignment Type" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="scale">Scale</label>
+        <Field name="Grade Scale" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="weight">Weight</label>
+        <Field name="Grade Weight" component="input" type="number" />
       </div>
       <button type="submit">Submit</button>
     </form>

@@ -7,8 +7,28 @@ const EventsForm = ({ handleSubmit }) => (
     <h2>Events Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="class_name">Class Name</label>
-        <Field name="Class Name" component="input" type="text" />
+        <label htmlFor="event_name">Event Name</label>
+        <Field name="Event Name" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="description">Class Description</label>
+        <Field name="Class Description" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="start_date">Start Date</label>
+        <Field name="Start Date" component="input" type="date" />
+      </div>
+      <div>
+        <label htmlFor="end_date">End Date</label>
+        <Field name="End Date" component="input" type="date" />
+      </div>
+      <div>
+        <label htmlFor="time">Class Time</label>
+        <Field name="Class Time" component="input" type="time" />
+      </div>
+      <div>
+        <label htmlFor="location">Location</label>
+        <Field name="Location" component="input" type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>
@@ -20,7 +40,7 @@ EventsForm.propTypes = {
 };
 
 const EventMakerForm = reduxForm({
-  form: 'addClassAsset',
+  form: 'addEvent',
   onSubmit: makeNewClass,
 })(EventsForm);
 

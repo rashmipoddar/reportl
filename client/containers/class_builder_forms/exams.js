@@ -7,8 +7,16 @@ const ExamsForm = ({ handleSubmit }) => (
     <h2>Exams Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="class_name">Class Name</label>
+        <label htmlFor="exam_name">Exam Name</label>
         <Field name="Class Name" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="scale">Scale</label>
+        <Field name="Grade Scale" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="weight">Weight</label>
+        <Field name="Grade Weight" component="input" type="number" />
       </div>
       <button type="submit">Submit</button>
     </form>

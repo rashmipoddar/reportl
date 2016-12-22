@@ -39,8 +39,8 @@ class FormList extends Component {
             </button>
           </li>
           <li>
-            <button onClick={() => { this.props.selectForm(<AnnouncementsForm />); }}>
-              Announcements Form
+            <button onClick={() => { this.props.selectForm(<ExamsForm />); }}>
+              Exams Form
             </button>
           </li>
           <li>
@@ -49,13 +49,13 @@ class FormList extends Component {
             </button>
           </li>
           <li>
-            <button onClick={() => { this.props.selectForm(<EventsForm />); }}>
-              Events Form
+            <button onClick={() => { this.props.selectForm(<AnnouncementsForm />); }}>
+              Announcements Form
             </button>
           </li>
           <li>
-            <button onClick={() => { this.props.selectForm(<ExamsForm />); }}>
-              Exams Form
+            <button onClick={() => { this.props.selectForm(<EventsForm />); }}>
+              Events Form
             </button>
           </li>
         </ol>
