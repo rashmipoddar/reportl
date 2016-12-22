@@ -1,4 +1,5 @@
 const db = require('../database/db');
+require('./userTypeModel');
 
 const User = db.Model.extend({
   tableName: 'users',
@@ -16,6 +17,9 @@ const User = db.Model.extend({
       },
     },
   },
+  type() {
+    return this.belongsTo('UserType', 'type_id');
+  },
 });
 
-module.exports = User;
+module.exports = db.model('User', User);
