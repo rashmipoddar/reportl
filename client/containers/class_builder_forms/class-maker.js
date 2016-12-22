@@ -1,13 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { makeNewClass } from '../actions/index';
+import { makeNewClass } from '../../actions/index';
 
 const ClassMaker = ({ handleSubmit }) => (
   <div>
     <h2>Create Class</h2>
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="class_name">First Name</label>
+        <label htmlFor="class_name">Class Name</label>
         <Field name="Class Name" component="input" type="text" />
       </div>
       <div>

@@ -7,6 +7,7 @@ import GetClasses from './get_classes_reducer';
 import GetUsers from './get_users_reducer';
 import UpdateProfile from './profile_reducer';
 import GetProfile from './view_profile';
+import GetForms from './classforms_reducer';
 
 const rootReducer = combineReducers({
   login: LoginField,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   allUsers: GetUsers,
   updateProfile: UpdateProfile,
   profile: GetProfile,
+  selectedForm: GetForms,
 });
 
 export default rootReducer;
