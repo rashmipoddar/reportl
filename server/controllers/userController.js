@@ -1,11 +1,35 @@
 const User = require('../models/userModel');
 
 const userController = {
-  getUserById({ params: { id } }, res) {
+  getAll(req, res) {
+    User.fetchAll()
+    .then(users => res.json(users))
+    .catch((err) => {
+      console.log(`userController.getAll - Error: ${err}`);
+      res.sendStatus(500);
+    });
+  },
+
+  getUserById({ params: { id }, baseUrl, originalUrl }, res) {
     User.forge({ id })
       .fetch()
       .then((user) => {
-        res.json(user);
+        if (user) {
+          res.json(user);
+        } else {
+          res.status(404).json({
+            error: {
+              message: 'Not Found',
+            },
+            request: {
+              endpoint: baseUrl,
+              url: originalUrl,
+              parameters: {
+                id,
+              },
+            },
+          });
+        }
       })
       .catch((err) => {
         console.log(`userController.getUserById - Error: ${err}`);
@@ -13,7 +37,7 @@ const userController = {
       });
   },
 
-  newUser({ body: userData }, res) {
+  newUser({ body: userData, baseUrl, originalUrl }, res) {
     User.forge(userData)
       .save()
       .then((user) => {
@@ -21,7 +45,16 @@ const userController = {
       })
       .catch((err) => {
         console.log(`userController.newUser - Error: ${err}`);
-        res.sendStatus(500);
+        res.status(404).json({
+          error: {
+            message: 'Cannot create user',
+          },
+          request: {
+            endpoint: baseUrl,
+            url: originalUrl,
+            content: userData,
+          },
+        });
       });
   },
 };
