@@ -1,15 +1,16 @@
 const router = require('express').Router();
 const userRouter = require('./userRouter');
 const userTypeRouter = require('./userTypeRouter');
-const studentRouter = require('./studentRouter');
-const teacherRouter = require('./teacherRouter');
 const classRouter = require('./classRouter');
 const courseRouter = require('./courseRouter');
+const departmentRouter = require('./departmentRouter');
 
-router.all('*', (req, res, next) => {
-  console.log('apiRouter');
-  next();
-});
+if (process.env.NODE_ENV !== 'production') {
+  router.all('*', (req, res, next) => {
+    console.log('apiRouter');
+    next();
+  });
+}
 
 router.use('/users', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -25,27 +26,24 @@ router.use('/usertypes', (req, res, next) => {
   next();
 }, userTypeRouter);
 
-router.use('/students', (req, res, next) => {
+router.use('/departments', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
-    console.log('apiRouter -> studentRouter');
+    console.log('apiRouter -> departmentRouter');
   }
   next();
-}, studentRouter);
-
-router.use('/teachers', (req, res, next) => {
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('apiRouter -> teacherRouter');
-  }
-  next();
-}, teacherRouter);
+}, departmentRouter);
 
 router.use('/classes', (req, res, next) => {
-  console.log('apiRouter -> classRouter');
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('apiRouter -> classRouter');
+  }
   next();
 }, classRouter);
 
 router.use('/courses', (req, res, next) => {
-  console.log('apiRouter -> courseRouter');
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('apiRouter -> courseRouter');
+  }
   next();
 }, courseRouter);
 
