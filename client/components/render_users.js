@@ -18,7 +18,10 @@ class RenderUsers extends Component {
           <div>Name: {eachTeacher.fullName}</div>
           <div>Email: {eachTeacher.email}</div>
         </li>
-        <button onClick={() => deleteUser(eachTeacher.id)} >DELETE</button>
+        <button onClick={() => {
+          deleteUser(eachTeacher.id);
+          this.props.getAllTeachers();
+          }}>DELETE</button>
       </div>
     ));
   }
@@ -31,7 +34,10 @@ class RenderUsers extends Component {
           <div>Name: {eachStudent.fullName}</div>
           <div>Email: {eachStudent.email}</div>
         </li>
-        <button onClick={() => deleteUser(eachStudent.id)}>DELETE</button>
+        <button onClick={() => {
+          deleteUser(eachStudent.id);
+          this.props.getAllStudents();
+          }}>DELETE</button>
       </div>
     ));
   }
