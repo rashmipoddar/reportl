@@ -33,7 +33,7 @@ export function getAllClasses() {
 }
 
 export function deleteUser(id) {
-  const endpoint = `/api/user/${id}`;
+  const endpoint = `/api/users/${id}`;
   const request = axios.delete(endpoint);
 
   return {
