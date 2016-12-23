@@ -1,18 +1,18 @@
 const Course = require('../models/courseModel');
 
 const courseController = {
-  getCourseById({ params: { id } }, res) {
-    Course.forge({ id })
-      .fetch()
-      .then((course) => {
-        console.log(JSON.stringify(course));
-        res.json(course);
-      })
-      .catch((err) => {
-        console.log(`courseController.getCourseById - Error: ${err}`);
-        res.sendStatus(500);
-      });
-  },
+  // getCourseById({ params: { id } }, res) {
+  //   Course.forge({ id })
+  //     .fetch()
+  //     .then((course) => {
+  //       console.log(JSON.stringify(course));
+  //       res.json(course);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`courseController.getCourseById - Error: ${err}`);
+  //       res.sendStatus(500);
+  //     });
+  // },
 
   getAllClass({ params: { id } }, res) {
     Course.forge({ id })

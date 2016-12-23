@@ -1,6 +1,5 @@
 const db = require('../database/db');
 
-
 const Course = db.Model.extend({
   tableName: 'courses',
   hasTimestamps: true,
