@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run db:version && npm run db:up && npm run db:drop && npm run build:test",
+    "test": "npm run db:up && npm run db:drop && npm run build:test --silent",
     "start": "npm run db:up && npm run build && node server/server.js",
     "start:dev": "npm run db:up && ((sleep 3 && open http://localhost:8080/webpack-dev-server/) & concurrently -p '[{name}]' -c 'bgGreen.bold,bgBlue.bold' -n 'Webpack,Nodemon' 'npm run webpack:dev' 'npm run nodemon')",
     "build": "webpack && cp ./client/index.html ./dist/",
