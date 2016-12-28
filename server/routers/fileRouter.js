@@ -3,7 +3,7 @@ const fileController = require('../controllers/fileController');
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
-    console.log('formRouter');
+    console.log('fileRouter');
     next();
   });
 }
