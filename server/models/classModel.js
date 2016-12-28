@@ -1,13 +1,13 @@
 const db = require('../database/db');
-const Course = require('./courseModel');
+require('./courseModel');
 
 const Class = db.Model.extend({
   tableName: 'classes',
   hasTimestamps: true,
   course() {
-    return this.belongsTo(Course);
+    return this.belongsTo('Course');
   },
 
 });
 
-module.exports = Class;
+module.exports = db.model('Class', Class);
