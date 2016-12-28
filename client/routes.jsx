@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app';
 import LoginField from './containers/login-field';
-import ClassMaker from './containers/class-maker';
+import ClassMaker from './containers/class_builder_forms/class-maker';
 import UserForm from './containers/addUser';
 
 
