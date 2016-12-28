@@ -32,7 +32,7 @@ const ClassMaker = ({ handleSubmit }) => (
 );
 
 ClassMaker.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const ClassMakerForm = reduxForm({

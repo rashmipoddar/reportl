@@ -23,7 +23,7 @@ class FormDetail extends Component {
 }
 
 FormDetail.propTypes = {
-  selectForm: React.PropTypes.function,
+  selectForm: React.PropTypes.func,
 };
 
 function mapStateToProps(state) {

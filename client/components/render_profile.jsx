@@ -25,7 +25,7 @@ class RenderProfile extends Component {
 }
 
 RenderProfile.propTypes = {
-  getProfileInformation: React.PropTypes.function,
+  getProfileInformation: React.PropTypes.func,
 };
 
 function mapStateToProps(state) {

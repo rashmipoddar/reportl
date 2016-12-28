@@ -32,7 +32,7 @@ const AssignmentsForm = ({ handleSubmit }) => (
 );
 
 AssignmentsForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const AssignmentsMakerForm = reduxForm({

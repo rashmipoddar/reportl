@@ -28,7 +28,7 @@ const ModuleForm = ({ handleSubmit }) => (
 );
 
 ModuleForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const ModuleMakerForm = reduxForm({

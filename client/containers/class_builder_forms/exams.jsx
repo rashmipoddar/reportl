@@ -28,7 +28,7 @@ const ExamsForm = ({ handleSubmit }) => (
 );
 
 ExamsForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const ExamMakerForm = reduxForm({

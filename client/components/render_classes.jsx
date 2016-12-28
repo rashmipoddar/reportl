@@ -29,8 +29,8 @@ class RenderClasses extends Component {
 }
 
 RenderClasses.propTypes = {
-  getAllClasses: React.PropTypes.function,
-  allClasses: React.PropTypes.arr,
+  getAllClasses: React.PropTypes.func,
+  allClasses: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {

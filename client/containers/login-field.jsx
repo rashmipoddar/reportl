@@ -20,7 +20,7 @@ const LoginField = ({ handleSubmit }) => (
 );
 
 LoginField.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const LoginFieldMaker = reduxForm({

@@ -20,7 +20,7 @@ const PreRequisitesForm = ({ handleSubmit }) => (
 );
 
 PreRequisitesForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const PreRequisitesMakerForm = reduxForm({
