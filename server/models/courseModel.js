@@ -1,12 +1,13 @@
 const db = require('../database/db');
+require('./classModel');
 
 const Course = db.Model.extend({
   tableName: 'courses',
   hasTimestamps: true,
   classes() {
-    return this.hasMany(require('./classModel'));
+    return this.hasMany('Class');
   },
 
 });
 
-module.exports = Course;
+module.exports = db.model('Course', Course);
