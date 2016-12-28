@@ -20,7 +20,7 @@
     "db:seed:make": "knex --cwd ./server/database/ seed:make",
     "db:version": "knex --cwd ./server/database/ migrate:currentVersion",
     "commit": "git-cz",
-    "eslint": "eslint client server scripts",
+    "eslint": "eslint --ext .js --ext .jsx client server scripts",
     "lint": "npm run eslint --silent || true"
   },
   "repository": {
