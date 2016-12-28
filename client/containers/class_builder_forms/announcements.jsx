@@ -2,7 +2,6 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { updateClass } from '../../actions/index';
-import { classId } from '../../components/render_class_builder';
 
 const AnnouncementsForm = ({ handleSubmit }) => (
   <div>
