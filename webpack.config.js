@@ -23,12 +23,4 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: buildPath,
-    inline: true,
-    proxy: {
-      '**': 'http://localhost:8000',
-    },
-  },
 };
