@@ -10,7 +10,6 @@ import reducers from './reducers';
 
 import App from './components/app';
 import LoginField from './containers/login-field';
-import ClassMaker from './containers/class_builder_forms/class-maker';
 import UserForm from './containers/addUser';
 import RenderClassBuilder from './components/render_class_builder';
 import RenderUsers from './components/render_users';
