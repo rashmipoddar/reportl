@@ -18,8 +18,9 @@ const AppComponents = [['Basic Class', <ClassMaker />], ['Schedule Form', <Sched
 class FormList extends Component {
 
   renderList() {
-    return AppComponents.map(component => (
-      <li>
+    // TODO: Get a unique key
+    return AppComponents.map((component, index) => (
+      <li key={index}>
         <button onClick={() => { this.props.selectForm(component[1]); }}>
           {component[0]}
         </button>
