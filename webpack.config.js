@@ -5,7 +5,7 @@ const buildPath = path.join(__dirname, '/dist');
 
 module.exports = {
   context: srcPath,
-  entry: './index.js',
+  entry: './index.jsx',
   output: {
     path: buildPath,
     publicPath: '/',
