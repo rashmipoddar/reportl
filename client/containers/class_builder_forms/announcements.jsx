@@ -21,7 +21,7 @@ const AnnouncementsForm = ({ handleSubmit }) => (
 );
 
 AnnouncementsForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 function mapStateToProps(state) {

@@ -40,7 +40,7 @@ const UpdateProfile = ({ handleSubmit }) => (
 );
 
 UpdateProfile.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const UpdateProfileMaker = reduxForm({

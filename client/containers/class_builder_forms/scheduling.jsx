@@ -32,7 +32,7 @@ const ScheduleForm = ({ handleSubmit }) => (
 );
 
 ScheduleForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const ScheduleMakerForm = reduxForm({
