@@ -26,6 +26,14 @@ class RenderProfile extends Component {
 
 RenderProfile.propTypes = {
   getProfileInformation: React.PropTypes.func,
+  profile: React.PropTypes.shape({
+    image: React.PropTypes.string,
+    email: React.PropTypes.string,
+    description: React.PropTypes.string,
+    address: React.PropTypes.string,
+    phone: React.PropTypes.string,
+    dob: React.PropTypes.string,
+  }),
 };
 
 function mapStateToProps(state) {
