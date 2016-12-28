@@ -32,10 +32,39 @@ export function getAllClasses() {
   };
 }
 
+export function deleteUser(id) {
+  const endpoint = `/api/users/${id}`;
+  const request = axios.delete(endpoint);
+
+  return {
+    type: 'DELETE_USER',
+    payload: request,
+  };
+}
+
 export function getAllUsers() {
-  const request = axios.get('/api/users/'); // endpoint not built yet. modify when complete.
+  const request = axios.get('/api/users');
+
   return {
     type: 'GET_USERS',
+    payload: request,
+  };
+}
+
+export function getAllTeachers() {
+  const request = axios.get('/api/usertypes/teacher');
+
+  return {
+    type: 'GET_TEACHERS',
+    payload: request,
+  };
+}
+
+export function getAllStudents() {
+  const request = axios.get('/api/usertypes/student');
+
+  return {
+    type: 'GET_STUDENTS',
     payload: request,
   };
 }

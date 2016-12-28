@@ -10,6 +10,8 @@ import GetProfile from './view_profile';
 import GetForms from './classforms_reducer';
 import GetClassId from './add_classid_reducer';
 import UpdateClassInfo from './update_class_reducer';
+import GetStudents from './get_students_reducer';
+import GetTeachers from './get_teachers_reducer';
 
 const rootReducer = combineReducers({
   login: LoginField,
@@ -18,6 +20,8 @@ const rootReducer = combineReducers({
   classes: ClassMaker,
   allClasses: GetClasses,
   allUsers: GetUsers,
+  allStudents: GetStudents,
+  allTeachers: GetTeachers,
   updateProfile: UpdateProfile,
   profile: GetProfile,
   selectedForm: GetForms,
