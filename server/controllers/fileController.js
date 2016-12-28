@@ -30,7 +30,8 @@ const fileController = {
         if (file) {
           const stream = fs.createReadStream(path.join(storagePath, `./${file.id}`));
 
-          res.setHeader('Content-Disposition', `inline; ${file.get('name')}`);
+          res.setHeader('Content-Disposition', `inline; filename=${file.get('name')}`);
+          res.type(file.get('name'));
           stream.pipe(res);
         } else {
           res.status(404).json({
