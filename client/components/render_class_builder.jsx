@@ -58,7 +58,7 @@ class RenderClassBuilder extends Component {
 
 RenderClassBuilder.propTypes = {
   addClassId: React.PropTypes.func,
-  classId: React.PropTypes.number,
+  classId: React.PropTypes.arrayOf(React.PropTypes.number),
 };
 
 function mapDispatchToProps(dispatch) {
