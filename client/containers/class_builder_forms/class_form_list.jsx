@@ -41,6 +41,7 @@ class FormList extends Component {
 }
 
 FormList.propTypes = {
+  // TODO: Looks like this should be an array, not sure what the elements are though
   selectForm: React.PropTypes.func,
 };
 

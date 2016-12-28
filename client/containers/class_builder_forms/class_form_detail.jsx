@@ -8,7 +8,8 @@ const FormDetail = ({ selectedForm }) => (
 );
 
 FormDetail.propTypes = {
-  selectForm: React.PropTypes.func,
+  // TODO: Looks like this should be an array, not sure what the elements are though
+  selectedForm: React.PropTypes.func,
 };
 
 function mapStateToProps(state) {
