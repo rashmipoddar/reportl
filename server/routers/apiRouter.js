@@ -6,6 +6,7 @@ const courseRouter = require('./courseRouter');
 const departmentRouter = require('./departmentRouter');
 const fileRouter = require('./fileRouter');
 const moduleRouter = require('./moduleRouter');
+const gradeableobjectsRouter = require('./gradeableobjectsRouter');
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
@@ -62,5 +63,10 @@ router.use('/modules', (req, res, next) => {
   next();
 }, moduleRouter);
 >>>>>>> feat(Added Modules and gradeable objects): Add Modules and gradeable objects
+
+router.use('/gradeableobjects', (req, res, next) => {
+  console.log('apiRouter -> gradeableobjectsRouter');
+  next();
+}, gradeableobjectsRouter);
 
 module.exports = router;
