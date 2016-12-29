@@ -10,5 +10,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 router.post('/', moduleController.addClassModule);
 router.get('/', moduleController.getAll);
+router.put('/:id', moduleController.changeModule);
 
 module.exports = router;
