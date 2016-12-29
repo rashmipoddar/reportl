@@ -5,6 +5,8 @@ const classRouter = require('./classRouter');
 const courseRouter = require('./courseRouter');
 const departmentRouter = require('./departmentRouter');
 const fileRouter = require('./fileRouter');
+const moduleRouter = require('./moduleRouter');
+const gradeableobjectsRouter = require('./gradeableobjectsRouter');
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
@@ -48,11 +50,22 @@ router.use('/courses', (req, res, next) => {
   next();
 }, courseRouter);
 
+
 router.use('/files', (req, res, next) => {
   if (process.env.NODE_ENV !== 'production') {
     console.log('apiRouter -> fileRouter');
   }
   next();
 }, fileRouter);
+
+router.use('/modules', (req, res, next) => {
+  console.log('apiRouter -> moduleRouter');
+  next();
+}, moduleRouter);
+
+router.use('/gradeableobjects', (req, res, next) => {
+  console.log('apiRouter -> gradeableobjectsRouter');
+  next();
+}, gradeableobjectsRouter);
 
 module.exports = router;
