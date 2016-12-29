@@ -9,7 +9,7 @@ const Class = db.Model.extend({
     return this.belongsTo('Course');
   },
   modules() {
-    return this.hasMany(Module, 'classes_id');
+    return this.hasMany('Module', 'classes_id');
   },
 });
 
