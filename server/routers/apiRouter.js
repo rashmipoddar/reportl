@@ -7,6 +7,7 @@ const departmentRouter = require('./departmentRouter');
 const fileRouter = require('./fileRouter');
 const moduleRouter = require('./moduleRouter');
 const gradeableobjectsRouter = require('./gradeableobjectsRouter');
+const gradeableobjectsTypeRouter = require('./gradeableobjectsTypeRouter');
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
@@ -67,5 +68,10 @@ router.use('/gradeableobjects', (req, res, next) => {
   console.log('apiRouter -> gradeableobjectsRouter');
   next();
 }, gradeableobjectsRouter);
+
+router.use('/gradeableobjectstypes', (req, res, next) => {
+  console.log('apiRouter -> gradeableobjectstypes');
+  next();
+}, gradeableobjectsTypeRouter);
 
 module.exports = router;

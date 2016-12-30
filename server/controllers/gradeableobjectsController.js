@@ -24,6 +24,33 @@ const gradeableObjectController = {
       res.sendStatus(500);
     });
   },
+  changeGradeableObject(req, res) {
+    GradeableObjectModel.forge({ id: req.params.id }, res)
+    .fetch()
+    .then(updatedModule =>
+      updatedModule.save({
+        objectName: req.body.objectName,
+        duration: req.body.duration,
+        recurs: req.body.recurs,
+        recurTotal: req.body.recurTotal,
+        ofModuleGrade: req.body.ofModuleGrade,
+        moduleId: req.body.moduleId,
+        typeId: req.body.typeId,
+      })
+    )
+    .then((updatedModuleInfo) => {
+      console.log('New module', JSON.stringify(updatedModuleInfo));
+      return res.json(updatedModuleInfo);
+    })
+    .catch((err) => {
+      console.log(`moduleController.changeModule - Error: ${err}`);
+      res.sendStatus(500);
+    })
+    .catch((err) => {
+      console.log(`moduleController.changeModule - Error: ${err}`);
+      res.sendStatus(500);
+    });
+  },
 
 };
 
