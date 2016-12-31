@@ -33,7 +33,7 @@ const gradeableObjectController = {
         duration: req.body.duration,
         recurs: req.body.recurs,
         recurTotal: req.body.recurTotal,
-        ofModuleGrade: req.body.ofModuleGrade,
+        percentOfModuleGrade: req.body.percentOfModuleGrade,
         moduleId: req.body.moduleId,
         typeId: req.body.typeId,
       })

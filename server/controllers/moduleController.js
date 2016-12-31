@@ -34,7 +34,7 @@ const moduleController = {
         moduleName: req.body.moduleName,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
-        ofGrade: req.body.ofGrade,
+        percentOfClassGrade: req.body.ofGrade,
         classId: req.body.classId,
         gradeableobjects: req.body.gradeableobjects,
       })

@@ -1,5 +1,6 @@
 exports.up = knex => knex.schema.dropTable('staff');
 
+
 exports.down = knex => knex.schema.createTable('staff', (table) => {
   table.increments('id').primary();
   table.integer('user_id').unsigned();

@@ -9,4 +9,5 @@ exports.up = knex => knex.schema.createTable('assignments_submissions', (table) 
   table.foreign('grade_id').references('grades.id');
 });
 
+
 exports.down = knex => knex.schema.dropTable('assignments_submissions');

@@ -5,6 +5,7 @@ exports.up = knex => knex.schema.table('users', (table) => {
   table.date('date_of_birth');
 });
 
+
 exports.down = knex => knex.schema.table('users', (table) => {
   table.dropColumns([
     'description',
