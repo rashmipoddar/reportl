@@ -37,7 +37,7 @@ const moduleController = {
         percentOfClassGrade: req.body.ofGrade,
         classId: req.body.classId,
         gradeableobjects: req.body.gradeableobjects,
-      })
+      }),
     )
     .then((updatedModuleInfo) => {
       console.log('New module', JSON.stringify(updatedModuleInfo));
