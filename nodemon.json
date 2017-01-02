@@ -1,0 +1,6 @@
+{
+  "watch": ["server/", "client/index.html"],
+  "events": {
+    "restart": "mkdir -p dist && cp ./client/index.html ./dist/"
+  }
+}
