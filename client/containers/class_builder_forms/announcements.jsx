@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
 import { updateClass } from '../../actions/index';
 
 const AnnouncementsForm = ({ handleSubmit }) => (
@@ -21,7 +20,7 @@ const AnnouncementsForm = ({ handleSubmit }) => (
 );
 
 AnnouncementsForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 function mapStateToProps(state) {

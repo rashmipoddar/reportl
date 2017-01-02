@@ -11,7 +11,7 @@ class RenderClassBuilder extends Component {
 
     this.state = {
       localclassId: '',
-      visibility: {visibility: 'visibile'},
+      visibility: { visibility: 'visibile' },
     };
 
     this.onIdSubmit = this.onIdSubmit.bind(this);
@@ -48,13 +48,18 @@ class RenderClassBuilder extends Component {
               onChange={this.onInputChangeId}
             />
             <button onClick={this.onIdSubmit}>Add Id</button>
-          </form >
+          </form>
         </div>
         <FormDetail />
       </div>
     );
   }
 }
+
+RenderClassBuilder.propTypes = {
+  addClassId: React.PropTypes.func,
+  classId: React.PropTypes.arrayOf(React.PropTypes.number),
+};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addClassId }, dispatch);

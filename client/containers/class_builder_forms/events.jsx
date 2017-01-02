@@ -2,13 +2,21 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { makeNewClass } from '../../actions/index';
 
-const ScheduleForm = ({ handleSubmit }) => (
+const EventsForm = ({ handleSubmit }) => (
   <div>
-    <h2>Schedule Form</h2>
+    <h2>Events Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="Class Id">Input ClassId</label>
         <Field name="id" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="event_name">Event Name</label>
+        <Field name="Event Name" component="input" type="text" />
+      </div>
+      <div>
+        <label htmlFor="description">Class Description</label>
+        <Field name="Class Description" component="input" type="text" />
       </div>
       <div>
         <label htmlFor="start_date">Start Date</label>
@@ -31,13 +39,13 @@ const ScheduleForm = ({ handleSubmit }) => (
   </div>
 );
 
-ScheduleForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+EventsForm.propTypes = {
+  handleSubmit: React.PropTypes.func,
 };
 
-const ScheduleMakerForm = reduxForm({
-  form: 'addClassSchedule',
+const EventMakerForm = reduxForm({
+  form: 'addEvent',
   onSubmit: makeNewClass,
-})(ScheduleForm);
+})(EventsForm);
 
-export default ScheduleMakerForm;
+export default EventMakerForm;

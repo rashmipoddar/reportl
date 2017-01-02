@@ -30,7 +30,7 @@ const UserForm = ({ handleSubmit }) => (
 );
 
 UserForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+  handleSubmit: React.PropTypes.func,
 };
 
 const UserFormMaker = reduxForm({

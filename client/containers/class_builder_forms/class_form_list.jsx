@@ -18,15 +18,14 @@ const AppComponents = [['Basic Class', <ClassMaker />], ['Schedule Form', <Sched
 class FormList extends Component {
 
   renderList() {
-    return (
-      AppComponents.map(component =>
-        <li>
-          <button onClick={() => { this.props.selectForm(component[1]); }}>
-            {component[0]}
-          </button>
-        </li>
-      )
-    );
+    // TODO: Get a unique key
+    return AppComponents.map((component, index) => (
+      <li key={index}>
+        <button onClick={() => { this.props.selectForm(component[1]); }}>
+          {component[0]}
+        </button>
+      </li>
+    ));
   }
 
 
@@ -41,6 +40,11 @@ class FormList extends Component {
     );
   }
 }
+
+FormList.propTypes = {
+  // TODO: Looks like this should be an array, not sure what the elements are though
+  selectForm: React.PropTypes.func,
+};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectForm }, dispatch);

@@ -2,21 +2,17 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { makeNewClass } from '../../actions/index';
 
-const AssignmentsForm = ({ handleSubmit }) => (
+const ExamsForm = ({ handleSubmit }) => (
   <div>
-    <h2>Assignments Form</h2>
+    <h2>Exams Form</h2>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="Class Id">Input ClassId</label>
         <Field name="id" component="input" type="text" />
       </div>
       <div>
-        <label htmlFor="assignment_name">Assignment Name</label>
-        <Field name="Assignment Name" component="input" type="text" />
-      </div>
-      <div>
-        <label htmlFor="assignment_type">Assignment Type</label>
-        <Field name="Assignment Type" component="input" type="text" />
+        <label htmlFor="exam_name">Exam Name</label>
+        <Field name="Class Name" component="input" type="text" />
       </div>
       <div>
         <label htmlFor="scale">Scale</label>
@@ -31,13 +27,13 @@ const AssignmentsForm = ({ handleSubmit }) => (
   </div>
 );
 
-AssignmentsForm.propTypes = {
-  handleSubmit: React.PropTypes.function,
+ExamsForm.propTypes = {
+  handleSubmit: React.PropTypes.func,
 };
 
-const AssignmentsMakerForm = reduxForm({
+const ExamMakerForm = reduxForm({
   form: 'addClassAsset',
   onSubmit: makeNewClass,
-})(AssignmentsForm);
+})(ExamsForm);
 
-export default AssignmentsMakerForm;
+export default ExamMakerForm;
