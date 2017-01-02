@@ -1,4 +1,5 @@
 const Class = require('../models/classModel');
+require('../models/moduleModel');
 
 const classController = {
   getClassById({ params: { id } }, res) {

@@ -3,9 +3,9 @@ exports.up = knex => knex.schema.createTable('modules', (table) => {
   table.string('module_name').unique();
   table.timestamp('start_date').defaultTo(knex.fn.now());
   table.timestamp('end_date').defaultTo(knex.fn.now());
-  table.decimal('%_of_grade', 4);
-  table.integer('classes_id').unsigned();
-  table.foreign('classes_id').references('classes.id');
+  table.decimal('percent_of_class_grade', 4);
+  table.integer('class_id').unsigned();
+  table.foreign('class_id').references('classes.id');
 });
 
 exports.down = knex => knex.schema.dropTable('modules');
