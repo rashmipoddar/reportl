@@ -15,18 +15,17 @@ const rollback = () => knex.migrate.rollback(migrateConfig)
     return version;
   });
 
-const goBack = () => {
-  rollback().then((version) => {
-    if (version === 'none') {
-      process.exit();
-    } else {
-      goBack();
-    }
-  })
-  .catch((error) => {
-    console.log('Error', error);
-    process.exit(1);
-  });
-};
+const goBack = () => rollback().then((version) => {
+  if (version === 'none') {
+    return process.exit();
+  }
+  return goBack();
+})
+.catch((error) => {
+  console.log('Error', error);
+  process.exit(1);
+});
 
-goBack();
+knex.raw('SET foreign_key_checks = 0;')
+  .then(() => goBack())
+  .finally(() => knex.raw('SET foreign_key_checks = 1;'));
