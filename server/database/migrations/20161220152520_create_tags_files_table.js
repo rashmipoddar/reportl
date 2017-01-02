@@ -7,5 +7,4 @@ exports.up = knex => knex.schema.createTable('tags_files', (table) => {
   table.foreign('tag_id').references('tags.id');
 });
 
-
 exports.down = knex => knex.schema.dropTable('tags_files');

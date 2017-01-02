@@ -9,5 +9,4 @@ exports.up = knex => knex.schema.createTable('gradeable_objects', (table) => {
   table.string('dummy');
 });
 
-
 exports.down = knex => knex.schema.dropTable('gradeable_objects');

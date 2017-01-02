@@ -5,5 +5,4 @@ exports.up = knex => knex.schema.createTable('students', (table) => {
   table.timestamps(true, true);
 });
 
-
 exports.down = knex => knex.schema.dropTable('students');

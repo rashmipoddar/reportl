@@ -7,5 +7,4 @@ exports.up = knex => knex.schema.createTable('courses', (table) => {
   table.foreign('department_id').references('departments.id');
 });
 
-
 exports.down = knex => knex.schema.dropTable('courses');

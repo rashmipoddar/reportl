@@ -8,7 +8,6 @@ exports.up = knex => knex.schema.createTable('users_types', (table) => {
   table.foreign('type_id').references('users_types.id');
 }));
 
-
 exports.down = knex => knex.schema.table('users', (table) => {
   table.dropForeign('type_id');
   table.dropColumn('type_id');

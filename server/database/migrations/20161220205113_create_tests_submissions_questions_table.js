@@ -9,5 +9,4 @@ exports.up = knex => knex.schema.createTable('tests_submissions_questions', (tab
   table.foreign('choice_id').references('tests_questions_choices.id');
 });
 
-
 exports.down = knex => knex.schema.dropTable('tests_submissions_questions');

@@ -4,7 +4,6 @@ exports.up = knex => knex.schema.table('students_parents', (table) => {
 })
 .then(() => knex.schema.dropTable('parents'));
 
-
 exports.down = knex => knex.schema.createTable('parents', (table) => {
   table.increments('id').primary();
   table.integer('user_id').unsigned();
