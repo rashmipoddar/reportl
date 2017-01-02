@@ -29,16 +29,14 @@ const moduleController = {
   changeModule(req, res) {
     Module.forge({ id: req.params.id }, res)
     .fetch()
-    .then(updatedModule =>
-      updatedModule.save({
-        moduleName: req.body.moduleName,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        percentOfClassGrade: req.body.ofGrade,
-        classId: req.body.classId,
-        gradeableobjects: req.body.gradeableobjects,
-      }),
-    )
+    .then(updatedModule => updatedModule.save({
+      moduleName: req.body.moduleName,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      percentOfClassGrade: req.body.ofGrade,
+      classId: req.body.classId,
+      gradeableobjects: req.body.gradeableobjects,
+    }))
     .then((updatedModuleInfo) => {
       console.log('New module', JSON.stringify(updatedModuleInfo));
       return res.json(updatedModuleInfo);
