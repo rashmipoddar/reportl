@@ -8,6 +8,7 @@ const fileRouter = require('./fileRouter');
 const moduleRouter = require('./moduleRouter');
 const gradeableobjectsRouter = require('./gradeableobjectsRouter');
 const gradeableobjectsTypeRouter = require('./gradeableobjectsTypeRouter');
+const graphdataRouter = require('./graphdataRouter');
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
@@ -73,5 +74,10 @@ router.use('/gradeableobjectstypes', (req, res, next) => {
   console.log('apiRouter -> gradeableobjectstypes');
   next();
 }, gradeableobjectsTypeRouter);
+
+router.use('/graphdata', (req, res, next) => {
+  console.log('apiRouter -> gradeableobjectstypes');
+  next();
+}, graphdataRouter);
 
 module.exports = router;
