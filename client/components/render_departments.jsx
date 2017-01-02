@@ -7,21 +7,36 @@ class RenderDepartments extends Component {
     this.props.getDepartmentInformation();
   }
 
+  renderDepartments() {
+    console.log('props: department: ', this.props.department);
+    return this.props.department.map(eachDepartment => (
+      eachDepartment.map(singleDepartment =>
+        <div>
+          <li key={singleDepartment.id}>
+            <div>ID: {singleDepartment.id}</div>
+            <div>Name: {singleDepartment.name}</div>
+          </li>
+        </div>
+      )
+
+    ));
+  }
+
   render() {
     return (
       <div>
         <h3>Departments</h3>
-        <div>
-          {this.props.department.id}
-          {this.props.department.name}
-        </div>
+        <ul>
+          {this.renderDepartments()}
+        </ul>
       </div>
-    )
+    );
   }
+
 }
 
 RenderDepartments.propTypes = {
-  getDepartmentInformation: React.PropTypes.function,
+  getDepartmentInformation: React.PropTypes.func,
 };
 
 function mapStateToProps(state) {
