@@ -17,6 +17,9 @@ import UpdateProfile from './components/render_profile_builder';
 import RenderProfile from './components/render_profile';
 import RenderClasses from './components/render_classes';
 import RenderDepartments from './components/render_departments';
+import RenderGradeGraph from './components/render_grade_graph';
+
+>>>>>>> feat(Client, package.json and seeds): Added infrastructure for highcharts grade table.
 
 const logger = createLogger();
 
@@ -33,6 +36,7 @@ ReactDOM.render(
         <Route path="/updateprofile" component={UpdateProfile} />
         <Route path="/profile" component={RenderProfile} />
         <Route path="/department" component={RenderDepartments} />
+        <Route path="/gradegraph" component={RenderGradeGraph} />
       </Route>
     </Router>
   </Provider>

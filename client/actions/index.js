@@ -124,3 +124,11 @@ export function uploadFile(files) {
     payload: request,
   };
 }
+
+export function getChartData() {
+  const request = axios.get('/api/graphdata/');
+  return {
+    type: 'GET_GRAPH_DATA',
+    payload: request,
+  };
+}
