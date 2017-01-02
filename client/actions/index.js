@@ -106,3 +106,11 @@ export function updateClass(form) {
     payload: request,
   };
 }
+
+export function getDepartmentInformation() {
+  const request = axios.get('api/departments');
+  return {
+    type: 'GET_DEPARTMENT',
+    payload: request,
+  };
+}
