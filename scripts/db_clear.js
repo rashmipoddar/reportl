@@ -1,5 +1,5 @@
 const knexConfig = require('../server/database/knexfile.js');
-const knex = require('knex')(knexConfig);
+const knex = require('knex')(knexConfig[process.env.NODE_ENV || 'development']);
 
 const migrateConfig = {
   directory: './server/database/migrations',
