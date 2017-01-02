@@ -110,7 +110,7 @@ export function updateClass(form) {
 export function getDepartmentInformation() {
   const request = axios.get('api/departments');
   return {
-    type: 'GET_DEPARTMENT',
+    type: 'GET_DEPARTMENTS',
     payload: request,
   };
 }
