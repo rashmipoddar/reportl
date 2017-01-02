@@ -18,7 +18,7 @@ exports.up = knex => knex.schema.createTable('graph_data', (table) => {
   table.foreign('class_id').references('classes.id');
   table.foreign('teacher_id').references('users.id');
   table.foreign('student_id').references('users.id');
-  table.foreign('module_id').references('files.id');
+  table.foreign('module_id').references('modules.id');
   table.foreign('gradeableobject_id').references('gradeable_objects.id');
   table.foreign('gradeableobjecttype_id').references('gradeable_objects_types.id');
   table.foreign('tag_id').references('tags.id');

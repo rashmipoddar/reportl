@@ -71,12 +71,12 @@ router.use('/gradeableobjects', (req, res, next) => {
 }, gradeableobjectsRouter);
 
 router.use('/gradeableobjectstypes', (req, res, next) => {
-  console.log('apiRouter -> gradeableobjectstypes');
+  console.log('apiRouter -> gradeableobjectstypesRouter');
   next();
 }, gradeableobjectsTypeRouter);
 
 router.use('/graphdata', (req, res, next) => {
-  console.log('apiRouter -> gradeableobjectstypes');
+  console.log('apiRouter -> graphdataRouter');
   next();
 }, graphdataRouter);
 

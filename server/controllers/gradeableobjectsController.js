@@ -27,17 +27,15 @@ const gradeableObjectController = {
   changeGradeableObject(req, res) {
     GradeableObjectModel.forge({ id: req.params.id }, res)
     .fetch()
-    .then(updatedModule =>
-      updatedModule.save({
-        objectName: req.body.objectName,
-        duration: req.body.duration,
-        recurs: req.body.recurs,
-        recurTotal: req.body.recurTotal,
-        percentOfModuleGrade: req.body.percentOfModuleGrade,
-        moduleId: req.body.moduleId,
-        typeId: req.body.typeId,
-      }),
-    )
+    .then(updatedModule => updatedModule.save({
+      objectName: req.body.objectName,
+      duration: req.body.duration,
+      recurs: req.body.recurs,
+      recurTotal: req.body.recurTotal,
+      percentOfModuleGrade: req.body.percentOfModuleGrade,
+      moduleId: req.body.moduleId,
+      typeId: req.body.typeId,
+    }))
     .then((updatedModuleInfo) => {
       console.log('New module', JSON.stringify(updatedModuleInfo));
       return res.json(updatedModuleInfo);

@@ -1,6 +1,6 @@
 const db = require('../database/db');
 
-const GraphData = db.Model.extend({
+const GraphModel = db.Model.extend({
   tableName: 'graph_data',
   hasTimestamps: false,
 });
