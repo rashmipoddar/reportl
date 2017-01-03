@@ -156,3 +156,11 @@ export function getCourseDetails() {
     payload: request,
   };
 }
+
+export function createCourse(course) {
+  const request = axios.post('api/courses', course);
+  return {
+    type: 'CREATE_COURSE',
+    payload: request,
+  };
+}
