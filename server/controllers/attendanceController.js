@@ -3,7 +3,9 @@ const Attendance = require('../models/attendanceModel');
 const attendanceController = {
   getByMeetingId({ params: { id } }, res) {
     Attendance.forge({ id })
-      .fetch()
+      .fetch({
+        withRelated: ['meeting'],
+      })
       .then((attendance) => {
         console.log(JSON.stringify(attendance));
         res.json(attendance);
@@ -13,17 +15,6 @@ const attendanceController = {
         res.sendStatus(500);
       });
   },
-
-  // getAll(req, res) {
-  //   Attendance.fetchAll({
-  //     withRelated: ['course', 'modules', 'users'],
-  //   })
-  //   .then(classes => res.json(classes))
-  //   .catch((err) => {
-  //     console.log(`classController.getAll - Error: ${err}`);
-  //     res.sendStatus(500);
-  //   });
-  // },
 
 };
 
