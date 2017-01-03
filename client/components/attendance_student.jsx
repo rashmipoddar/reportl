@@ -11,7 +11,7 @@ class RenderAttendees extends Component {
     console.log('props: allAttendees: ', this.props.allAttendees);
     return this.props.allAttendees.map(eachAttendee => (
       <div>
-        <img alt="Profile Photo" src={eachAttendee.imgUrl} />
+        <img alt="Attendee" src={eachAttendee.imgUrl} />
         <li key={eachAttendee.email}>
           <div>Name: {eachAttendee.fullName}</div>
         </li>
