@@ -16,7 +16,7 @@ import RenderUsers from './components/render_users';
 import UpdateProfile from './components/render_profile_builder';
 import RenderProfile from './components/render_profile';
 import RenderClasses from './components/render_classes';
-
+import RenderDepartments from './components/render_departments';
 
 const logger = createLogger();
 
@@ -32,6 +32,7 @@ ReactDOM.render(
         <Route path="/users" component={RenderUsers} />
         <Route path="/updateprofile" component={UpdateProfile} />
         <Route path="/profile" component={RenderProfile} />
+        <Route path="/department" component={RenderDepartments} />
       </Route>
     </Router>
   </Provider>

@@ -107,6 +107,14 @@ export function updateClass(form) {
   };
 }
 
+export function getDepartmentInformation() {
+  const request = axios.get('api/departments');
+  return {
+    type: 'GET_DEPARTMENTS',
+    payload: request,
+  };
+}
+
 export function uploadFile(files) {
   const data = new FormData();
   Object.keys(files.uploadedFile).forEach(key => data.append(key, files.uploadedFile[key]));

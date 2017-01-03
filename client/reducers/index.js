@@ -12,6 +12,7 @@ import GetClassId from './add_classid_reducer';
 import UpdateClassInfo from './update_class_reducer';
 import GetStudents from './get_students_reducer';
 import GetTeachers from './get_teachers_reducer';
+import GetDepartments from './view_departments_reducer';
 import UploadFile from './post_file_reducer';
 
 const rootReducer = combineReducers({
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   selectedForm: GetForms,
   classId: GetClassId,
   classInfo: UpdateClassInfo,
+  departments: GetDepartments,
   uploadedFile: UploadFile,
 });
 
