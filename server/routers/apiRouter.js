@@ -11,6 +11,7 @@ const gradeableobjectsTypeRouter = require('./gradeableobjectsTypeRouter');
 const graphdataRouter = require('./graphdataRouter');
 const meetingsRouter = require('./meetingsRouter');
 const calendarRouter = require('./calendarRouter');
+const attendanceRouter = require('./attendanceRouter');
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
@@ -91,5 +92,12 @@ router.use('/calendar', (req, res, next) => {
   console.log('apiRouter -> calendarRouter');
   next();
 }, calendarRouter);
+
+router.use('/attendance', (req, res, next) => {
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('apiRouter -> attendanceRouter');
+  }
+  next();
+}, attendanceRouter);
 
 module.exports = router;
