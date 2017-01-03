@@ -1,5 +1,6 @@
 const db = require('../database/db');
 require('./userTypeModel');
+require('./classModel');
 
 const User = db.Model.extend({
   tableName: 'users',
@@ -19,6 +20,9 @@ const User = db.Model.extend({
   },
   type() {
     return this.belongsTo('UserType', 'type_id');
+  },
+  classes() {
+    return this.belongsToMany('Class', 'students_classes', 'student_id');
   },
 });
 

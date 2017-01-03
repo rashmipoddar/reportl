@@ -1,15 +1,15 @@
 const db = require('../database/db');
-require('./userModel');
 require('./classModel');
+require('./calendarModel');
 
 const Meeting = db.Model.extend({
-  tableName: 'Meetings',
+  tableName: 'meetings',
   hasTimestamps: true,
-  attendees() {
-    return this.hasMany('User');
-  },
   class() {
-    return this.belongsTo('Class');
+    return this.belongsTo('Class', 'class_id');
+  },
+  calendarDay() {
+    return this.belongsTo('Calendar');
   },
 });
 

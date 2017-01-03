@@ -2,7 +2,9 @@ const Meeting = require('../models/meetingModel');
 
 const meetingsController = {
   getAll(req, res) {
-    Meeting.fetchAll()
+    Meeting.fetchAll({
+      withRelated: ['class'],
+    })
       .then(meetings => res.json(meetings))
       .catch((err) => {
         console.log(`meetingsController.getAll - Error: ${err}`);
