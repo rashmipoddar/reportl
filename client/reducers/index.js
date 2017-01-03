@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
   selectedForm: GetForms,
   classId: GetClassId,
   classInfo: UpdateClassInfo,
-  department: GetDepartments,
+  departments: GetDepartments,
 });
 
 export default rootReducer;

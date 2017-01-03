@@ -8,17 +8,24 @@ class RenderDepartments extends Component {
   }
 
   renderDepartments() {
-    console.log('props: department: ', this.props.department);
-    return this.props.department.map(eachDepartment => (
-      eachDepartment.map(singleDepartment =>
-        <div>
-          <li key={singleDepartment.id}>
-            <div>ID: {singleDepartment.id}</div>
-            <div>Name: {singleDepartment.name}</div>
-          </li>
-        </div>
-      )
-
+    // return this.props.department.map(eachDepartment => (
+    //   eachDepartment.map(singleDepartment =>
+    //     <div>
+    //       <li key={singleDepartment.id}>
+    //         <div>ID: {singleDepartment.id}</div>
+    //         <div>Name: {singleDepartment.name}</div>
+    //       </li>
+    //     </div>,
+    //   )
+    //
+    // ));
+    return this.props.departments.map(department => (
+      <div key={department.id}>
+        <li>
+          <div>ID: {department.id}</div>
+          <div>Name: {department.name}</div>
+        </li>
+      </div>
     ));
   }
 
@@ -37,10 +44,12 @@ class RenderDepartments extends Component {
 
 RenderDepartments.propTypes = {
   getDepartmentInformation: React.PropTypes.func,
+  departments: React.PropTypes.arrayOf(React.PropTypes.object),
+
 };
 
 function mapStateToProps(state) {
-  return { department: state.department };
+  return { departments: state.departments };
 }
 
 export default connect(mapStateToProps, { getDepartmentInformation })(RenderDepartments);
