@@ -30,7 +30,6 @@ class RenderGradeChart extends Component {
     const lowLevelData = [];
 
     Object.keys(nameObject).forEach((item) => {
-      console.log(nameObject[item])
       lowLevelData.push({
         name: item,
         id: item,
@@ -38,9 +37,7 @@ class RenderGradeChart extends Component {
       });
       highLevelData.push({
         name: item,
-        y: Math.round(nameObject[item].reduce(function (a, b) {
-          return a + b[1];
-        }, 0) / nameObject[item].length),
+        y: Math.round(nameObject[item].reduce((a, b) => a + b[1], 0) / nameObject[item].length),
         drilldown: item,
       });
     });
@@ -75,13 +72,14 @@ class RenderGradeChart extends Component {
     };
 
     return (
-      <ReactHighcharts config={config}/>
+      <ReactHighcharts config={config} />
     );
   }
 }
 
 RenderGradeChart.propTypes = {
   getChartData: React.PropTypes.func,
+  gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
