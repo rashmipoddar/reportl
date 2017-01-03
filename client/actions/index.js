@@ -78,7 +78,7 @@ export function createProfileInformation(profile) {
 }
 
 export function getProfileInformation() {
-  const request = axios.get('/api/users/1');
+  const request = axios.get('/api/users/8');
   return {
     type: 'GET_PROFILE',
     payload: request,
@@ -111,6 +111,16 @@ export function getDepartmentInformation() {
   const request = axios.get('api/departments');
   return {
     type: 'GET_DEPARTMENTS',
+    payload: request,
+  };
+}
+
+export function uploadFile(files) {
+  const data = new FormData();
+  Object.keys(files.uploadedFile).forEach(key => data.append(key, files.uploadedFile[key]));
+  const request = axios.post('/api/files', data);
+  return {
+    type: 'UPLOAD_FILE',
     payload: request,
   };
 }
