@@ -18,6 +18,7 @@ import RenderClasses from './components/render_classes';
 import RenderDepartments from './components/render_departments';
 import RenderGradeGraph from './components/render_grade_graph';
 import DepartmentForm from './containers/addDepartment';
+import RenderClassesforCourse from './components/render_courses';
 
 const logger = createLogger();
 
@@ -36,6 +37,7 @@ ReactDOM.render(
         <Route path="/department" component={RenderDepartments} />
         <Route path="/gradegraph" component={RenderGradeGraph} />
         <Route path="/createDepartment" component={DepartmentForm} />
+        <Route path="/course" component={RenderClassesforCourse} />
       </Route>
     </Router>
   </Provider>

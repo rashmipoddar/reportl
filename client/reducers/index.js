@@ -17,6 +17,7 @@ import UploadFile from './post_file_reducer';
 import GetGradeData from './grade_data_reducer';
 import GetAttendees from './get_attendees_reducer';
 import DepartmentForm from './addDepartment_reducer';
+import GetCourseClasses from './view_course_classes_reducer';
 
 const rootReducer = combineReducers({
   login: LoginField,
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   gradeData: GetGradeData,
   attendees: GetAttendees,
   addDepartment: DepartmentForm,
+  course: GetCourseClasses,
 });
 
 export default rootReducer;

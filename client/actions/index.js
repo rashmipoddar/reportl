@@ -148,3 +148,11 @@ export function createDepartment(department) {
     payload: request,
   };
 }
+
+export function getCourseDetails() {
+  const request = axios.get('api/courses/2');
+  return {
+    type: 'GET_CLASSES_FOR_COURSE',
+    payload: request,
+  };
+}
