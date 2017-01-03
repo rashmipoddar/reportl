@@ -6,7 +6,6 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import reducers from './reducers';
-// import routes from './routes';
 
 import App from './components/app';
 import LoginField from './containers/login-field';
