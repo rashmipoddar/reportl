@@ -140,3 +140,11 @@ export function getAllAttendees(meetingId) {
     payload: request,
   };
 }
+
+export function createDepartment(department) {
+  const request = axios.post('api/departments', department);
+  return {
+    type: 'CREATE_DEPARTMENT',
+    payload: request,
+  };
+}
