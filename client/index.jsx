@@ -19,8 +19,6 @@ import RenderClasses from './components/render_classes';
 import RenderDepartments from './components/render_departments';
 import RenderGradeGraph from './components/render_grade_graph';
 
->>>>>>> feat(Client, package.json and seeds): Added infrastructure for highcharts grade table.
-
 const logger = createLogger();
 
 ReactDOM.render(
