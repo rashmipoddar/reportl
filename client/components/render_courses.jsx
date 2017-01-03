@@ -7,8 +7,23 @@ class RenderClassesforCourse extends Component {
     this.props.getCourseDetails();
   }
 
+  renderClasses() {
+    if (this.props.course.classes) {
+      return this.props.course.classes.map(clas => (
+        <div key={clas.id}>
+          <li>
+            <div>Name: {clas.name}</div>
+            <div>Size: {clas.size}</div>
+          </li>
+        </div>
+      ));
+    }
+    return (<div />);
+  }
+
   render() {
     console.log('props:course: ', this.props.course);
+    console.log('Classes in a course: ', this.props.course.classes);
     return (
       <div>
         <h3>Course Details</h3>
@@ -16,6 +31,11 @@ class RenderClassesforCourse extends Component {
           <div>Id: {this.props.course.id}</div>
           <div>Name: {this.props.course.name}</div>
           <div>Description: {this.props.course.description}</div>
+          <div>
+            <ul>
+              {this.renderClasses()}
+            </ul>
+          </div>
         </li>
       </div>
     );
@@ -28,6 +48,7 @@ RenderClassesforCourse.propTypes = {
     id: React.PropTypes.integer,
     name: React.PropTypes.string,
     description: React.PropTypes.string,
+    classes: React.PropTypes.arrayOf(React.PropTypes.object),
   }),
 };
 

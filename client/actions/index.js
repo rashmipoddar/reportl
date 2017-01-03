@@ -150,7 +150,7 @@ export function createDepartment(department) {
 }
 
 export function getCourseDetails() {
-  const request = axios.get('api/courses/2');
+  const request = axios.get('api/courses/3');
   return {
     type: 'GET_CLASSES_FOR_COURSE',
     payload: request,
