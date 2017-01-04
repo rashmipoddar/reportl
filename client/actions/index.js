@@ -143,10 +143,8 @@ export function getChartData() {
   };
 }
 
-export function getAllAttendees() {
-  console.log('getAllAttendees was triggered!');
-  // const request = axios.get(`/api/meetings/${meetingId}`);
-  const request = axios.get('/api/usertypes/student');
+export function getAllAttendees(meetingId) {
+  const request = axios.get(`/api/attendance/meeting/${meetingId}`);
   return {
     type: 'GET_ATTENDEES',
     payload: request,
