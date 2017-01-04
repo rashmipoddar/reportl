@@ -9,11 +9,18 @@ class RenderClasses extends Component {
   }
 
   renderClasses() {
-    return this.props.allClasses.map(eachClass => (
-      <li key={eachClass.name}>
-        <div>Class Name: {eachClass.name} ; Class Description: {eachClass.course_id}</div>
-      </li>
-    ));
+    return this.props.allClasses.map(eachClass =>
+      eachClass.map(eachClassItem => (
+        <li key={eachClassItem.name}>
+          <div><strong>Class Name:</strong> {eachClassItem.name}</div>
+          {eachClassItem.modules.map(modules => (
+            <div>
+              <p><strong>{modules.moduleName}</strong></p>
+              <p>{modules.percentOfClassGrade}</p>
+            </div>
+          ))}
+        </li>
+        )));
   }
 
   render() {
