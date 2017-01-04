@@ -12,11 +12,12 @@ class RenderClasses extends Component {
     return this.props.allClasses.map(eachClass =>
       eachClass.map(eachClassItem => (
         <li key={eachClassItem.name}>
-          <div><strong>Class Name:</strong> {eachClassItem.name}</div>
+          <h3><strong>Class Name:</strong> {eachClassItem.name}</h3>
+          <div><strong>Modules:</strong></div>
           {eachClassItem.modules.map(modules => (
             <div>
               <p><strong>{modules.moduleName}</strong></p>
-              <p>{modules.percentOfClassGrade}</p>
+              <p>Percent of Grade: {modules.percentOfClassGrade}</p>
             </div>
           ))}
         </li>
