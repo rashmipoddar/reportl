@@ -144,9 +144,17 @@ export function getChartData() {
 }
 
 export function getAllAttendees(meetingId) {
-  const request = axios.get(`/api/meetings/${meetingId}`); // endpoint hasn't been created yet
+  const request = axios.get(`/api/attendance/meeting/${meetingId}`);
   return {
-    type: 'GET_ATTENDEEES',
+    type: 'GET_ATTENDEES',
+    payload: request,
+  };
+}
+
+export function markPresent(attendanceId) {
+  const request = axios.put(`/api/${attendanceId}`); // placeholder
+  return {
+    type: 'MARK_PRESENT',
     payload: request,
   };
 }
@@ -155,6 +163,22 @@ export function createDepartment(department) {
   const request = axios.post('api/departments', department);
   return {
     type: 'CREATE_DEPARTMENT',
+    payload: request,
+  };
+}
+
+export function getCourseDetails() {
+  const request = axios.get('api/courses/3');
+  return {
+    type: 'GET_CLASSES_FOR_COURSE',
+    payload: request,
+  };
+}
+
+export function createCourse(course) {
+  const request = axios.post('api/courses', course);
+  return {
+    type: 'CREATE_COURSE',
     payload: request,
   };
 }
