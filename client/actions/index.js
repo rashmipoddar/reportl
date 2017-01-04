@@ -152,7 +152,10 @@ export function getChartData() {
 }
 
 export function getAllAttendees(meetingId) {
-  const request = axios.get(`/api/attendance/meeting/${meetingId}`);
+  console.log('meetingId: ', meetingId);
+  const id = meetingId.meeting;
+  console.log('id: ', id);
+  const request = axios.get(`/api/attendance/meeting/${id}`);
   return {
     type: 'GET_ATTENDEES',
     payload: request,
