@@ -42,6 +42,14 @@ export function getAllClasses() {
   };
 }
 
+export function getClassById(classId) {
+  const request = axios.get(`/api/classes/${classId}`);
+  return {
+    type: 'GET_CLASSES_BY_ID',
+    payload: request,
+  };
+}
+
 export function deleteUser(id) {
   const endpoint = `/api/users/${id}`;
   const request = axios.delete(endpoint);
@@ -175,6 +183,14 @@ export function getCourseDetails() {
   };
 }
 
+export function getAllCourses() {
+  const request = axios.get('api/courses/');
+  return {
+    type: 'GET_ALL_COURSES',
+    payload: request,
+  };
+}
+
 export function createCourse(course) {
   const request = axios.post('api/courses', course);
   return {
@@ -192,9 +208,19 @@ export function getAllCalendarEvents() {
 }
 
 export function addStudentsToClass(student) {
+  console.log('Adding Student to Class', student);
   const request = axios.post('api/students_classes', student);
   return {
     type: 'ADD_STUDENT_TO_CLASS',
+    payload: request,
+  };
+}
+
+export function makeNewModule(moduleInfo) {
+  console.log('Adding Module to Class', moduleInfo);
+  const request = axios.post('api/modules', moduleInfo);
+  return {
+    type: 'ADD_MODULE_TO_CLASS',
     payload: request,
   };
 }

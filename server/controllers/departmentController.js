@@ -90,7 +90,9 @@ const departmentController = {
   },
 
   getAll(req, res) {
-    Department.fetchAll()
+    Department.fetchAll({
+      withRelated: ['courses'],
+    })
     .then(departments => res.json(departments))
     .catch((err) => {
       console.log(`departmentController.getAll - Error: ${err}`);

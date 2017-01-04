@@ -11,7 +11,7 @@ class RenderClassBuilder extends Component {
 
     this.state = {
       localclassId: '',
-      visibility: { visibility: 'visibile' },
+      visibility: { visibility: 'visible' },
     };
 
     this.onIdSubmit = this.onIdSubmit.bind(this);

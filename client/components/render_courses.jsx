@@ -1,59 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCourseDetails } from '../actions/index';
+import { getAllCourses } from '../actions/index';
 
 class RenderClassesforCourse extends Component {
   componentWillMount() {
-    this.props.getCourseDetails();
+    this.props.getAllCourses();
   }
 
-  renderClasses() {
-    if (this.props.course.classes) {
-      return this.props.course.classes.map(clas => (
-        <div key={clas.id}>
-          <li>
-            <div>Name: {clas.name}</div>
-            <div>Size: {clas.size}</div>
-          </li>
-        </div>
-      ));
-    }
-    return (<div />);
+  renderCourses() {
+    return this.props.allCourses.map(clas => (
+      clas.data.map(courses => (
+        <li><strong>{courses.name}</strong>: {courses.description} <br />
+          <div>{courses.classes.map(singleClass => (
+            <div>{singleClass.name} {singleClass.size}</div>
+            ))}</div>
+        </li>))));
   }
 
   render() {
-    console.log('props:course: ', this.props.course);
-    console.log('Classes in a course: ', this.props.course.classes);
     return (
       <div>
         <h3>Course Details</h3>
-        <li>
-          <div>Id: {this.props.course.id}</div>
-          <div>Name: {this.props.course.name}</div>
-          <div>Description: {this.props.course.description}</div>
-          <div>
-            <ul>
-              {this.renderClasses()}
-            </ul>
-          </div>
-        </li>
+        <ol>
+          {this.renderCourses()}
+        </ol>
       </div>
     );
   }
 }
 
 RenderClassesforCourse.propTypes = {
-  getCourseDetails: React.PropTypes.func,
-  course: React.PropTypes.shape({
-    id: React.PropTypes.integer,
-    name: React.PropTypes.string,
-    description: React.PropTypes.string,
-    classes: React.PropTypes.arrayOf(React.PropTypes.object),
-  }),
+  getAllCourses: React.PropTypes.func,
+  allCourses: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
-  return { course: state.course };
+  return { allCourses: state.allCourses };
 }
 
-export default connect(mapStateToProps, { getCourseDetails })(RenderClassesforCourse);
+export default connect(mapStateToProps, { getAllCourses })(RenderClassesforCourse);

@@ -2,6 +2,8 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { makeNewClass } from '../../actions/index';
 
+const weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
 const ScheduleForm = ({ handleSubmit }) => (
   <div>
     <h2>Schedule Form</h2>
@@ -11,16 +13,19 @@ const ScheduleForm = ({ handleSubmit }) => (
         <Field name="id" component="input" type="text" />
       </div>
       <div>
-        <label htmlFor="start_date">Start Date</label>
-        <Field name="Start Date" component="input" type="date" />
+        <label htmlFor="start_time">Class Start Time</label>
+        <Field name="Class Start Time" component="input" type="number" />
       </div>
       <div>
-        <label htmlFor="end_date">End Date</label>
-        <Field name="End Date" component="input" type="date" />
+        <label htmlFor="end_time">Class End Time</label>
+        <Field name="Class End Time" component="input" type="number" />
       </div>
       <div>
-        <label htmlFor="time">Class Time</label>
-        <Field name="Class Time" component="input" type="time" />
+        {weekdays.map(day =>
+          <div>
+            <label htmlFor={day}>{day}</label>
+            <Field name={day} component="input" type="checkbox" value="true" />
+          </div>)}
       </div>
       <div>
         <label htmlFor="location">Location</label>

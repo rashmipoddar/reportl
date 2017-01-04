@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getDepartmentInformation } from '../actions/index';
+import { bindActionCreators } from 'redux';
+import { getDepartmentInformation, selectDepartment } from '../actions/index';
 
 class RenderDepartments extends Component {
   componentWillMount() {
@@ -8,23 +9,11 @@ class RenderDepartments extends Component {
   }
 
   renderDepartments() {
-    // return this.props.department.map(eachDepartment => (
-    //   eachDepartment.map(singleDepartment =>
-    //     <div>
-    //       <li key={singleDepartment.id}>
-    //         <div>ID: {singleDepartment.id}</div>
-    //         <div>Name: {singleDepartment.name}</div>
-    //       </li>
-    //     </div>,
-    //   )
-    //
-    // ));
     return this.props.departments.map(department => (
       <div key={department.id}>
-        <li>
-          <div>ID: {department.id}</div>
-          <div>Name: {department.name}</div>
-        </li>
+        <li><button onClick={() => { this.props.selectDepartment(department.id); }}>
+          {department.name}
+        </button></li>
       </div>
     ));
   }
@@ -44,12 +33,17 @@ class RenderDepartments extends Component {
 
 RenderDepartments.propTypes = {
   getDepartmentInformation: React.PropTypes.func,
+  selectDepartment: React.PropTypes.func,
   departments: React.PropTypes.arrayOf(React.PropTypes.object),
 
 };
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getDepartmentInformation, selectDepartment }, dispatch);
+}
 
 function mapStateToProps(state) {
   return { departments: state.departments };
 }
 
-export default connect(mapStateToProps, { getDepartmentInformation })(RenderDepartments);
+export default connect(mapStateToProps, mapDispatchToProps)(RenderDepartments);

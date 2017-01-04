@@ -7,7 +7,7 @@ const studentsClassesController = {
     StudentsClasses.forge(body)
       .save()
       .then((studentIdResponse) => {
-        console.log('New student/classpair', JSON.stringify(studentIdResponse));
+        console.log('New student - class pair', JSON.stringify(studentIdResponse));
         res.json(studentIdResponse);
       })
       .catch((err) => {
