@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { getAllAttendees } from '../actions/index';
 
@@ -21,7 +22,6 @@ MeetingForm.propTypes = {
 
 const MeetingFormMaker = reduxForm({
   form: 'setMeeting',
-  onSubmit: getAllAttendees,
 })(MeetingForm);
 
-export default MeetingFormMaker;
+export default connect(() => ({}), { onSubmit: getAllAttendees })(MeetingFormMaker);

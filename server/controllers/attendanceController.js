@@ -2,9 +2,9 @@ const Attendance = require('../models/attendanceModel');
 
 const attendanceController = {
   getByMeetingId({ params: { id } }, res) {
-    Attendance.forge({ meeting_id: id })
+    Attendance.where('meeting_id', id)
       .fetchAll({
-        withRelated: ['user', 'meeting'],
+        withRelated: ['user'],
       })
       .then((attendance) => {
         console.log(JSON.stringify(attendance));

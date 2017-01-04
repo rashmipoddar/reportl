@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllAttendees, markPresent } from '../actions/index';
+import { markPresent } from '../actions/index';
+import MeetingFormMaker from '../containers/setMeeting';
 
 const containerStyle = {
   display: 'flex',
@@ -25,22 +26,19 @@ const thumbnailStyle = {
 };
 
 class RenderAttendees extends Component {
-  componentWillMount() {
-    this.props.getAllAttendees();
-  }
 
   RenderAttendees() {
     console.log('props: attendees: ', this.props.attendees);
     return this.props.attendees.map(eachAttendee => (
       <button
         onClick={() => {
-          markPresent(eachAttendee.attendanceId); // placeholder
+          markPresent(eachAttendee.id); // placeholder
         }}
         style={cardStyle}
       >
         <img style={thumbnailStyle} alt="Attendee" src="http://localhost:8000/api/files/1" />
-        {/* <img alt="Attendee" src={eachAttendee.imgUrl} />   */}
-        <div>{eachAttendee.fullName}</div>
+        {/* <img alt="Attendee" src={eachAttendee.user.imgUrl} />   */}
+        <div>{eachAttendee.user.fullName}</div>
       </button>
     ));
   }
@@ -48,6 +46,7 @@ class RenderAttendees extends Component {
   render() {
     return (
       <div style={containerStyle}>
+        <MeetingFormMaker />
         {this.RenderAttendees()}
       </div>
     );
@@ -55,7 +54,6 @@ class RenderAttendees extends Component {
 }
 
 RenderAttendees.propTypes = {
-  getAllAttendees: React.PropTypes.func,
   attendees: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
@@ -66,4 +64,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getAllAttendees })(RenderAttendees);
+export default connect(mapStateToProps)(RenderAttendees);
