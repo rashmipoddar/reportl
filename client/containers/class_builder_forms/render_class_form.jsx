@@ -30,6 +30,7 @@ class RenderClassForm extends Component {
 
 RenderClassForm.propTypes = {
   getClassById: React.PropTypes.func,
+  classId: React.PropTypes.func,
   selectedClass: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 

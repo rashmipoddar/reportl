@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getDepartmentInformation, selectDepartment } from '../actions/index';
+import { getDepartmentInformation } from '../actions/index';
 
 class RenderDepartments extends Component {
   componentWillMount() {
@@ -11,7 +11,7 @@ class RenderDepartments extends Component {
   renderDepartments() {
     return this.props.departments.map(department => (
       <div key={department.id}>
-        <li><button onClick={() => { this.props.selectDepartment(department.id); }}>
+        <li><button>
           {department.name}
         </button></li>
       </div>
@@ -33,13 +33,12 @@ class RenderDepartments extends Component {
 
 RenderDepartments.propTypes = {
   getDepartmentInformation: React.PropTypes.func,
-  selectDepartment: React.PropTypes.func,
   departments: React.PropTypes.arrayOf(React.PropTypes.object),
 
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getDepartmentInformation, selectDepartment }, dispatch);
+  return bindActionCreators({ getDepartmentInformation }, dispatch);
 }
 
 function mapStateToProps(state) {
