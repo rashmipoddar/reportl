@@ -190,3 +190,11 @@ export function getAllCalendarEvents() {
     payload: request,
   };
 }
+
+export function addStudentsToClass(student) {
+  const request = axios.post('api/students_classes', student);
+  return {
+    type: 'ADD_STUDENT_TO_CLASS',
+    payload: request,
+  };
+}
