@@ -38,6 +38,17 @@ const meetingsController = {
         res.sendStatus(500);
       });
   },
+  deleteMeeting({ params: { id } }, res) {
+    Meeting.forge({ id })
+      .destroy()
+      .then(() => res.status(200).json({
+        status: 'success',
+      }))
+      .catch((err) => {
+        console.log(`meetingsController.deleteMeeting - Error: ${err}`);
+        res.sendStatus(500);
+      });
+  },
 };
 
 module.exports = meetingsController;

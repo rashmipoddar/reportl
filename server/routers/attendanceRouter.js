@@ -2,8 +2,8 @@ const router = require('express').Router();
 const attendanceController = require('../controllers/attendanceController');
 
 router.get('/meeting/:id', attendanceController.getByMeetingId);
-// router.put('/:id', attendanceController.markUserPresent);
-// router.get('/user/:id', attendanceController.getUserAttendance);
+router.put('/:id', attendanceController.markUserPresent);
+// router.get('/user/', attendanceController.getUserAttendance);
 // router.get('/', attendanceController.getAll);
 // router.post('/', attendanceController.addMeeting);
 // router.delete('/:id', attendanceController.deleteMeeting);

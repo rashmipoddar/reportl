@@ -10,5 +10,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 router.get('/', meetingsController.getAll);
 router.get('/:id', meetingsController.getMeetingById);
+router.delete('/:id', meetingsController.deleteMeeting);
 
 module.exports = router;
