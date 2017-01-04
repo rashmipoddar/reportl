@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { store } from './reducers';
 
-import App from './components/app';
+import App from './containers/app';
 import LoginField from './containers/login-field';
 import UserForm from './containers/addUser';
 import RenderClassBuilder from './components/render_class_builder';
@@ -20,6 +20,27 @@ import CourseForm from './containers/addCourse';
 import RenderAttendees from './components/attendance_student';
 import RenderCalendar from './components/render_calendar';
 
+const isAuth = () => !!store.getState().user.id;
+
+const requireAuth = (nextState, replace) => {
+  if (!isAuth) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname },
+    });
+  }
+};
+
+const requireAuthType = (nextState, replace, ...types) => {
+  const user = store.getState().user;
+  if (!isAuth || !!user.type || types.contains(user.type.name)) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname },
+    });
+  }
+};
+
 ReactDOM.render(
 
   <Provider store={store}>
@@ -31,10 +52,18 @@ ReactDOM.render(
         <Route path="/classes" component={RenderClasses} />
         <Route path="/users" component={RenderUsers} />
         <Route path="/updateprofile" component={UpdateProfile} />
-        <Route path="/profile" component={RenderProfile} />
+        <Route
+          path="/profile"
+          component={RenderProfile}
+          onEnter={requireAuth}
+        />
         <Route path="/department" component={RenderDepartments} />
         <Route path="/gradegraph" component={RenderGradeGraph} />
-        <Route path="/createDepartment" component={DepartmentForm} />
+        <Route
+          path="/createDepartment"
+          component={DepartmentForm}
+          onEnter={(nextState, replace) => requireAuthType(nextState, replace, 'teacher')}
+        />
         <Route path="/course" component={RenderClassesforCourse} />
         <Route path="/createCourse" component={CourseForm} />
         <Route path="/attendance" component={RenderAttendees} />
