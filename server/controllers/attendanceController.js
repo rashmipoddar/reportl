@@ -3,7 +3,7 @@ const Attendance = require('../models/attendanceModel');
 const attendanceController = {
   getByMeetingId({ params: { id } }, res) {
     Attendance.forge({ meeting_id: id })
-      .fetch({
+      .fetchAll({
         withRelated: ['user', 'meeting'],
       })
       .then((attendance) => {

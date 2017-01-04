@@ -40,6 +40,16 @@ const courseController = {
         res.sendStatus(500);
       });
   },
+  getAllCourses(req, res) {
+    Course.fetchAll({
+      withRelated: ['classes'],
+    })
+    .then(courses => res.json(courses))
+    .catch((err) => {
+      console.log(`CourseController.getAllCourses - Error: ${err}`);
+      res.sendStatus(500);
+    });
+  },
 };
 
 module.exports = courseController;
