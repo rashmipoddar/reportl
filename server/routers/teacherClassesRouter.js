@@ -3,11 +3,12 @@ const teachersClassesController = require('../controllers/teachersClassesControl
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
-    console.log('moduleRouter');
+    console.log('teachersClassesRouter');
     next();
   });
 }
 
 router.post('/', teachersClassesController.addTeacherToClass);
+router.get('/:class_id', teachersClassesController.getTeacherByClassId);
 
 module.exports = router;
