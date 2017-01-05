@@ -1,6 +1,6 @@
 exports.up = knex => knex.schema.createTable('gradeable_objects', (table) => {
   table.increments('id').primary();
-  table.string('object_name').unique();
+  table.string('object_name');
   table.integer('duration');
   table.decimal('percent_of_module_grade', 4);
   table.integer('module_id').unsigned();
