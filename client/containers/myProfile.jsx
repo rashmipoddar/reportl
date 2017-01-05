@@ -1,24 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import renderDailySchedule from './myDailySchedule';
 
-class myProfile extends Component {
+const myProfile = () => (
+  <div>
+    <h2>All Classes</h2>
+    <renderDailySchedule />
+  </div>
+  );
 
-  render() {
-    return (
-      <div>
-        <h2>All Classes</h2>
-        <renderDailySchedule />
-      </div>
-    );
-  }
-}
-
-RenderClasses.propTypes = {
-};
-
-function mapStateToProps(state) {
-  return { allClasses: state.allClasses };
-}
-
-export default connect(mapStateToProps, { getAllClasses })(myProfile);
+export default myProfile;

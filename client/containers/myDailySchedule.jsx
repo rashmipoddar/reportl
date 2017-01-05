@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
 import { calendarSpan, launchLesson } from '../actions/index';
 
 const calendarStyle = {
@@ -59,7 +58,6 @@ class renderDailySchedule extends Component {
 }
 
 renderDailySchedule.propTypes = {
-  renderScheduleInformation: React.PropTypes.func,
   launchLesson: React.PropTypes.func,
   calendarSpan: React.PropTypes.func,
   calendarSearchResult: React.PropTypes.arrayOf(React.PropTypes.object),
