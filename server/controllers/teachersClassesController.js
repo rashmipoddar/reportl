@@ -1,4 +1,5 @@
 const TeachersClasses = require('../models/teachersClassesModel');
+require('../models/classModel');
 
 const teachersClassesController = {
   addTeacherToClass({ body: data }, res) {
@@ -11,6 +12,21 @@ const teachersClassesController = {
       })
       .catch((err) => {
         console.log(`teachersClassesController.addTeacherToClass - Error: ${err}`);
+        res.sendStatus(500);
+      });
+  },
+
+  getTeacherByClassId({ params: { class_id } }, res) {
+    TeachersClasses.forge({ class_id })
+      .fetch({
+        withRelated: ['class'],
+      })
+      .then((teacherClass) => {
+        console.log(JSON.stringify(teacherClass));
+        res.json(teacherClass);
+      })
+      .catch((err) => {
+        console.log(`teachersClassesController.getTeacherByClassId - Error: ${err}`);
         res.sendStatus(500);
       });
   },
