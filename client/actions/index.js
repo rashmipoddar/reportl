@@ -163,7 +163,8 @@ export function getAllAttendees(meetingId) {
 }
 
 export function markPresent(attendanceId) {
-  const request = axios.put(`/api/${attendanceId}`); // placeholder
+  console.log('hit markPresent!');
+  const request = axios.put(`/api/attendance/${attendanceId}`); // placeholder
   return {
     type: 'MARK_PRESENT',
     payload: request,
