@@ -17,7 +17,7 @@ const GradeableObjectModel = db.Model.extend({
     return this.belongsTo('GradeableObjectType', 'type_id');
   },
   file() {
-    return this.hasMany('File', 'file_id');
+    return this.belongsTo('File', 'file_id');
   },
 });
 

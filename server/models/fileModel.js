@@ -7,6 +7,9 @@ const File = db.Model.extend({
   module() {
     return this.belongsTo('Module', 'module_id');
   },
+  gradeableobject() {
+    return this.hasMany('GradeableObjectModel');
+  },
 });
 
 module.exports = db.model('File', File);
