@@ -67,6 +67,7 @@ class renderDailySchedule extends Component {
       <div>
         <div>
           <h3>Daily Schedule</h3>
+          <button><Link to="/gradegraph">Analytics</Link></button>
           <div style={calendarStyle}>
             {this.renderScheduleInformation()}
           </div>

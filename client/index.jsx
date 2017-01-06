@@ -13,7 +13,7 @@ import UpdateProfile from './components/render_profile_builder';
 import RenderProfile from './components/render_profile';
 import RenderClasses from './components/render_classes';
 import RenderDepartments from './components/render_departments';
-import RenderGradeGraph from './components/render_grade_graph';
+import RenderGradeChartByUser from './components/render_grade_graph_by_user';
 import DepartmentForm from './containers/addDepartment';
 import CourseForm from './containers/addCourse';
 import RenderLesson from './components/render_lesson';
@@ -62,7 +62,7 @@ ReactDOM.render(
         />
         <Route path="/dashboard" component={renderDailySchedule} />
         <Route path="/department" component={RenderDepartments} />
-        <Route path="/gradegraph" component={RenderGradeGraph} />
+        <Route path="/gradegraph" component={RenderGradeChartByUser} />
         <Route
           path="/createDepartment"
           component={DepartmentForm}
