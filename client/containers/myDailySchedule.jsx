@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import { searchCalendar } from '../actions/index';
+import { searchCalendar, getMeetingById, getAllAttendees } from '../actions/index';
 
 const calendarStyle = {
   display: 'block',
@@ -43,7 +43,13 @@ class renderDailySchedule extends Component {
           <div>{day.meetings.map(meetings => (
             <div>
               <Link to="/lesson">
-                <button style={meetingStyle}>
+                <button
+                  onClick={() => {
+                    this.props.getMeetingById(meetings.id);
+                    this.props.getAllAttendees(meetings.id);
+                  }}
+                  style={meetingStyle}
+                >
                   <div>{meetings.class.name}</div>
                   <div>{meetings.startTime}</div>
                   <div>{meetings.endTime}</div>
@@ -61,6 +67,7 @@ class renderDailySchedule extends Component {
       <div>
         <div>
           <h3>Daily Schedule</h3>
+          <button><Link to="/gradegraph">Analytics</Link></button>
           <div style={calendarStyle}>
             {this.renderScheduleInformation()}
           </div>
@@ -74,12 +81,14 @@ class renderDailySchedule extends Component {
 
 renderDailySchedule.propTypes = {
   searchCalendar: React.PropTypes.func,
+  getMeetingById: React.PropTypes.func,
+  getAllAttendees: React.PropTypes.func,
   calendarSearchResult: React.PropTypes.arrayOf(React.PropTypes.object),
   children: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ searchCalendar }, dispatch);
+  return bindActionCreators({ searchCalendar, getMeetingById, getAllAttendees }, dispatch);
 }
 
 function mapStateToProps(state) {
