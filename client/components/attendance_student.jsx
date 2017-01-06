@@ -63,7 +63,6 @@ class RenderAttendees extends Component {
   render() {
     return (
       <div style={containerStyle}>
-        <MeetingFormMaker />
         {this.RenderAttendees()}
       </div>
     );
