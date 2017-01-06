@@ -77,4 +77,4 @@ function mapStateToProps(state) {
   return { calendarSearchResult: state.calendarSearchResult };
 }
 
-export default connect(mapStateToProps, { searchCalendar })(renderDailySchedule);
+export default connect(mapStateToProps, mapDispatchToProps)(renderDailySchedule);
