@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getAllAttendees, markPresent } from '../actions/index';
-import MeetingFormMaker from '../containers/setMeeting';
 
 const containerStyle = {
   display: 'flex',
