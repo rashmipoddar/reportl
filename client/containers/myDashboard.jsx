@@ -1,11 +1,11 @@
 import React from 'react';
 import renderDailySchedule from './myDailySchedule';
 
-const myProfile = () => (
+const myDashboard = () => (
   <div>
-    <h2>All Classes</h2>
+    <h2>Schedule</h2>
     <renderDailySchedule />
   </div>
   );
 
-export default myProfile;
+export default myDashboard;
