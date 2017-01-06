@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
-import { searchCalendar } from '../actions/index';
+import { getClass } from '../actions/index';
 
 class renderDailySchedule extends Component {
   componentWillMount() {
@@ -10,8 +9,8 @@ class renderDailySchedule extends Component {
     });
   }
 
-  renderScheduleInformation() {
-    );
+  renderMyClasses() {
+
   }
 
   render() {
