@@ -9,6 +9,7 @@ const App = ({ children, user }) => {
   return (
     <div>
       <div>
+        {(isAuth() && `Welcome: ${user.name} | ID: ${user.id}`) || 'No user'}
         {!isAuth() && <button><Link to="/">Login</Link></button>}
         {isAuthType('student', 'teacher') && <button><Link to="/classes">View All Classes</Link></button>}
         {isAuth() && <button><Link to="/users">View All Users</Link></button>}

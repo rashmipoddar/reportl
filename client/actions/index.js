@@ -1,14 +1,12 @@
 import axios from 'axios';
 import { store } from '../reducers/';
 
-const tokenListener = () => {
-  const token = store.getState().user.token;
-
-  if (token) {
-    axios.defaults.headers.common['x-auth-token'] = token;
-  }
-};
-store.subscribe(tokenListener);
+export function auth(token = false) {
+  return {
+    type: 'AUTHENTICATE',
+    payload: token,
+  };
+}
 
 export function loginSubmit(login) {
   const request = axios.post('/auth/login', login);
@@ -240,3 +238,25 @@ export function getMeetingById(meetingId) {
     payload: request,
   };
 }
+
+const tokenName = 'x-auth-token';
+
+axios.interceptors.request.use((config) => {
+  const token = store.getState().user.token;
+  config.headers[tokenName] = token || false;
+
+  return config;
+}, err => Promise.reject(err));
+
+axios.interceptors.response.use((res) => {
+  const token = res.headers[tokenName];
+  store.dispatch(auth(token));
+
+  return res;
+}, (err) => {
+  store.dispatch(auth(err.response.headers[tokenName]));
+  return Promise.reject(err);
+});
+
+store.dispatch(auth(window.localStorage.getItem('token') || false));
+axios.get('auth/check');
