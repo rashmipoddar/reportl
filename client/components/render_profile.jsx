@@ -4,16 +4,16 @@ import { getProfileInformation } from '../actions/index';
 
 class RenderProfile extends Component {
   componentWillMount() {
-    this.props.getProfileInformation();
+    this.props.getProfileInformation(13);
   }
 
   render() {
     return (
       <div>
         <h2>Profile</h2>
+        <img alt="Profile Pic" src={`/api/files/${this.props.profile.profilePhotoId}`} />
         <ul>
           <li>{this.props.profile.fullName}</li>
-          <li>{this.props.profile.image}</li>
           <li>{this.props.profile.email}</li>
           <li>{this.props.profile.description}</li>
           <li>{this.props.profile.address}</li>
@@ -29,12 +29,12 @@ RenderProfile.propTypes = {
   getProfileInformation: React.PropTypes.func,
   profile: React.PropTypes.shape({
     fullName: React.PropTypes.string,
-    image: React.PropTypes.string,
     email: React.PropTypes.string,
     description: React.PropTypes.string,
     address: React.PropTypes.string,
     phone: React.PropTypes.string,
     dob: React.PropTypes.string,
+    profilePhotoId: React.PropTypes.number,
   }),
 };
 
