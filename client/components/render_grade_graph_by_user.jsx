@@ -83,7 +83,6 @@ class RenderGradeChartByUser extends Component {
         xAxis: [{
           type: 'category',
         }],
-        data: temporaryObject[userData].gradeableobjects,
         chart: {
           type: 'column',
         },
@@ -116,8 +115,6 @@ class RenderGradeChartByUser extends Component {
 
 RenderGradeChartByUser.propTypes = {
   getChartData: React.PropTypes.func,
-  firstProp: React.PropTypes.string,
-  secondProp: React.PropTypes.string,
   gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
