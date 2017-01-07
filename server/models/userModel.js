@@ -39,8 +39,11 @@ const User = db.Model.extend({
     });
   },
   hashPassword() {
-    return bcrypt.hash(this.get('password'), saltRounds)
-      .then(hash => this.set('password', hash));
+    if (this.get('password')) {
+      return bcrypt.hash(this.get('password'), saltRounds)
+        .then(hash => this.set('password', hash));
+    }
+    return Promise.resolve();
   },
   type() {
     return this.belongsTo('UserType', 'type_id');
@@ -54,26 +57,3 @@ const User = db.Model.extend({
 });
 
 module.exports = db.model('User', User);
-
-if (process.env.NODE_ENV !== 'production') {
-  User.forge({
-    name: 'test',
-  })
-  .fetch()
-  .then((user) => {
-    if (user) {
-      console.log('Deleting test user');
-      return user.destroy();
-    }
-    console.log('No test user');
-    return false;
-  })
-  .then(() => User.forge({
-    name: 'test',
-    password: 'test',
-    typeId: 1,
-  }).save())
-  .then(() => {
-    console.log('Created test user');
-  });
-}
