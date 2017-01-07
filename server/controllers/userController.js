@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 const userController = {
   getAll(req, res) {
     User.fetchAll({
-      withRelated: ['classes', 'type'],
+      withRelated: ['classes', 'type', 'profilePhoto'],
     })
       .then(users => res.json(users))
       .catch((err) => {
