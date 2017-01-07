@@ -1,5 +1,6 @@
 const db = require('../database/db');
 require('./gradeableObjectModel');
+require('./userModel');
 
 const File = db.Model.extend({
   tableName: 'files',
@@ -9,6 +10,9 @@ const File = db.Model.extend({
   },
   gradeableobject() {
     return this.hasMany('GradeableObjectModel');
+  },
+  user() {
+    return this.hasOne('User', 'profile_photo_id');
   },
 });
 
