@@ -23,7 +23,8 @@
     "commit": "git-cz",
     "eslint": "eslint --ext .js --ext .jsx client server scripts",
     "lint": "npm run eslint --silent || true",
-    "mocha": "mocha"
+    "mocha": "mocha",
+    "make:user": "node scripts/create_test_user.js"
   },
   "repository": {
     "type": "git",
