@@ -5,7 +5,11 @@ global.expect = expect;
 
 describe('Reportl', function() {
   before(function() {
-    return knex.raw('SET GLOBAL foreign_key_checks = 0;');
+    this.timeout(30 * 1000);
+    return knex.migrate.latest({
+      directory: './server/database/migrations',
+    })
+    .then(() => knex.raw('SET GLOBAL foreign_key_checks = 0;'));
   });
 
   after(function() {
