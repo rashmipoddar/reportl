@@ -38,8 +38,11 @@ const User = db.Model.extend({
     });
   },
   hashPassword() {
-    return bcrypt.hash(this.get('password'), saltRounds)
-      .then(hash => this.set('password', hash));
+    if (this.get('password')) {
+      return bcrypt.hash(this.get('password'), saltRounds)
+        .then(hash => this.set('password', hash));
+    }
+    return Promise.resolve();
   },
   type() {
     return this.belongsTo('UserType', 'type_id');
