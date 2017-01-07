@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { uploadFile } from '../actions/index';
+import { uploadProfilePhoto } from '../actions/index';
 
 const UploadFile = ({ handleSubmit }) => (
   <div>
@@ -19,7 +19,7 @@ UploadFile.propTypes = {
 
 const UploadFileMaker = reduxForm({
   form: 'profile',
-  onSubmit: uploadFile,
+  onSubmit: uploadProfilePhoto,
 })(UploadFile);
 
 export default UploadFileMaker;

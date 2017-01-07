@@ -2,6 +2,7 @@ const db = require('../database/db');
 const bcrypt = require('bcrypt');
 require('./userTypeModel');
 require('./classModel');
+require('./fileModel');
 
 const saltRounds = 10 || process.env.SALT_ROUNDS;
 
@@ -49,6 +50,9 @@ const User = db.Model.extend({
   },
   classes() {
     return this.belongsToMany('Class', 'students_classes', 'student_id');
+  },
+  profilePhoto() {
+    return this.belongsTo('File', 'profile_photo_id');
   },
 });
 
