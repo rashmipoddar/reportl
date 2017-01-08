@@ -25,8 +25,11 @@ const fileController = {
 
   getFileById({ params: { id }, baseUrl, originalUrl }, res) {
     File.forge({ id })
-      .fetch()
+      .fetch({
+        withRelated: ['user'],
+      })
       .then((file) => {
+        console.log(file);
         if (file) {
           const stream = fs.createReadStream(path.join(storagePath, `./${file.id}`));
 
@@ -177,12 +180,15 @@ const fileController = {
     const form = new formidable.IncomingForm();
 
     form.parse(req, (error, fields, files) => {
+      console.log('The fields are ', fields);
+      console.log('The file is', files);
       Promise.all(Object.keys(files).map((fileKey) => {
         const inputFile = files[fileKey];
 
         return File.forge({ name: inputFile.name })
           .save()
           .then((file) => {
+            console.log(file);
             fs.rename(inputFile.path, path.join(storagePath, `./${file.id}`), (err) => {
               if (err) {
                 console.log(`fileController.newFile.moveFile - Error: ${err}`);

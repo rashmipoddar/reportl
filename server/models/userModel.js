@@ -2,6 +2,7 @@ const db = require('../database/db');
 const bcrypt = require('bcrypt');
 require('./userTypeModel');
 require('./classModel');
+require('./fileModel');
 
 const saltRounds = 10 || process.env.SALT_ROUNDS;
 
@@ -38,8 +39,11 @@ const User = db.Model.extend({
     });
   },
   hashPassword() {
-    return bcrypt.hash(this.get('password'), saltRounds)
-      .then(hash => this.set('password', hash));
+    if (this.get('password')) {
+      return bcrypt.hash(this.get('password'), saltRounds)
+        .then(hash => this.set('password', hash));
+    }
+    return Promise.resolve();
   },
   type() {
     return this.belongsTo('UserType', 'type_id');
@@ -47,29 +51,9 @@ const User = db.Model.extend({
   classes() {
     return this.belongsToMany('Class', 'students_classes', 'student_id');
   },
+  profilePhoto() {
+    return this.belongsTo('File', 'profile_photo_id');
+  },
 });
 
 module.exports = db.model('User', User);
-
-if (process.env.NODE_ENV !== 'production') {
-  User.forge({
-    name: 'test',
-  })
-  .fetch()
-  .then((user) => {
-    if (user) {
-      console.log('Deleting test user');
-      return user.destroy();
-    }
-    console.log('No test user');
-    return false;
-  })
-  .then(() => User.forge({
-    name: 'test',
-    password: 'test',
-    typeId: 1,
-  }).save())
-  .then(() => {
-    console.log('Created test user');
-  });
-}

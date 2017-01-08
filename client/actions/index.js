@@ -93,8 +93,8 @@ export function createProfileInformation(profile) {
   };
 }
 
-export function getProfileInformation() {
-  const request = axios.get('/api/users/8');
+export function getProfileInformation(id) {
+  const request = axios.get(`/api/users/${id}`);
   return {
     type: 'GET_PROFILE',
     payload: request,
@@ -237,6 +237,14 @@ export function getMeetingById(meetingId) {
     type: 'GET_MEETING',
     payload: request,
   };
+}
+
+export function uploadProfilePhoto(data) {
+  uploadFile(data).payload.then((response) => {
+    axios.put(`api/users/${store.getState().user.id}`, {
+      profilePhotoId: response.data[0].id,
+    });
+  });
 }
 
 const tokenName = 'x-auth-token';
