@@ -4,17 +4,25 @@ import regression from 'regression';
 import { connect } from 'react-redux';
 import { getChartData } from '../actions/index';
 
+const classes = ['American Literature', 'Pre-Algebra', 'Biology 1', 'Biology 2', 'Spanish']
+
 class RenderScatterPlotChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentName: 'Alvin Ardsley',
-      currentClass: 'Biology 1',
+      currentClass: 'Spanish',
     };
   }
 
   componentWillMount() {
     this.props.getChartData();
+  }
+
+  updateData(selectedClass) {
+    this.setState({
+      currentClass: selectedClass,
+    });
   }
 
   render() {
@@ -58,9 +66,9 @@ class RenderScatterPlotChart extends Component {
       }],
       legend: {
         layout: 'vertical',
-        align: 'left',
+        align: 'right',
         verticalAlign: 'top',
-        x: 100,
+        x: -100,
         y: 70,
         floating: true,
         backgroundColor: '#FFFFFF',
@@ -78,7 +86,15 @@ class RenderScatterPlotChart extends Component {
     };
 
     return (
-      <ReactHighcharts config={config} />
+      <div>
+        <h2>Grades for {this.state.currentName} in {this.state.currentClass}</h2>
+        <div>{classes.map(classItem => (
+          <button onClick={() => { this.updateData(classItem); }}>
+            {classItem}
+          </button>
+          ))}</div>
+        <ReactHighcharts config={config} />
+      </div>
     );
   }
 }
