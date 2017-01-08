@@ -33,7 +33,10 @@ class RenderGradeChartByUser extends Component {
       this.props.gradeData.forEach((item) => {
         if (!temporaryObject[item.departments.name]) {
           temporaryObject[item.departments.name] = {
-            gradeableobjects: [],
+            gradeableobjects: [{
+              name: item.gradeableobjects.objectName,
+              y: item.grade,
+            }],
           };
         } else {
           temporaryObject[item.departments.name].gradeableobjects.push({
