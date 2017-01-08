@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllClasses } from '../../actions/index';
+import { getClassById } from '../../actions/index';
 
 class RenderClassForm extends Component {
 
   componentWillMount() {
-    this.props.getAllClasses();
+    this.props.getClassById(this.props.classId);
   }
 
   renderClasses() {
-    return this.props.allClasses.map(eachClass => (
+    return this.props.selectedClass.map(eachClass => (
       <li key={eachClass.class_name}>
         <div>Class Name: {eachClass.name} ; Class Description: {eachClass.course_id}</div>
       </li>
@@ -29,12 +29,13 @@ class RenderClassForm extends Component {
 }
 
 RenderClassForm.propTypes = {
-  getAllClasses: React.PropTypes.func,
-  allClasses: React.PropTypes.arrayOf(React.PropTypes.object),
+  getClassById: React.PropTypes.func,
+  classId: React.PropTypes.func,
+  selectedClass: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
-  return { allClasses: state.allClasses };
+  return { classId: state.classId, selectedClass: state.selectedClass };
 }
 
-export default connect(mapStateToProps, { getAllClasses })(RenderClassForm);
+export default connect(mapStateToProps, { getClassById })(RenderClassForm);

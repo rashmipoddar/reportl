@@ -1,7 +1,15 @@
 import axios from 'axios';
+import { store } from '../reducers/';
+
+export function auth(token = false) {
+  return {
+    type: 'AUTHENTICATE',
+    payload: token,
+  };
+}
 
 export function loginSubmit(login) {
-  const request = axios.post('/login', login);
+  const request = axios.post('/auth/login', login);
   return {
     type: 'LOGIN_SUBMITTED',
     payload: request,
@@ -25,9 +33,17 @@ export function makeNewClass(classes) {
 }
 
 export function getAllClasses() {
-  const request = axios.get('/api/classes/1');
+  const request = axios.get('/api/classes/');
   return {
     type: 'GET_CLASSES',
+    payload: request,
+  };
+}
+
+export function getClassById(classId) {
+  const request = axios.get(`/api/classes/${classId}`);
+  return {
+    type: 'GET_CLASSES_BY_ID',
     payload: request,
   };
 }
@@ -77,8 +93,8 @@ export function createProfileInformation(profile) {
   };
 }
 
-export function getProfileInformation() {
-  const request = axios.get('/api/users/1');
+export function getProfileInformation(id) {
+  const request = axios.get(`/api/users/${id}`);
   return {
     type: 'GET_PROFILE',
     payload: request,
@@ -106,3 +122,149 @@ export function updateClass(form) {
     payload: request,
   };
 }
+
+export function getDepartmentInformation() {
+  const request = axios.get('api/departments');
+  return {
+    type: 'GET_DEPARTMENTS',
+    payload: request,
+  };
+}
+
+export function uploadFile(files) {
+  const data = new FormData();
+  Object.keys(files.uploadedFile).forEach(key => data.append(key, files.uploadedFile[key]));
+  const request = axios.post('/api/files', data);
+  return {
+    type: 'UPLOAD_FILE',
+    payload: request,
+  };
+}
+
+export function getChartData() {
+  const request = axios.get('/api/graphdata/');
+  return {
+    type: 'GET_GRAPH_DATA',
+    payload: request,
+  };
+}
+
+export function getAllAttendees(meetingId) {
+  const request = axios.get(`/api/attendance/meeting/${meetingId}`);
+  return {
+    type: 'GET_ATTENDEES',
+    payload: request,
+  };
+}
+
+export function markPresent(attendanceId) {
+  const request = axios.put(`/api/attendance/${attendanceId}`); // placeholder
+  return {
+    type: 'MARK_PRESENT',
+    payload: request,
+  };
+}
+
+export function createDepartment(department) {
+  const request = axios.post('api/departments', department);
+  return {
+    type: 'CREATE_DEPARTMENT',
+    payload: request,
+  };
+}
+
+export function getCourseDetails(id) {
+  const request = axios.get(`api/courses/${id}`);
+  return {
+    type: 'GET_CLASSES_FOR_COURSE',
+    payload: request,
+  };
+}
+
+export function getAllCourses() {
+  const request = axios.get('api/courses/');
+  return {
+    type: 'GET_ALL_COURSES',
+    payload: request,
+  };
+}
+
+export function createCourse(course) {
+  const request = axios.post('api/courses', course);
+  return {
+    type: 'CREATE_COURSE',
+    payload: request,
+  };
+}
+
+export function getAllCalendarEvents() {
+  const request = axios.get('api/calendar');
+  return {
+    type: 'GET_CALENDAR',
+    payload: request,
+  };
+}
+
+export function addStudentsToClass(student) {
+  const request = axios.post('api/students_classes', student);
+  return {
+    type: 'ADD_STUDENT_TO_CLASS',
+    payload: request,
+  };
+}
+
+export function makeNewModule(moduleInfo) {
+  const request = axios.post('api/modules', moduleInfo);
+  return {
+    type: 'ADD_MODULE_TO_CLASS',
+    payload: request,
+  };
+}
+
+export function searchCalendar(calendarSpan) {
+  const request = axios.get('api/calendar/interval', {
+    params: calendarSpan,
+  });
+  return {
+    type: 'SEARCH_CALENDAR',
+    payload: request,
+  };
+}
+
+export function getMeetingById(meetingId) {
+  const request = axios.get(`api/meetings/${meetingId}`);
+  return {
+    type: 'GET_MEETING',
+    payload: request,
+  };
+}
+
+export function uploadProfilePhoto(data) {
+  uploadFile(data).payload.then((response) => {
+    axios.put(`api/users/${store.getState().user.id}`, {
+      profilePhotoId: response.data[0].id,
+    });
+  });
+}
+
+const tokenName = 'x-auth-token';
+
+axios.interceptors.request.use((config) => {
+  const token = store.getState().user.token;
+  config.headers[tokenName] = token || false;
+
+  return config;
+}, err => Promise.reject(err));
+
+axios.interceptors.response.use((res) => {
+  const token = res.headers[tokenName];
+  store.dispatch(auth(token));
+
+  return res;
+}, (err) => {
+  store.dispatch(auth(err.response.headers[tokenName]));
+  return Promise.reject(err);
+});
+
+store.dispatch(auth(window.localStorage.getItem('token') || false));
+axios.get('auth/check');

@@ -11,7 +11,7 @@ class RenderClassBuilder extends Component {
 
     this.state = {
       localclassId: '',
-      visibility: { visibility: 'visibile' },
+      visibility: { visibility: 'visible' },
     };
 
     this.onIdSubmit = this.onIdSubmit.bind(this);
@@ -58,7 +58,7 @@ class RenderClassBuilder extends Component {
 
 RenderClassBuilder.propTypes = {
   addClassId: React.PropTypes.func,
-  classId: React.PropTypes.arrayOf(React.PropTypes.number),
+  classId: React.PropTypes.arrayOf(React.PropTypes.string),
 };
 
 function mapDispatchToProps(dispatch) {

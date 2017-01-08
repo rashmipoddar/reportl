@@ -9,6 +9,11 @@ const moduleRouter = require('./moduleRouter');
 const gradeableobjectsRouter = require('./gradeableobjectsRouter');
 const gradeableobjectsTypeRouter = require('./gradeableobjectsTypeRouter');
 const graphdataRouter = require('./graphdataRouter');
+const meetingsRouter = require('./meetingsRouter');
+const calendarRouter = require('./calendarRouter');
+const attendanceRouter = require('./attendanceRouter');
+const studentClassesRouter = require('./studentClassesRouter');
+// const teacherClassesRouter = require('./teacherClassesRouter');
 
 if (process.env.NODE_ENV !== 'production') {
   router.all('*', (req, res, next) => {
@@ -79,5 +84,37 @@ router.use('/graphdata', (req, res, next) => {
   console.log('apiRouter -> graphdataRouter');
   next();
 }, graphdataRouter);
+
+router.use('/meetings', (req, res, next) => {
+  console.log('apiRouter -> meetingsRouter');
+  next();
+}, meetingsRouter);
+
+router.use('/calendar', (req, res, next) => {
+  console.log('apiRouter -> calendarRouter');
+  next();
+}, calendarRouter);
+
+router.use('/attendance', (req, res, next) => {
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('apiRouter -> attendanceRouter');
+  }
+  next();
+}, attendanceRouter);
+
+router.use('/students_classes', (req, res, next) => {
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('apiRouter -> studentClassesRouter');
+  }
+  next();
+}, studentClassesRouter);
+
+// router.use('/teachers_classes', (req, res, next) => {
+//   if (process.env.NODE_ENV !== 'production') {
+//     console.log('apiRouter -> teacherClassesRouter');
+//   }
+//   next();
+// }, teacherClassesRouter);
+
 
 module.exports = router;

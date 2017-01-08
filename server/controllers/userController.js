@@ -2,7 +2,9 @@ const User = require('../models/userModel');
 
 const userController = {
   getAll(req, res) {
-    User.fetchAll()
+    User.fetchAll({
+      withRelated: ['classes', 'type', 'profilePhoto'],
+    })
       .then(users => res.json(users))
       .catch((err) => {
         console.log(`userController.getAll - Error: ${err}`);
@@ -38,7 +40,6 @@ const userController = {
   },
 
   newUser({ body: userData, baseUrl, originalUrl }, res) {
-    console.log('userData from within newuser function', userData);
     User.forge(userData)
       .save()
       .then((user) => {
@@ -89,10 +90,12 @@ const userController = {
         Object.keys(userData).forEach((key) => {
           user.set(key, userData[key]);
         });
-        res.json(user);
+
+        return user.save();
       })
+      .then(user => res.json(user))
       .catch((err) => {
-        console.log(`userController.deleteUserById - Error: ${err}`);
+        console.log(`userController.updateUserById - Error: ${err}`);
         res.status(404).json({
           error: {
             message: 'Cannot delete user',

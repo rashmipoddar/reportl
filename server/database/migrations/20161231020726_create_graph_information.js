@@ -8,6 +8,7 @@ exports.up = knex => knex.schema.createTable('graph_data', (table) => {
   table.integer('module_id').unsigned();
   table.integer('gradeableobject_id').unsigned();
   table.integer('gradeableobjecttype_id').unsigned();
+  table.integer('meeting_id').unsigned();
   table.integer('tag_id').unsigned();
   table.timestamp('start_date').defaultTo(knex.fn.now());
   table.timestamp('end_date').defaultTo(knex.fn.now());
@@ -21,6 +22,7 @@ exports.up = knex => knex.schema.createTable('graph_data', (table) => {
   table.foreign('module_id').references('modules.id');
   table.foreign('gradeableobject_id').references('gradeable_objects.id');
   table.foreign('gradeableobjecttype_id').references('gradeable_objects_types.id');
+  table.foreign('meeting_id').references('meetings.id');
   table.foreign('tag_id').references('tags.id');
 });
 

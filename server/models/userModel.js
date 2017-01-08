@@ -1,10 +1,18 @@
 const db = require('../database/db');
+const bcrypt = require('bcrypt');
 require('./userTypeModel');
+require('./classModel');
+require('./fileModel');
+
+const saltRounds = 10 || process.env.SALT_ROUNDS;
 
 const User = db.Model.extend({
   tableName: 'users',
   hidden: ['password'],
   hasTimestamps: true,
+  initialize() {
+    this.on('creating', this.hashPassword);
+  },
   virtuals: {
     fullName: {
       get() {
@@ -17,8 +25,34 @@ const User = db.Model.extend({
       },
     },
   },
+  comparePassword(password) {
+    return new Promise((resolve, reject) => {
+      bcrypt.compare(password, this.get('password'), (err, valid) => {
+        if (err) {
+          reject(err);
+        }
+        if (!valid) {
+          reject('Not valid password');
+        }
+        resolve(this);
+      });
+    });
+  },
+  hashPassword() {
+    if (this.get('password')) {
+      return bcrypt.hash(this.get('password'), saltRounds)
+        .then(hash => this.set('password', hash));
+    }
+    return Promise.resolve();
+  },
   type() {
     return this.belongsTo('UserType', 'type_id');
+  },
+  classes() {
+    return this.belongsToMany('Class', 'students_classes', 'student_id');
+  },
+  profilePhoto() {
+    return this.belongsTo('File', 'profile_photo_id');
   },
 });
 
