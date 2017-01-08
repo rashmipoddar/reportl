@@ -4,6 +4,7 @@ require('./courseModel');
 require('./classModel');
 require('./gradeableObjectModel');
 require('./gradeableObjectModelType');
+require('./moduleModel');
 
 const GraphModel = db.Model.extend({
   tableName: 'graph_data',
@@ -28,6 +29,9 @@ const GraphModel = db.Model.extend({
   },
   teacher() {
     return this.belongsTo('User', 'teacher_id');
+  },
+  module() {
+    return this.belongsTo('Module', 'module_id');
   },
 });
 
