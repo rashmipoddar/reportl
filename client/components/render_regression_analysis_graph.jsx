@@ -4,7 +4,8 @@ import regression from 'regression';
 import { connect } from 'react-redux';
 import { getChartData } from '../actions/index';
 
-const classes = ['American Literature', 'Pre-Algebra', 'Biology 1', 'Biology 2', 'Spanish']
+const classes = ['American Literature', 'Pre-Algebra', 'Biology 1', 'Biology 2', 'Spanish'];
+const users = ['John Smith', 'Alice Adams', 'Alvin Ardsley', 'Jennifer Vasquez', 'Erin McClellan', 'Lindsay Herzog', 'Samuel Growan'];
 
 class RenderScatterPlotChart extends Component {
   constructor(props) {
@@ -19,9 +20,14 @@ class RenderScatterPlotChart extends Component {
     this.props.getChartData();
   }
 
-  updateData(selectedClass) {
+  updateClassData(selectedClass) {
     this.setState({
       currentClass: selectedClass,
+    });
+  }
+  updateUserData(selectedUser) {
+    this.setState({
+      currentName: selectedUser,
     });
   }
 
@@ -88,8 +94,13 @@ class RenderScatterPlotChart extends Component {
     return (
       <div>
         <h2>Grades for {this.state.currentName} in {this.state.currentClass}</h2>
+        <div>{users.map(user => (
+          <button onClick={() => { this.updateUserData(user); }}>
+            {user}
+          </button>
+          ))}</div>
         <div>{classes.map(classItem => (
-          <button onClick={() => { this.updateData(classItem); }}>
+          <button onClick={() => { this.updateClassData(classItem); }}>
             {classItem}
           </button>
           ))}</div>
