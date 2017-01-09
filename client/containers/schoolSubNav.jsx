@@ -1,24 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import subNav from '../styles/subNav';
+
+const { subNavButton, container } = subNav;
+
+console.log('subNavButton', subNavButton);
 
 const SchoolNav = ({ user }) => {
   const isAuth = () => !!user.id;
   const isAuthType = (...types) => isAuth() && !!user.type && types.includes(user.type.name);
 
   return (
-    <div>
-      {isAuthType('student', 'teacher') && <button><Link to="/classes">Classes</Link></button>}
-      {isAuth() && <button><Link to="/users">People</Link></button>}
-      {isAuthType('student', 'teacher') && <button><Link to="/coursecatalog">Course Catalog</Link></button>}
-      {isAuthType('teacher') && <button><Link to="/gradegraph">Grades</Link></button>}
-      {isAuthType('teacher', 'student') && <button><Link to="/calendar">Calendar</Link></button>}
+    <div style={container}>
+      {isAuthType('student', 'teacher') && <Link to="/classes"><button style={subNavButton}>Classes</button></Link>}
+      {isAuth() && <Link to="/users"><button style={subNavButton}>People</button></Link>}
+      {isAuthType('student', 'teacher') && <Link to="/coursecatalog"><button style={subNavButton}>Course Catalog</button></Link>}
+      {isAuthType('teacher') && <Link to="/gradegraph"><button style={subNavButton}>Grades</button></Link>}
+      {isAuthType('teacher', 'student') && <Link to="/calendar"><button style={subNavButton}>Calendar</button></Link>}
     </div>
   );
 };
 
 SchoolNav.propTypes = {
-  // TODO: Not sure if this is the correct type for children
   user: React.PropTypes.shape({
     address: React.PropTypes.string,
     createdAt: React.PropTypes.string,

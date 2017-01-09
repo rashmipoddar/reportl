@@ -5,22 +5,19 @@ import subNav from '../styles/subNav';
 
 const { subNavButton, container } = subNav;
 
-console.log('subNavButton', subNavButton);
-
-const DashboardNav = ({ user }) => {
+const SettingsSubNav = ({ user }) => {
   const isAuth = () => !!user.id;
   const isAuthType = (...types) => isAuth() && !!user.type && types.includes(user.type.name);
 
   return (
     <div style={container}>
-      {isAuthType('student', 'teacher') && <Link to="/profile"><button style={subNavButton}>My Profile</button></Link>}
-      {isAuthType('teacher', 'student') && <Link to="/calendar"><button style={subNavButton}>My Calendar</button></Link>}
-      {isAuthType('teacher', 'student') && <Link to="/dashboard"><button style={subNavButton}>My Day</button></Link>}
+      {isAuthType('student', 'teacher') && <Link to="/updateprofile"><button style={subNavButton}>Edit Profile</button></Link>}
+      {isAuthType('teacher') && <Link to="/createform"><button style={subNavButton}>Create Form</button></Link>}
     </div>
   );
 };
 
-DashboardNav.propTypes = {
+SettingsSubNav.propTypes = {
   user: React.PropTypes.shape({
     address: React.PropTypes.string,
     createdAt: React.PropTypes.string,
@@ -49,4 +46,5 @@ DashboardNav.propTypes = {
 
 export default connect(state => ({
   user: state.user,
-}))(DashboardNav);
+}))(SettingsSubNav);
+
