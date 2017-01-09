@@ -3,12 +3,10 @@ import ReactHighcharts from 'react-highcharts';
 import Highcharts from 'highcharts';
 import drilldown from 'highcharts-drilldown';
 import { connect } from 'react-redux';
-import { getChartData } from '../actions/index';
 
 class RenderGradeChart extends Component {
 
   componentWillMount() {
-    this.props.getChartData();
     drilldown(Highcharts);
   }
 
@@ -16,10 +14,15 @@ class RenderGradeChart extends Component {
     const nameObject = {};
 
     this.props.gradeData.forEach((item) => {
-      if (nameObject[item.users.fullName] === undefined) {
-        nameObject[item.users.fullName] = [];
+      if (item.users.fullName === this.props.selectedUserGraph &&
+        item.classes.name === this.props.selectedClassGraph &&
+        nameObject[item.module.moduleName] === undefined
+      ) {
+        nameObject[item.module.moduleName] = [];
       }
-      nameObject[item.users.fullName].push([item.gradeableobjects.objectName, item.grade]);
+      if (nameObject[item.module.moduleName]) {
+        nameObject[item.module.moduleName].push([item.gradeableobjects.objectName, item.grade]);
+      }
     });
 
     const highLevelData = [];
@@ -68,18 +71,28 @@ class RenderGradeChart extends Component {
     };
 
     return (
-      <ReactHighcharts config={config} />
+      <div>
+        <h3>Module Breakdown for {this.props.selectedUserGraph}
+           in {this.props.selectedClassGraph}</h3>
+        <p>(Click to Drill Down)</p>
+        <ReactHighcharts config={config} />
+      </div>
     );
   }
 }
 
 RenderGradeChart.propTypes = {
-  getChartData: React.PropTypes.func,
+  selectedUserGraph: React.PropTypes.string,
+  selectedClassGraph: React.PropTypes.string,
   gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
-  return { gradeData: state.gradeData };
+  return {
+    gradeData: state.gradeData,
+    selectedClassGraph: state.selectedClassGraph,
+    selectedUserGraph: state.selectedUserGraph,
+  };
 }
 
-export default connect(mapStateToProps, { getChartData })(RenderGradeChart);
+export default connect(mapStateToProps)(RenderGradeChart);
