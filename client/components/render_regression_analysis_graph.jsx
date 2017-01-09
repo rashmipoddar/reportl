@@ -3,12 +3,12 @@ import ReactHighcharts from 'react-highcharts';
 import regression from 'regression';
 import { connect } from 'react-redux';
 
-const RenderScatterPlotChart = () => {
+const RenderScatterPlotChart = ({ gradeData, selectedUserGraph, selectedClassGraph }) => {
   const regressionData = [];
 
-  this.props.gradeData.forEach((item) => {
-    if (item.users.fullName === this.props.selectedUserGraph &&
-        item.classes.name === this.props.selectedClassGraph) {
+  gradeData.forEach((item) => {
+    if (item.users.fullName === selectedUserGraph &&
+        item.classes.name === selectedClassGraph) {
       regressionData.push([item.gradeableobjects.id, item.grade]);
     }
   });
@@ -64,11 +64,17 @@ const RenderScatterPlotChart = () => {
 
   return (
     <div>
-      <h3>Grading Trends for {this.props.selectedUserGraph} in
-         {this.props.selectedClassGraph}</h3>
+      <h3>Grading Trends for {selectedUserGraph} in
+         {selectedClassGraph}</h3>
       <ReactHighcharts config={config} />
     </div>
   );
+};
+
+RenderScatterPlotChart.propTypes = {
+  selectedUserGraph: React.PropTypes.string,
+  selectedClassGraph: React.PropTypes.string,
+  gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
