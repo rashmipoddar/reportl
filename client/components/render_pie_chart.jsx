@@ -3,14 +3,14 @@ import ReactHighcharts from 'react-highcharts';
 import Highcharts from 'highcharts';
 import { connect } from 'react-redux';
 
-const RenderPieChart = () => {
+const RenderPieChart = ({ gradeData, selectedUserGraph, selectedClassGraph }) => {
   const temporaryObject = {};
   const filteredArray = [];
   const pieChartData = [];
 
-  this.props.gradeData.forEach((item) => {
-    if (item.users.fullName === this.props.selectedUserGraph &&
-        item.classes.name === this.props.selectedClassGraph) {
+  gradeData.forEach((item) => {
+    if (item.users.fullName === selectedUserGraph &&
+        item.classes.name === selectedClassGraph) {
       filteredArray.push(item);
     }
   });
@@ -67,11 +67,17 @@ const RenderPieChart = () => {
 
   return (
     <div>
-      <h3>Average Module Grades for {this.props.selectedUserGraph}
-         in {this.props.selectedClassGraph}</h3>
+      <h3>Average Module Grades for {selectedUserGraph}
+         in {selectedClassGraph}</h3>
       <ReactHighcharts config={config} />
     </div>
   );
+};
+
+RenderPieChart.propTypes = {
+  selectedUserGraph: React.PropTypes.string,
+  selectedClassGraph: React.PropTypes.string,
+  gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
