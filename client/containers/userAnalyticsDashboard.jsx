@@ -1,0 +1,73 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import RenderGradeChart from '../components/render_grade_graph';
+import RenderPieChart from '../components/render_pie_chart';
+import RenderScatterPlotChart from '../components/render_regression_analysis_graph';
+import { getChartData, setSelectedUser, setSelectedClass } from '../actions/index';
+
+const classes = ['American Literature', 'Pre-Algebra', 'Biology 1', 'Biology 2', 'Spanish'];
+const users = ['John Smith', 'Alice Adams', 'Alvin Ardsley', 'Jennifer Vasquez', 'Erin McClellan', 'Lindsay Herzog', 'Samuel Growan'];
+
+class userAnalyticsDashboard extends Component {
+
+  componentWillMount() {
+    if (!this.props.gradeData) {
+      this.props.getChartData();
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          <p>Select User</p>
+          {users.map(user => (
+            <button
+              onClick={() => { this.props.setSelectedUser(user); }}
+            >
+              {user}
+            </button>))}
+        </div>
+        <p>Select Class</p>
+        <div>
+          {classes.map(classItem => (
+            <button
+              onClick={() => { this.props.setSelectedClass(classItem); }}
+            >
+              {classItem}
+            </button>
+          ))}</div>
+        <div>
+          <h2>Grades for {this.props.selectedUserGraph} in {this.props.selectedClassGraph}</h2>
+          <RenderPieChart />
+          <RenderScatterPlotChart />
+          <RenderGradeChart />
+        </div>
+      </div>
+    );
+  }
+}
+
+userAnalyticsDashboard.propTypes = {
+  selectedUserGraph: React.PropTypes.string,
+  selectedClassGraph: React.PropTypes.string,
+  getChartData: React.PropTypes.func,
+  setSelectedUser: React.PropTypes.func,
+  setSelectedClass: React.PropTypes.func,
+  gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setSelectedUser, setSelectedClass, getChartData }, dispatch);
+}
+
+function mapStateToProps(state) {
+  return {
+    gradeData: state.gradeData,
+    selectedClassGraph: state.selectedClassGraph,
+    selectedUserGraph: state.selectedUserGraph,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(userAnalyticsDashboard);

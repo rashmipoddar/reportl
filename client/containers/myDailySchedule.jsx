@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import { searchCalendar, getMeetingById, getAllAttendees } from '../actions/index';
+import { searchCalendar, getMeetingById, getAllAttendees, getChartData } from '../actions/index';
 
 const calendarStyle = {
   display: 'block',
@@ -67,7 +67,14 @@ class renderDailySchedule extends Component {
       <div>
         <div>
           <h3>Daily Schedule</h3>
-          <button><Link to="/gradegraph">Analytics</Link></button>
+          <button
+            onClick={() => { this.props.getChartData(); }}
+          >
+            <Link to="/usergradegraph">Student Analytics</Link></button>
+          <button
+            onClick={() => { this.props.getChartData(); }}
+          >
+            <Link to="/classgradegraph">Class Analytics</Link></button>
           <div style={calendarStyle}>
             {this.renderScheduleInformation()}
           </div>
@@ -83,12 +90,18 @@ renderDailySchedule.propTypes = {
   searchCalendar: React.PropTypes.func,
   getMeetingById: React.PropTypes.func,
   getAllAttendees: React.PropTypes.func,
+  getChartData: React.PropTypes.func,
   calendarSearchResult: React.PropTypes.arrayOf(React.PropTypes.object),
   children: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ searchCalendar, getMeetingById, getAllAttendees }, dispatch);
+  return bindActionCreators({
+    searchCalendar,
+    getMeetingById,
+    getAllAttendees,
+    getChartData,
+  }, dispatch);
 }
 
 function mapStateToProps(state) {

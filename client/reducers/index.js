@@ -28,6 +28,8 @@ import SelectedClassInformation from './get_classes_by_id';
 import AllCourses from './get_all_courses_reducer';
 import SearchCalendar from './search_calendar_reducer';
 import Meeting from './get_meeting_reducer';
+import SelectedClassGraph from './selected_class_graph_reducer';
+import SelectedUserGraph from './selected_user_graph_reducer';
 
 const rootReducer = combineReducers({
   user: LoginReducer,
@@ -57,6 +59,8 @@ const rootReducer = combineReducers({
   allCourses: AllCourses,
   calendarSearchResult: SearchCalendar,
   meeting: Meeting,
+  selectedClassGraph: SelectedClassGraph,
+  selectedUserGraph: SelectedUserGraph,
 });
 
 const logger = createLogger();
