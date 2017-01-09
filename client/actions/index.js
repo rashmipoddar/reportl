@@ -247,6 +247,20 @@ export function uploadProfilePhoto(data) {
   });
 }
 
+export function setSelectedUser(user) {
+  return {
+    type: 'SET_SELECTED_USER',
+    payload: user,
+  };
+}
+
+export function setSelectedClass(className) {
+  return {
+    type: 'SET_SELECTED_CLASS',
+    payload: className,
+  };
+}
+
 const tokenName = 'x-auth-token';
 
 axios.interceptors.request.use((config) => {

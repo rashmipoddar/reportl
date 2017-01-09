@@ -2,38 +2,17 @@ import React, { Component } from 'react';
 import ReactHighcharts from 'react-highcharts';
 import Highcharts from 'highcharts';
 import { connect } from 'react-redux';
-import { getChartData } from '../actions/index';
 
 class RenderPieChart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentName: 'Alvin Ardsley',
-    };
-  }
-
-  componentWillMount() {
-    this.props.getChartData();
-  }
-
-  updateData(selectedName) {
-    this.setState({
-      currentName: selectedName,
-    });
-  }
 
   render() {
     const temporaryObject = {};
-    const userSelection = [];
     const filteredArray = [];
     const pieChartData = [];
 
     this.props.gradeData.forEach((item) => {
-      if (userSelection.indexOf(item.users.fullName) === -1) {
-        userSelection.push(item.users.fullName);
-      }
-
-      if (item.users.fullName === this.state.currentName) {
+      if (item.users.fullName === this.props.selectedUserGraph &&
+          item.classes.name === this.props.selectedClassGraph) {
         filteredArray.push(item);
       }
     });
@@ -90,9 +69,8 @@ class RenderPieChart extends Component {
 
     return (
       <div>
-        {userSelection.map(userName => (
-          <button onClick={() => { this.updateData({ userName }); }}>{ userName }</button>
-        ))}
+        <h3>Average Module Grades for {this.props.selectedUserGraph}
+           in {this.props.selectedClassGraph}</h3>
         <ReactHighcharts config={config} />
       </div>
     );
@@ -100,12 +78,17 @@ class RenderPieChart extends Component {
 }
 
 RenderPieChart.propTypes = {
-  getChartData: React.PropTypes.func,
+  selectedUserGraph: React.PropTypes.string,
+  selectedClassGraph: React.PropTypes.string,
   gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
-  return { gradeData: state.gradeData };
+  return {
+    gradeData: state.gradeData,
+    selectedClassGraph: state.selectedClassGraph,
+    selectedUserGraph: state.selectedUserGraph,
+  };
 }
 
-export default connect(mapStateToProps, { getChartData })(RenderPieChart);
+export default connect(mapStateToProps)(RenderPieChart);

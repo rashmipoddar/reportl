@@ -2,47 +2,20 @@ import React, { Component } from 'react';
 import ReactHighcharts from 'react-highcharts';
 import regression from 'regression';
 import { connect } from 'react-redux';
-import { getChartData } from '../actions/index';
-
-const classes = ['American Literature', 'Pre-Algebra', 'Biology 1', 'Biology 2', 'Spanish'];
-const users = ['John Smith', 'Alice Adams', 'Alvin Ardsley', 'Jennifer Vasquez', 'Erin McClellan', 'Lindsay Herzog', 'Samuel Growan'];
 
 class RenderScatterPlotChart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentName: 'Alvin Ardsley',
-      currentClass: 'Spanish',
-    };
-  }
-
-  componentWillMount() {
-    this.props.getChartData();
-  }
-
-  updateClassData(selectedClass) {
-    this.setState({
-      currentClass: selectedClass,
-    });
-  }
-  updateUserData(selectedUser) {
-    this.setState({
-      currentName: selectedUser,
-    });
-  }
 
   render() {
     const regressionData = [];
 
     this.props.gradeData.forEach((item) => {
-      if (item.users.fullName === this.state.currentName &&
-          item.classes.name === this.state.currentClass) {
+      if (item.users.fullName === this.props.selectedUserGraph &&
+          item.classes.name === this.props.selectedClassGraph) {
         regressionData.push([item.gradeableobjects.id, item.grade]);
       }
     });
 
     const regressionLine = regression('linear', regressionData);
-
 
     const config = {
       title: 'Grades Regression',
@@ -93,17 +66,7 @@ class RenderScatterPlotChart extends Component {
 
     return (
       <div>
-        <h2>Grades for {this.state.currentName} in {this.state.currentClass}</h2>
-        <div>{users.map(user => (
-          <button onClick={() => { this.updateUserData(user); }}>
-            {user}
-          </button>
-          ))}</div>
-        <div>{classes.map(classItem => (
-          <button onClick={() => { this.updateClassData(classItem); }}>
-            {classItem}
-          </button>
-          ))}</div>
+        <h3>Grading Trends for {this.props.selectedUserGraph} in {this.props.selectedClassGraph}</h3>
         <ReactHighcharts config={config} />
       </div>
     );
@@ -111,12 +74,17 @@ class RenderScatterPlotChart extends Component {
 }
 
 RenderScatterPlotChart.propTypes = {
-  getChartData: React.PropTypes.func,
+  selectedUserGraph: React.PropTypes.string,
+  selectedClassGraph: React.PropTypes.string,
   gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
-  return { gradeData: state.gradeData };
+  return {
+    gradeData: state.gradeData,
+    selectedClassGraph: state.selectedClassGraph,
+    selectedUserGraph: state.selectedUserGraph,
+  };
 }
 
-export default connect(mapStateToProps, { getChartData })(RenderScatterPlotChart);
+export default connect(mapStateToProps)(RenderScatterPlotChart);
