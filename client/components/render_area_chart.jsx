@@ -7,11 +7,11 @@ require('highcharts/modules/treemap')(Highcharts);
 
 const colorValues = ['#3E454C', '#2185C5', '#AADEFD', '#FFEFD1', '#FF7F66'];
 
-const RenderAreaChart = () => {
+const RenderAreaChart = ({ gradeData, selectedClassGraph }) => {
   const areaData = [];
   const tempObject = {};
-  const filteredData = this.props.gradeData.filter(gradeItem =>
-    (gradeItem.classes.name === this.props.selectedClassGraph));
+  const filteredData = gradeData.filter(gradeItem =>
+    (gradeItem.classes.name === selectedClassGraph));
 
   filteredData.forEach((item) => {
     if (!tempObject[item.module.moduleName]) {
@@ -73,6 +73,11 @@ const RenderAreaChart = () => {
       <ReactHighcharts config={config} />
     </div>
   );
+};
+
+RenderAreaChart.propTypes = {
+  selectedClassGraph: React.PropTypes.string,
+  gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapStateToProps(state) {
