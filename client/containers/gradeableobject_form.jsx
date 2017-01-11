@@ -22,11 +22,17 @@ class RenderAttendee extends Component {
         {this.props.attendee.user.fullName}
         <input
           value={this.state.inputValue}
+          type="number"
           onChange={event => this.onInputChange(event.target.value)}
         />
         <button
           type="submit"
-          onClick={() => { console.log('attendee'); }}
+          onClick={() => {
+            this.props.addGrade(
+            this.props.attendee.meetingId,
+            this.props.attendee.studentId,
+            this.state.inputValue);
+          }}
         >Add Grade</button>
       </li>
     );
@@ -36,11 +42,11 @@ class RenderAttendee extends Component {
 
 RenderAttendee.propTypes = {
   attendee: React.PropTypes.string,
+  addGrade: React.PropTypes.func,
 };
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addGrade }, dispatch);
 }
-
 
 export default connect(null, mapDispatchToProps)(RenderAttendee);
