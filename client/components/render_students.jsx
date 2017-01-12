@@ -2,29 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllStudents, deleteUser } from '../actions/index';
 
-const containerStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-};
-
-const thumbnailStyle = {
-  height: '50px',
-  width: '50px',
-};
-
-const blockStyle = {
-  display: 'block',
-  height: '60px',
-  width: '250px',
-  margin: '5px',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
-
-const textStyle = {
-  float: 'right',
-};
-
 class RenderUsers extends Component {
   componentWillMount() {
     this.props.getAllStudents();
@@ -33,12 +10,13 @@ class RenderUsers extends Component {
   renderStudents() {
     console.log('props: allStudents: ', this.props.allStudents);
     return this.props.allStudents.map(eachStudent => (
-      <div className="userCard"style={blockStyle}>
-        <img style={thumbnailStyle} alt="profile" src="http://localhost:8000/api/files/1" />
-        <div style={textStyle} key={eachStudent.email}>
-          <div>Name: {eachStudent.fullName}</div>
-          <div>Email: {eachStudent.email}</div>
+      <div className="userCard">
+        <img className="userThumbnail" alt="profile" src={`/api/files/${eachStudent.profilePhotoId}`} />
+        <div className="userText" key={eachStudent.email}>
+          <div>{eachStudent.fullName}</div>
+          <div>{eachStudent.email}</div>
           <button
+            className="userButton"
             onClick={() => {
               deleteUser(eachStudent.id);
               this.props.getAllStudents();
@@ -53,7 +31,7 @@ class RenderUsers extends Component {
 
   render() {
     return (
-      <div className="userCardContainer"style={containerStyle}>
+      <div className="userCardContainer">
         {this.renderStudents()}
       </div>
     );
