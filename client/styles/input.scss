@@ -1,5 +1,5 @@
 $font-stack: Helvetica, sans-serif;
-$primary-color: #93ebcf;
+$primary-color: #64e3ba;
 $secondary-color: #eba593;
 $tertiary-color: #C26047;
 $quaternary-color: #188160;
@@ -44,14 +44,55 @@ $light: #fdf7f4;
   padding-bottom: 15px;
 }
 
-.userCard{
-  background-color: #8abee5;
-  padding:15px;
+.userCard {
+  display: flex;
+  background-color: $primary-color;
   border: none;
+  width: 265px;
+  margin: 10px;
+  align-items: center;
+  color: $light;
+  font: $font-stack;
+  box-shadow: 10px 10px 5px lightgrey;
+  jusitfy-content: center;
 }
 
-.userCardContainer{
-  justify-content: center;
+.userCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10%;
+  margin-right: 10%;
+  alighn-content: space-between;
+}
+
+.userThumbnail {
+  height: 80px;
+  width: 80px;
+}
+
+.userText {
+  margin-left: 10px;
+}
+
+.userViewButton {
+  display: block;
+  box-shadow: 10px 10px 5px lightgrey;
+  background-color: $quaternary-color;
+  color: $light;
+  margin: 15px;
+  padding: 10px;
+  font-size: large;
+  border: none;
+  margin-top: 30px;
+  outline: none;
+}
+
+.userButton {
+  display: block;
+  background-color: $quaternary-color;
+  border: none;
+  margin: 3px;
+  color: $light;
 }
 
 .graphButtonsContainer{

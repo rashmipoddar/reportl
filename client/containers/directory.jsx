@@ -36,8 +36,8 @@ class Directory extends React.Component {
     return (
       <div>
         <div style={buttonContainer}>
-          <button className="defaultButton" onClick={() => this.switchView('Students')}>Students</button>
-          <button className="defaultButton" onClick={() => this.switchView('Teachers')}>Teachers</button>
+          <button className="userViewButton" onClick={() => this.switchView('Students')}>Students</button>
+          <button className="userViewButton" onClick={() => this.switchView('Teachers')}>Teachers</button>
         </div>
         <div className="defaultContainer">
           {this.currentView()}
