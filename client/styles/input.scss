@@ -54,7 +54,7 @@ $light: #fdf7f4;
   color: $light;
   font: $font-stack;
   box-shadow: 10px 10px 5px lightgrey;
-  jusitfy-content: center;
+  justify-content: center;
 }
 
 .userCardContainer {
@@ -62,7 +62,7 @@ $light: #fdf7f4;
   flex-wrap: wrap;
   margin-left: 10%;
   margin-right: 10%;
-  alighn-content: space-between;
+  align-content: space-between;
 }
 
 .userThumbnail {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAllAttendees } from '../actions/index';
-import ObjectForm from '../containers/gradeableobject_form';
 
 class RenderGradeables extends Component {
 
@@ -22,18 +21,12 @@ class RenderGradeables extends Component {
       <div>
         <h3>Assignments/Exams</h3>
         {this.renderGradeables()}
-        <ol>
-          {this.props.attendees.map(attendee => (
-            <ObjectForm attendee={attendee} />
-          ))}
-        </ol>
       </div>
     );
   }
 }
 
 RenderGradeables.propTypes = {
-  attendees: React.PropTypes.arrayOf(React.PropTypes.object),
   gradeables: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
