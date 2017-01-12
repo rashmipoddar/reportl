@@ -16,7 +16,7 @@ class RenderSingleClass extends Component {
             <div>Class ID: {classInfo.id}</div>
             <div>Full Name: {this.props.teacher}</div>
           </div>
-          <h2>Modules</h2>
+          <h2 className="courseCatalogHeaders">Modules</h2>
           <div className="classSection">
             <div>{classInfo.modules.map(module => (
               <div>
@@ -27,7 +27,7 @@ class RenderSingleClass extends Component {
               </div>
             ))}</div>
           </div>
-          <h2>Students</h2>
+          <h2 className="courseCatalogHeaders">Students</h2>
           <div className="classSection">
             <div>{classInfo.users.map(user => (
               <div>

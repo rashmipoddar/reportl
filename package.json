@@ -24,7 +24,9 @@
     "eslint": "eslint --ext .js --ext .jsx client server scripts",
     "lint": "npm run eslint --silent || true",
     "mocha": "mocha",
-    "make:user": "node scripts/create_test_user.js"
+    "make:user": "node scripts/create_test_user.js",
+    "seed:files": "node scripts/seed_files.js",
+    "seed": "npm run db:seed && npm run seed:files"
   },
   "repository": {
     "type": "git",

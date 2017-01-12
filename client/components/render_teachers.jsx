@@ -14,13 +14,11 @@ const thumbnailStyle = {
 
 const blockStyle = {
   display: 'block',
-  borderStyle: 'solid',
   height: '60px',
   width: '250px',
   margin: '5px',
   justifyContent: 'center',
   alignItems: 'center',
-  borderWidth: 'thin',
 };
 
 const textStyle = {
@@ -35,7 +33,7 @@ class RenderTeachers extends Component {
   renderTeachers() {
     console.log('props: allTeachers: ', this.props.allTeachers);
     return this.props.allTeachers.map(eachTeacher => (
-      <div style={blockStyle}>
+      <div className="userCard" style={blockStyle}>
         <img style={thumbnailStyle} alt="profile" src={eachTeacher.imgUrl} />
         <div style={textStyle} key={eachTeacher.email}>
           <div>Name: {eachTeacher.fullName}</div>
@@ -55,7 +53,7 @@ class RenderTeachers extends Component {
 
   render() {
     return (
-      <div style={containerStyle}>
+      <div className="userCardContainer" style={containerStyle}>
         {this.renderTeachers()}
       </div>
     );
