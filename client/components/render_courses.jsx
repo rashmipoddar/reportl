@@ -6,19 +6,19 @@ import { getClassById, getUserById } from '../actions/index';
 class RenderClassesforCourse extends Component {
   renderCourses() {
     if (this.props.course.classes) {
-      console.log('*** CLASSES', this.props.course.classes);
       return (
-        <li>Name: {this.props.course.name}
+        <li className="courseCatalogHeaders courseDetails">Name: {this.props.course.name}
           <div>{this.props.course.description}</div>
           <div>{this.props.course.classes.map(eachClass => (
-            <button
+            <Link to="/coursecatalog/department/course/class"><button
+              className="courseCatalogButton"
               onClick={() => {
                 this.props.getClassById(eachClass.id);
                 this.props.getUserById(eachClass.teacherId);
               }}
             >
-              <Link to="/coursecatalog/department/course/class"> Class ID: {eachClass.id}</Link>
-            </button>
+               Class ID: {eachClass.id}
+            </button></Link>
           ))}</div>
         </li>
       );
@@ -29,7 +29,7 @@ class RenderClassesforCourse extends Component {
   render() {
     return (
       <div>
-        <h3>Course Details</h3>
+        <h3 className="pageTitle">Course Details</h3>
         <ol>
           {this.renderCourses()}
         </ol>
