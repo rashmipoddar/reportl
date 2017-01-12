@@ -183,6 +183,14 @@ exports.seed = (knex, Promise) => {
     },
   ];
 
+  userData.forEach((user) => {
+    user.phone_number = chance.phone();
+    const date = chance.date({ string: true }).split('/');
+    user.date_of_birth = `${date[2]}-${date[0]}-${date[1]}`;
+    user.address = chance.address();
+    user.profile_photo_id = user.id;
+  });
+
   const classData = [
     {
       id: 1,
