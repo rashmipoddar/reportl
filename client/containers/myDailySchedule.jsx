@@ -65,7 +65,7 @@ class renderDailySchedule extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="dailySchedule">
           <h3>Daily Schedule</h3>
           <button
             onClick={() => { this.props.getChartData(); }}
