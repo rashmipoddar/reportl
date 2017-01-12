@@ -37,6 +37,8 @@ const thumbnailStyle = {
   width: '200px',
 };
 
+const blankUrl = 'http://static.wixstatic.com/media/2653cd_02a8474e57b5420e8ae1f5b25ce3685c.jpg_srz_700_700_85_22_0.50_1.20_0.00_jpg_srz';
+
 class RenderAttendees extends Component {
   constructor(props) {
     super(props);
@@ -76,7 +78,7 @@ class RenderAttendees extends Component {
         <img
           style={thumbnailStyle}
           alt="Attendee"
-          src="http://localhost:8000/api/files/1"
+          src={(eachAttendee.user.profilePhotoId && `http://localhost:8000/api/files/${eachAttendee.user.profilePhotoId}`) || blankUrl}
         />
         {/* <img alt="Attendee" src={eachAttendee.user.imgUrl} />   */}
         <div>{eachAttendee.user.fullName}</div>
