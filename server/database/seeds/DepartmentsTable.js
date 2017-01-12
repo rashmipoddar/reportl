@@ -17,7 +17,7 @@ exports.seed = (knex, Promise) => {
   const attendanceTable = 'attendance';
   const graphTable = 'graph_data';
 
-  const tableData = ['departments', 'courses', 'users_types', 'users', 'classes', 'calendar', 'modules', 'meetings', 'gradeable_objects_types', 'gradeable_objects', 'meetings', 'graph_data'];
+  const tableData = ['departments', 'courses', 'users_types', 'users', 'classes', 'calendar', 'modules', 'meetings', 'gradeable_objects_types', 'gradeable_objects', 'graph_data', 'students_classes', 'attendance'];
 
   const departmentData = [
     {
