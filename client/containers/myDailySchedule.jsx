@@ -82,8 +82,8 @@ class renderDailySchedule extends Component {
           <div style={calendarStyle}>
             {this.renderScheduleInformation()}
           </div>
-          {this.props.children}
         </div>
+        {this.props.children}
       </div>
     );
   }
