@@ -11,7 +11,7 @@ class AssignmentsForm extends Component {
       object_name: '',
       type_id: '',
       percent_of_module_grade: 0,
-      class_id: '',
+      class_id: this.props.classes.id,
     };
 
     this.onAssignmentNameChange = this.onAssignmentNameChange.bind(this);
@@ -70,11 +70,6 @@ class AssignmentsForm extends Component {
           onChange={(event) => {
             this.onPercentOfModuleGradeChange(event.target.value);
           }}
-        />
-        <br />
-        <p>Class ID (should be implicit)</p>
-        <input
-          type="text"
         />
         <br />
         <button
