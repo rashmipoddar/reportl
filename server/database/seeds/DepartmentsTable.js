@@ -1,3 +1,7 @@
+const chance = require('chance')();
+
+// const randomInt = (max = 20, min = 3) => chance.integer({ min, max });
+
 exports.seed = (knex, Promise) => {
   const departmentsTable = 'departments';
   const coursesTable = 'courses';
