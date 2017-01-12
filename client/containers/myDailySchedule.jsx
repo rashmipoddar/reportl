@@ -67,18 +67,6 @@ class renderDailySchedule extends Component {
       <div>
         <div className="dailySchedule">
           <h3>Daily Schedule</h3>
-          <button
-            onClick={() => { this.props.getChartData(); }}
-          >
-            <Link to="/usergradegraph">Student Analytics</Link></button>
-          <button
-            onClick={() => { this.props.getChartData(); }}
-          >
-            <Link to="/classgradegraph">Class Analytics</Link></button>
-          <button
-            onClick={() => { this.props.getChartData(); }}
-          >
-            <Link to="/usertable">User Grade Table</Link></button>
           <div style={calendarStyle}>
             {this.renderScheduleInformation()}
           </div>
@@ -94,7 +82,6 @@ renderDailySchedule.propTypes = {
   searchCalendar: React.PropTypes.func,
   getMeetingById: React.PropTypes.func,
   getAllAttendees: React.PropTypes.func,
-  getChartData: React.PropTypes.func,
   calendarSearchResult: React.PropTypes.arrayOf(React.PropTypes.object),
   children: React.PropTypes.arrayOf(React.PropTypes.object),
 };
