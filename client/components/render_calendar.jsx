@@ -8,7 +8,7 @@ class RenderCalendar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { startDay: 71, weekOf: ['March', 13] };
+    this.state = { startDay: 43, weekOf: ['February', 13] };
   }
 
   componentWillMount() {

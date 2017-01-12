@@ -39,12 +39,6 @@ class StudentForm extends Component {
           }}
         />
         <br />
-        <p>Class ID (should be implicit)</p>
-        <input
-          value={this.state.description}
-          type="number"
-        />
-        <br />
         <button
           type="submit"
           onClick={() => {

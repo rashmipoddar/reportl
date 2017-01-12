@@ -73,11 +73,6 @@ class ModuleForm extends Component {
           }}
         />
         <br />
-        <p>Class ID (should be implicit)</p>
-        <input
-          type="text"
-        />
-        <br />
         <button
           type="submit"
           onClick={() => {

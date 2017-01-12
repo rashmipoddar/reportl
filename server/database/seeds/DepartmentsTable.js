@@ -1550,8 +1550,8 @@ exports.seed = (knex, Promise) => {
   });
 
   meetingsArray[34].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/3cXeLc0zGSVNeg';
-  // meetingsArray[161].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/tnzva0UI2fTO0j';
-  // meetingsArray[288].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/CcxlJyMDDJuOqp';
+  meetingsArray[69].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/tnzva0UI2fTO0j';
+  meetingsArray[105].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/CcxlJyMDDJuOqp';
 
   userData.forEach((user) => {
     if (user.type_id === 1) {
