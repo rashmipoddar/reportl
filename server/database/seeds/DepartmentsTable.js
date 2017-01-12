@@ -1511,6 +1511,8 @@ exports.seed = (knex, Promise) => {
   let graphCount = 1;
   classData.forEach((classItem) => {
     calendarData.forEach((calendarDay) => {
+      if (calendarDay.day_count > 47) return;
+
       if (calendarDay.week_day === 'Tuesday' || calendarDay.week_day === 'Thursday') {
         meetingsArray.push({
           id: meetingCount,
@@ -1548,8 +1550,8 @@ exports.seed = (knex, Promise) => {
   });
 
   meetingsArray[34].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/3cXeLc0zGSVNeg';
-  meetingsArray[161].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/tnzva0UI2fTO0j';
-  meetingsArray[288].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/CcxlJyMDDJuOqp';
+  // meetingsArray[161].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/tnzva0UI2fTO0j';
+  // meetingsArray[288].presentation_url = 'https://www.slideshare.net/slideshow/embed_code/key/CcxlJyMDDJuOqp';
 
   userData.forEach((user) => {
     if (user.type_id === 1) {
