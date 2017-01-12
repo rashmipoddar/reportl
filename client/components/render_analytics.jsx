@@ -32,6 +32,11 @@ class RenderAnalytics extends Component {
   }
 }
 
+RenderAnalytics.propTypes = {
+  getChartData: React.PropTypes.func,
+  gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
+};
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getChartData }, dispatch);
 }

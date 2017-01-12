@@ -82,7 +82,6 @@ renderDailySchedule.propTypes = {
   searchCalendar: React.PropTypes.func,
   getMeetingById: React.PropTypes.func,
   getAllAttendees: React.PropTypes.func,
-  getChartData: React.PropTypes.func,
   calendarSearchResult: React.PropTypes.arrayOf(React.PropTypes.object),
   children: React.PropTypes.arrayOf(React.PropTypes.object),
 };
