@@ -11,14 +11,14 @@ class RenderClassesforCourse extends Component {
         <li>Name: {this.props.course.name}
           <div>{this.props.course.description}</div>
           <div>{this.props.course.classes.map(eachClass => (
-            <button
+            <Link to="/coursecatalog/department/course/class"><button
               onClick={() => {
                 this.props.getClassById(eachClass.id);
                 this.props.getUserById(eachClass.teacherId);
               }}
             >
-              <Link to="/coursecatalog/department/course/class"> Class ID: {eachClass.id}</Link>
-            </button>
+               Class ID: {eachClass.id}
+            </button></Link>
           ))}</div>
         </li>
       );
