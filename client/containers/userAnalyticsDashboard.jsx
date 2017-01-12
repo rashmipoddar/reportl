@@ -12,9 +12,9 @@ const users = ['John Smith', 'Alice Adams', 'Alvin Ardsley', 'Jennifer Vasquez',
 class userAnalyticsDashboard extends Component {
 
   componentWillMount() {
-    if (!this.props.gradeData) {
-      this.props.getChartData();
-    }
+    this.props.getChartData();
+    this.props.setSelectedUser('John Smith');
+    this.props.setSelectedClass('American Literature');
   }
 
   render() {
@@ -57,7 +57,6 @@ userAnalyticsDashboard.propTypes = {
   getChartData: React.PropTypes.func,
   setSelectedUser: React.PropTypes.func,
   setSelectedClass: React.PropTypes.func,
-  gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapDispatchToProps(dispatch) {
@@ -66,7 +65,6 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    gradeData: state.gradeData,
     selectedClassGraph: state.selectedClassGraph,
     selectedUserGraph: state.selectedUserGraph,
   };

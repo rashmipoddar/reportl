@@ -1523,7 +1523,7 @@ exports.seed = (knex, Promise) => {
         });
         gradeableobjectArray.push({
           id: meetingCount,
-          object_name: `${gradeableObjectTypesData[meetingCount % 4].name} + ${meetingCount}`,
+          object_name: `${gradeableObjectTypesData[meetingCount % 4].name} ${meetingCount}`,
           type_id: gradeableObjectTypesData[meetingCount % 4].id,
           module_id: (classItem.id * 4) - Math.round(Math.random() * 3),
           meeting_id: meetingCount,

@@ -10,9 +10,8 @@ const classes = ['American Literature', 'Pre-Algebra', 'Biology 1', 'Biology 2',
 class classAnalyticsDashboard extends Component {
 
   componentWillMount() {
-    if (!this.props.gradeData) {
-      this.props.getChartData();
-    }
+    this.props.getChartData();
+    this.props.setSelectedClass('American Literature');
   }
 
   render() {
@@ -42,7 +41,6 @@ classAnalyticsDashboard.propTypes = {
   selectedClassGraph: React.PropTypes.string,
   getChartData: React.PropTypes.func,
   setSelectedClass: React.PropTypes.func,
-  gradeData: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 function mapDispatchToProps(dispatch) {
