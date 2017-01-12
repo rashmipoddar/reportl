@@ -20,10 +20,12 @@ class userAnalyticsDashboard extends Component {
   render() {
     return (
       <div>
+        <h2>Grades for {this.props.selectedUserGraph} in {this.props.selectedClassGraph}</h2>
         <div>
           <p>Select User</p>
           {users.map(user => (
             <button
+              className="graphClassButtons graphUserButtons"
               onClick={() => { this.props.setSelectedUser(user); }}
             >
               {user}
@@ -33,13 +35,13 @@ class userAnalyticsDashboard extends Component {
         <div>
           {classes.map(classItem => (
             <button
+              className="graphClassButtons"
               onClick={() => { this.props.setSelectedClass(classItem); }}
             >
               {classItem}
             </button>
           ))}</div>
         <div>
-          <h2>Grades for {this.props.selectedUserGraph} in {this.props.selectedClassGraph}</h2>
           <RenderPieChart />
           <RenderScatterPlotChart />
           <RenderGradeChart />
