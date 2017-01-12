@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllCalendarEvents } from '../actions/index';
+import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { getAllCalendarEvents, getMeetingById, getAllAttendees } from '../actions/index';
+
 // import SearchCalendar from '../containers/getCalendarDays';
 const containerStyle = {
   display: 'flex',
@@ -108,7 +111,14 @@ class RenderCalendar extends Component {
         <div style={dateStyle}>{`${eachDay.month} ${eachDay.dayOfMonth}`}</div>
         {eachDay.meetings.map(meeting => (
           <div style={meetingStyle} key={meeting.id}>
-            Meeting: {`classId: ${meeting.classId}, start: ${meeting.startTime}, end: ${meeting.endTime}`}
+            <button
+              onClick={() => {
+                this.props.getMeetingById(meeting.id);
+                this.props.getAllAttendees(meeting.id);
+              }}
+            >
+              <Link to="/lesson">Meeting: {`classId: ${meeting.classId}, start: ${meeting.startTime}, end: ${meeting.endTime}`}</Link>
+            </button>
           </div>
         ))}
       </div>
@@ -147,11 +157,19 @@ class RenderCalendar extends Component {
 RenderCalendar.propTypes = {
   getAllCalendarEvents: React.PropTypes.func,
   calendarData: React.PropTypes.arrayOf(React.PropTypes.object),
+  getMeetingById: React.PropTypes.func,
+  getAllAttendees: React.PropTypes.func,
   // calendarSearchResult: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getMeetingById,
+    getAllCalendarEvents,
+    getAllAttendees,
+  }, dispatch);
+}
 function mapStateToProps(state) {
   return { calendarData: state.calendarData };
 }
 
-export default connect(mapStateToProps, { getAllCalendarEvents })(RenderCalendar);
+export default connect(mapStateToProps, mapDispatchToProps)(RenderCalendar);
