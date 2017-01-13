@@ -66,7 +66,8 @@ class RenderAttendees extends Component {
           } else {
             console.log('absent!');
             markAbsent(eachAttendee.id);
-            const newPresent = this.state.present.slice().splice(presentIndex, 1);
+            this.state.present.splice(presentIndex, 1);
+            const newPresent = this.state.present.slice();
             console.log('newPresent', newPresent);
             this.setState({ present: newPresent });
           }
@@ -79,7 +80,7 @@ class RenderAttendees extends Component {
         <img
           style={thumbnailStyle}
           alt="Attendee"
-          src={(eachAttendee.user.profilePhotoId && `http://localhost:8000/api/files/${eachAttendee.user.profilePhotoId}`) || blankUrl}
+          src={(eachAttendee.user.profilePhotoId && `/api/files/${eachAttendee.user.profilePhotoId}`) || blankUrl}
         />
         {/* <img alt="Attendee" src={eachAttendee.user.imgUrl} />   */}
         <div>{eachAttendee.user.fullName}</div>
