@@ -27,6 +27,7 @@ import CreateForm from './components/create_all_forms';
 import RenderUserTable from './containers/render_user_table';
 import Directory from './containers/directory';
 import RenderAnalytics from './components/render_analytics';
+import RenderLessonForStudent from './components/render_lesson_student';
 
 const isAuth = () => !!store.getState().user.id;
 
@@ -77,6 +78,7 @@ ReactDOM.render(
         <Route path="/course" component={RenderClassesforCourse} />
         <Route path="/createCourse" component={CourseForm} />
         <Route path="/lesson" component={RenderLesson} />
+        <Route path="/lesson/student" component={RenderLessonForStudent} />
         <Route path="/calendar" component={RenderCalendar} />
         <Route path="/coursecatalog" component={RenderCourseCatalog} />
         <Route path="/coursecatalog/department" component={RenderDepartments} />
