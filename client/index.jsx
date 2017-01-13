@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import axios from 'axios';
 import { store } from './reducers';
 
 import App from './containers/app';
@@ -90,3 +91,9 @@ ReactDOM.render(
   </Provider>
 
   , document.getElementById('container'));
+
+axios.get('/api/users').then((res) => {
+  if (hashHistory.getCurrentLocation().pathname !== '/setup' && !res.data.length > 0) {
+    hashHistory.push('/setup');
+  }
+});
