@@ -28,6 +28,7 @@ import RenderUserTable from './containers/render_user_table';
 import Directory from './containers/directory';
 import RenderAnalytics from './components/render_analytics';
 import RenderLessonForStudent from './components/render_lesson_student';
+import RenderSetupForm from './containers/setup_school_forms/render_setup_form';
 
 const isAuth = () => !!store.getState().user.id;
 
@@ -88,6 +89,7 @@ ReactDOM.render(
         <Route path="/usertable" component={RenderUserTable} />
         <Route path="/directory" component={Directory} />
         <Route path="/users" component={Directory} />
+        <Route path="/setup" component={RenderSetupForm} />
       </Route>
     </Router>
   </Provider>
